@@ -1,7 +1,10 @@
 $icon-font-path: '../fonts/';
 
 // bower:scss
-@import "bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import 'bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
+@import 'fonts.scss';
+@import 'variables.scss';
+@import 'base.scss';
 // endbower
 
 .browserupgrade {

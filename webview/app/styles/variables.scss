@@ -4,12 +4,13 @@ $font-family-condensed: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 
 $color-primary: #5A00DA;
 $color-secondary: #350080;
+$gray: #9B9B9B;
+$light-gray: #CCCCCC;
 
 $font-color-primary: #000000;
-$font-color-secondary: #9B9B9B;
+$font-color-secondary: $gray;
 $font-color-primary-over-bg: #FFFFFF;
-$font-color-secondary-over-bg: #CCCCCC;
+$font-color-secondary-over-bg: $light-gray;
 
-$flight-status-font-color: #FFFFFF;
-$flight-status-ontime: #7ED321;
-$flight-status-delayed: #FF001F;
+$color-success: #7ED321;
+$color-fail: #FF001F;

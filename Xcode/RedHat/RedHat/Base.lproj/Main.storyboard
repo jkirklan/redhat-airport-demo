@@ -13,6 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cFw-2f-at6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xYm-MM-Vmx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

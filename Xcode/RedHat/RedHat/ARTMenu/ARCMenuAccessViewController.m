@@ -15,7 +15,9 @@
 {
     [super viewDidLoad];
     
-    self.menuTableViewController = [[ARTMenuTableViewController alloc] initWithDelegate:self];
+    UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"ARTMenu" bundle:nil];
+    self.menuTableViewController = (ARTMenuTableViewController *)[menuStoryboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+    [self.menuTableViewController setDelegate:self];
 }
 
 

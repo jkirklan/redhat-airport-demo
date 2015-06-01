@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "ARTMenuPresentationController.h"
 
-@interface ARTMenuTransitionManager : NSObject
+@interface ARTMenuTransitionManager : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
 @end

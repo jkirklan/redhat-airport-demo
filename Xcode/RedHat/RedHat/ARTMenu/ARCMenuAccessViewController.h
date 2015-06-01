@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) ARTMenuTableViewController *menuTableViewController;
 
-- (void)showMenu;
+- (void)setupMenu;
+
+- (IBAction)showMenu:(id)sender;
 
 @end

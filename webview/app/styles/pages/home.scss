@@ -12,7 +12,7 @@ html.home-page {
   }
   .search-bar {
     color: $font-color-secondary-over-bg;
-    padding: 3% 0;
+    padding: 10px 0;
     input[type="text"]{
       background: transparent;
       border: none;
@@ -24,5 +24,113 @@ html.home-page {
     .glyphicon-search {
       margin: 0 10px 0 0;
     }
+  }
+  .flight-menu {
+    color: $font-color-secondary;
+    margin: 30% 0 0 0;
+  }
+  .flight-menu-box {
+    background: $menu-box-bg-color;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 5px 0 0 0;
+    -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+  }
+  .current-flight {
+    position: relative;
+    text-transform: uppercase;
+    %current-flight-heading {
+      font-size: $font-size-base;
+      margin: 0;
+    }
+    .arrow-right-small {
+      vertical-align: -2px;
+      margin: 0 5px;
+    }
+    .current-flight-heading {
+      @extend %current-flight-heading;
+    }
+    .current-flight-airline {
+      font-size: 7vw;
+      color: $font-color-primary;
+      margin: 6px 0;
+    }
+    .current-flight-route {
+      @extend %current-flight-heading;
+      text-transform: none;
+    }
+    .current-flight-info {
+      margin: 12px -15px;
+      color: $font-color-primary;
+      .current-flight-departure-heading,
+      .current-flight-gate-heading {
+        @extend %current-flight-heading;
+        font-family: $font-family-bold;
+      }
+      .current-flight-departure {
+        @extend %current-flight-heading;
+        &.on-time {
+          color: $color-success;
+        }
+        &.delayed {
+          color: $color-fail;
+        }
+      }
+      .current-flight-gate {
+        @extend %current-flight-heading;
+        text-transform: none;
+      }
+    }
+    .current-flight-status {
+      position: absolute;
+      color: $font-color-primary-over-bg;
+      top: 10px;
+      right: 5px;
+      padding: 10px 20px;
+      &.on-time {
+        background: $color-success;
+      }
+      &.delayed {
+        background: $color-fail;
+      }
+    }
+  }
+  .flight-menu-col-3 {
+    width: 33.33%;
+    padding: 0 2px;
+    &:first-child {
+      padding: 0 2px 0 15px;
+    }
+    &:last-child {
+      padding: 0 15px 0 2px;
+    }
+  }
+  .flight-count {
+    display: inline-block;
+    background: $color-primary;
+    color: $font-color-primary-over-bg;
+    border-radius: 50%;
+    padding: 0 5px;
+    vertical-align: middle;
+  }
+  .flight-menu-icon-calendar {
+    width: 25px;
+    height: 25px;
+  }
+  .flight-menu-icon-plane {
+    width: 25px;
+    height: 25px;
+  }
+  .flight-menu-icon-location {
+    width: 18px;
+    height: 25px;
+  }
+  .flight-menu-heading {
+    color: $font-color-primary;
+    text-transform: none;
+    font-size: 7vw;
+    margin: 10px 0;
   }
 }

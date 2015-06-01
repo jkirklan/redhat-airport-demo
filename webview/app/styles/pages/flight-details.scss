@@ -1,0 +1,71 @@
+html.flight-details-page {
+  body {
+    background: $page-background-color;
+  }
+  .flight-details-bar {
+    position: relative;
+    background: $flight-details-bar-bg-color;
+    color: $font-color-primary-over-bg;
+    text-transform: uppercase;
+    padding: 20px;
+    .flight-airline {
+      font-size: 7vw;
+      margin: 0;
+    }
+    .flight-date {
+      color: $font-color-secondary-over-bg;
+      font-size: 3vw;
+      margin: 0;
+      text-transform: none;
+    }
+    .flight-status {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px 20px;
+      &.success {
+        background: $color-success;
+      }
+      &.failed {
+        background: $color-fail;
+      }
+    }
+  }
+  .flight-details {
+    padding: 20px;
+    text-transform: uppercase;
+    %flight-details-heading {
+      font-size: $font-size-base;
+      font-family: $font-family-bold;
+      margin: 0;
+    }
+    .flight-details-divider {
+      border-right: 1px solid $light-gray;
+      height: 10vw;
+    }
+    .flight-details-arrow {
+      height: 10vw;
+      width: 10vw;
+      margin: 0 0 0 1vw;
+    }
+    .airport-city,
+    .airport-times-heading,
+    .airport-boarding-heading,
+    .airport-gate-heading {
+      @extend %flight-details-heading;
+    }
+    .airport-code {
+      font-size: 6vw;
+      margin: 0 0 6vw 0;
+    }
+    .airport-times,
+    .airport-boarding,
+    .airport-gate {
+      font-size: 3vw;
+      margin: 0 0 8vw 0;
+    }
+    .airport-departure-gate {
+      padding: 0 0 0 30px;
+    }
+  }
+}

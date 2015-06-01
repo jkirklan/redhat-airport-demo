@@ -11,4 +11,9 @@
 
 @interface ARTMenuTransitionManager : NSObject <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
 
+/**
+ Convenience initialiser.
+ */
+- (id)initWithDuration:(NSTimeInterval)duration;
+
 @end

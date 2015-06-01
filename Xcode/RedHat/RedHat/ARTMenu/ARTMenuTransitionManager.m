@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign, getter=isPresenting) BOOL presenting;
 
+@property (nonatomic, assign) NSTimeInterval duration;
+
 @end
 
 
@@ -23,6 +25,19 @@
     
     if (self) {
         self.presenting = NO;
+        //Default...
+        self.duration = 0.5;
+    }
+    return self;
+}
+
+
+- (id)initWithDuration:(NSTimeInterval)duration
+{
+    self = [self init];
+    
+    if (self) {
+        self.duration = duration;
     }
     return self;
 }
@@ -56,7 +71,9 @@
 
 
 #pragma mark - UIViewControllerAnimatedTransitioning
-
+- (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
+    return self.duration;
+}
 
 
 @end

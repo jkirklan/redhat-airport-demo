@@ -15,7 +15,7 @@
 {
     [super viewDidLoad];
     
-    self.transitionManager = [[ARTMenuTransitionManager alloc] init];
+    self.transitionManager = [[ARTMenuTransitionManager alloc] initWithDuration:0.5];
     [self setupMenu];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"]

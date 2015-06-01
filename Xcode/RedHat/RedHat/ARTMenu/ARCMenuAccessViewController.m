@@ -10,4 +10,24 @@
 
 @implementation ARCMenuAccessViewController
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.menuTableViewController = [[ARTMenuTableViewController alloc] initWithDelegate:self];
+}
+
+
+- (void)showMenu {
+}
+
+
+#pragma mark - ARTMenuTableViewControllerDelegate
+- (void)menuDidSelectViewController:(UIViewController *)viewController
+{
+    
+}
+
+
 @end

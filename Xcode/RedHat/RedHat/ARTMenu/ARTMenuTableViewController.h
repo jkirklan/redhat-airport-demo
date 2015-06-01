@@ -8,8 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol ARTMenuTableViewControllerDelegate <NSObject>
+
+- (void)menuDidSelectViewController:(UIViewController *)viewController;
+
+@end
+
+
 @interface ARTMenuTableViewController : UIViewController
 
+@property (nonatomic, assign) id <ARTMenuTableViewControllerDelegate> delegate;
+
 @property (nonatomic, strong) UITableViewController *tableViewController;
+
+/**
+ Convenience initialiser.
+ */
+- (id)initWithDelegate:(id <ARTMenuTableViewControllerDelegate>)delegate;
 
 @end

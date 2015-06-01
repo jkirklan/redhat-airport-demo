@@ -10,4 +10,20 @@
 
 @implementation ARTMenuTableViewController
 
+
+- (id)initWithDelegate:(id <ARTMenuTableViewControllerDelegate>)delegate
+{
+    self = [super init];
+    
+    if (self) {
+        [self setDelegate:delegate];
+    }
+    return self;
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
 @end

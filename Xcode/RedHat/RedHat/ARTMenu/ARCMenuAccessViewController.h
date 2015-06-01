@@ -10,6 +10,12 @@
 #import "ARTMenuTransitionManager.h"
 #import "ARTMenuTableViewController.h"
 
-@interface ARCMenuAccessViewController : UIViewController
+@interface ARCMenuAccessViewController : UIViewController <ARTMenuTableViewControllerDelegate>
+
+@property (nonatomic, strong) ARTMenuTransitionManager *transitionManager;
+
+@property (nonatomic, strong) ARTMenuTableViewController *menuTableViewController;
+
+- (void)showMenu;
 
 @end

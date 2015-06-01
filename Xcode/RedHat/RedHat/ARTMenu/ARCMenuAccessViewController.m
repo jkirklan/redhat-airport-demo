@@ -51,7 +51,12 @@
 #pragma mark - ARTMenuTableViewControllerDelegate
 - (void)menuDidSelectViewController:(UIViewController *)viewController
 {
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:YES
+                                 completion:^{
+                                    [self.navigationController setViewControllers:@[viewController]];
+                                 }];
+    });
 }
 
 

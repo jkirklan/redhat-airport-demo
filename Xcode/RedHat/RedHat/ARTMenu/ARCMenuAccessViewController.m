@@ -18,10 +18,12 @@
     self.transitionManager = [[ARTMenuTransitionManager alloc] initWithDuration:0.5];
     [self setupMenu];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"]
-                                                                             style:UIBarButtonItemStylePlain
-                                                                            target:self
-                                                                            action:@selector(showMenu:)];
+    self.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-icon"]
+                                                              style:UIBarButtonItemStylePlain
+                                                             target:self
+                                                             action:@selector(showMenu:)];
+    
+    self.navigationItem.leftBarButtonItem = self.leftBarButtonItem;
 }
 
 
@@ -44,7 +46,9 @@
     
     [self presentViewController:self.menuTableViewController
                        animated:YES
-                     completion:NULL];
+                     completion:^{
+                         [self.leftBarButtonItem setEnabled:NO];
+                     }];
 }
 
 
@@ -55,6 +59,7 @@
         [self dismissViewControllerAnimated:YES
                                  completion:^{
                                     [self.navigationController setViewControllers:@[viewController]];
+                                     [self.leftBarButtonItem setEnabled:YES];
                                  }];
     });
 }

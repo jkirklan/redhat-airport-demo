@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) ARTMenuTableViewController *menuTableViewController;
 
+@property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
+
 - (void)setupMenu;
 
 - (IBAction)showMenu:(id)sender;

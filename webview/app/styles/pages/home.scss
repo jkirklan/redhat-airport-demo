@@ -1,0 +1,28 @@
+html.home-page {
+  body {
+    background: url(/images/background.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  hr {
+    border-top: 1px solid $light-gray;
+    margin: 0;
+  }
+  .search-bar {
+    color: $font-color-secondary-over-bg;
+    padding: 3% 0;
+    input[type="text"]{
+      background: transparent;
+      border: none;
+      outline: none;
+    }
+    ::-webkit-input-placeholder {
+       color: $font-color-secondary-over-bg;
+    }
+    .glyphicon-search {
+      margin: 0 10px 0 0;
+    }
+  }
+}

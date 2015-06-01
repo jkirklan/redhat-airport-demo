@@ -1,1 +1,5 @@
-/target/
+webview/node_modules
+webview/.tmp
+webview/.sass-cache
+webview/bower_components
+webview/test/bower_components

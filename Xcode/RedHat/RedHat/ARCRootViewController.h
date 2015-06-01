@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Architech. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ARCMenuAccessViewController.h"
 
-@interface ViewController : UIViewController
+@interface ARCRootViewController : ARCMenuAccessViewController
 
 
 @end

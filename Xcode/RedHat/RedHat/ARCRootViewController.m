@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 Architech. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ARCRootViewController.h"
 
-@interface ViewController ()
+@interface ARCRootViewController ()
 
 @end
 
-@implementation ViewController
+@implementation ARCRootViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

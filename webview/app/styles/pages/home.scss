@@ -72,10 +72,10 @@ html.home-page {
       }
       .current-flight-departure {
         @extend %current-flight-heading;
-        &.on-time {
+        &.success {
           color: $color-success;
         }
-        &.delayed {
+        &.failed {
           color: $color-fail;
         }
       }
@@ -90,10 +90,10 @@ html.home-page {
       top: 10px;
       right: 5px;
       padding: 10px 20px;
-      &.on-time {
+      &.success {
         background: $color-success;
       }
-      &.delayed {
+      &.failed {
         background: $color-fail;
       }
     }

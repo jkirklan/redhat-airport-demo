@@ -31,6 +31,7 @@ html.home-page {
   }
   .flight-menu-box {
     background: $menu-box-bg-color;
+    color: $font-color-secondary;
     border-radius: 2px;
     padding: 5px;
     margin: 5px 0 0 0;
@@ -62,7 +63,7 @@ html.home-page {
       text-transform: none;
     }
     .current-flight-info {
-      margin: 12px -15px;
+      margin: 20px -15px;
       color: $font-color-primary;
       .current-flight-departure-heading,
       .current-flight-gate-heading {
@@ -115,6 +116,9 @@ html.home-page {
     padding: 0 5px;
     vertical-align: middle;
   }
+  .flight-menu-icon {
+    margin: 1vw 0 0 0;
+  }
   .flight-menu-icon-calendar {
     width: 25px;
     height: 25px;
@@ -130,7 +134,7 @@ html.home-page {
   .flight-menu-heading {
     color: $font-color-primary;
     text-transform: none;
-    font-size: 7vw;
-    margin: 10px 0;
+    font-size: 8vw;
+    margin: 5vw 0;
   }
 }

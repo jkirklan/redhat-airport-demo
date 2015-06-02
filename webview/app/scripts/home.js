@@ -6,8 +6,8 @@ var home = (function($, window, document) {
     init: function() {
       this.flightData = this.getFlightData();
 
-      this.compileHandlebarsTemplate();
       this.parseDepartureTime();
+      this.compileHandlebarsTemplate();
       this.checkFlightStatus();
     },
     getFlightData: function() {
@@ -53,10 +53,7 @@ var home = (function($, window, document) {
       $('.current-flight').append(html);
     },
     parseDepartureTime: function() {
-      var $departureTime = $('.current-flight-departure'),
-          relativeTime = moment(this.flightData.flight.departure).calendar(new Date());
-
-      $departureTime.text(relativeTime);
+      this.flightData.flight.departureTime = moment(this.flightData.flight.departure).calendar(new Date());
     },
     checkFlightStatus: function() {
       var $departureTime = $('.current-flight-departure'),

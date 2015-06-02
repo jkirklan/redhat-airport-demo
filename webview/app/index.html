@@ -24,7 +24,7 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     <div class="search-bar">
       <div class="container">
         <div class="row">
@@ -37,7 +37,7 @@
     </div>
 
     <hr>
-    
+
     <div class="flight-menu">
       <div class="container">
         <a href="flight-details.html">
@@ -45,22 +45,7 @@
             <div class="col-xs-12">
               <div class="flight-menu-box">
                 <div class="current-flight">
-                  <h3 class="current-flight-heading">Current Flight</h3>
-                  <h2 class="current-flight-airline">AC 257</h2>
-                  <h3 class="current-flight-route">Toronto <span class="arrow-right-small"></span> Hong Kong</h3>
-                  <div class="row current-flight-info">
-                    <div class="col-xs-4">
-                      <h3 class="current-flight-departure-heading">Departs</h3>
-                      <h3 class="current-flight-departure success">Today, 22:00</h3>
-                    </div>
-                    <div class="col-xs-6">
-                      <h3 class="current-flight-gate-heading">Gate</h3>
-                      <h3 class="current-flight-gate">B17, Terminal 2</h3>
-                    </div>
-                  </div>
-                  <div class="current-flight-status success">
-                    On Time
-                  </div>
+                  <!-- current-flight-tmpl handlesbar template here -->
                 </div>
               </div>
             </div>
@@ -102,8 +87,28 @@
       </div>
     </div>
 
+    <script id="current-flight-tmpl" type="text/x-handlebars-template">
+      <h3 class="current-flight-heading">Current Flight</h3>
+      <h2 class="current-flight-airline">{{flight.airlineCode}} {{flight.flightNo}}</h2>
+      <h3 class="current-flight-route">{{flight.startingCity}} <span class="arrow-right-small"></span> {{flight.destinationCity}}</h3>
+      <div class="row current-flight-info">
+        <div class="col-xs-5">
+          <h3 class="current-flight-departure-heading">Departs</h3>
+          <h3 class="current-flight-departure">{{flight.departureTime}}</h3>
+        </div>
+        <div class="col-xs-6">
+          <h3 class="current-flight-gate-heading">Gate</h3>
+          <h3 class="current-flight-gate">{{flight.startingGate}}</h3>
+        </div>
+      </div>
+      <div class="current-flight-status">
+        {{flight.flightStatus}}
+      </div>
+    </script>
+
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="/bower_components/moment/min/moment.min.js"></script>
     <script src="/bower_components/handlebars/handlebars.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <!-- endbower -->

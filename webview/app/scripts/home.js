@@ -1,4 +1,4 @@
-/* jshint unused:false, devel:true */
+/* jshint devel:true */
 var home = (function($, window, document) {
   'use strict';
 

@@ -1,1 +1,1 @@
-console.log("'Allo 'Allo!");
+var home=function(t,n,i){"use strict";var e={init:function(){console.log("test")}};return e}(jQuery,window,document),flightDetails=function(t,n,i){"use strict";var e={init:function(){}};return e}(jQuery,window,document);

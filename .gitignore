@@ -5,4 +5,4 @@ webview/bower_components
 webview/test/bower_components
 signage/node_modules
 signage/vendor
-
+signage/build

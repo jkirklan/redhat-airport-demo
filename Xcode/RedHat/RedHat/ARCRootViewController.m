@@ -25,8 +25,17 @@
 
 - (void)loadWebviewWithURL:(NSString *)urlString
 {
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-    [self.webview loadRequest:urlRequest];
+    if (urlString == nil) {
+        //Bundle resource directories are flat to files must have UNIQUE names!
+        NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
+        
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:htmlPath];
+        [self.webview loadRequest:urlRequest];
+    }
+    else {
+        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        [self.webview loadRequest:urlRequest];
+    }
 }
 
 

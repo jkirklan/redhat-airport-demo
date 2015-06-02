@@ -1,0 +1,7 @@
+com/redhat/airport/model/Flight.class
+com/redhat/airport/rest/FlightResourceRESTService.class
+com/redhat/airport/push/PushNotificationService.class
+com/redhat/airport/service/FlightInformationService.class
+com/redhat/airport/model/FlightStatus.class
+com/redhat/airport/controller/FlightStatusController.class
+com/redhat/airport/rest/BaseApplication.class

@@ -68,4 +68,43 @@ html.flight-details-page {
       padding: 0 0 0 30px;
     }
   }
+  .coupon-area {
+    padding: 20px;
+    .coupon {
+      padding: 10px;
+      border: 3px dashed $light-gray;
+      border-radius: 5px;
+    }
+    .coupon-heading {
+      font-size: 6vw;
+      text-align: center;
+      margin: 0 0 3vw 0;
+    }
+    .coupon-img {
+      width: 22vw;
+      height: 27vw;
+    }
+    .coupon-offer {
+      font-size: 3vw;
+      margin: 10px 0;
+    }
+    .coupon-msg {
+      font-size: 3vw;
+      margin: 15px 0;
+      color: $font-color-secondary;
+    }
+    .coupon-btn {
+      background: $coupon-btn-color;
+      color: $font-color-primary-over-bg;
+      border-radius: 4px;
+      text-transform: uppercase;
+      padding: 10px;
+      margin: 0 7vw 5vw 0;
+      font-size: 4vw;
+      text-align: center;
+    }
+    .glyphicon-plus-sign {
+      vertical-align: -1px;
+    }
+  }
 }

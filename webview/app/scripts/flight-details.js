@@ -1,4 +1,4 @@
-/* jshint unused:false, devel:true */
+/* jshint devel:true */
 var flightDetails = (function($, window, document) {
   'use strict';
 

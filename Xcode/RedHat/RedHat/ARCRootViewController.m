@@ -45,6 +45,17 @@
 
 
 #pragma mark - UIWebViewDelegate
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    BOOL shouldLoad = NO;
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        shouldLoad = YES;
+    }
+    return shouldLoad;
+}
+
+
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     NSLog(@"webViewDidStartLoad: %@", webView.request.URL);
 }

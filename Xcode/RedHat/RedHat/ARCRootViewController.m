@@ -12,16 +12,34 @@
 
 @end
 
+
 @implementation ARCRootViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - UIWebViewDelegate
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    NSLog(@"webViewDidStartLoad: %@", webView.request.URL);
+}
+
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
+}
+
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"UIWebView failed to load. Error: %@", error.description);
+}
+
 
 @end

@@ -8,8 +8,9 @@
 
 #import "ARCMenuAccessViewController.h"
 
-@interface ARCRootViewController : ARCMenuAccessViewController
+@interface ARCRootViewController : ARCMenuAccessViewController <UIWebViewDelegate>
 
+@property (nonatomic, strong) IBOutlet UIWebView *webview;
 
 @end
 

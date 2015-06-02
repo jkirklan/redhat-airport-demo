@@ -15,10 +15,50 @@
                     <view key="view" contentMode="scaleToFill" id="xYm-MM-Vmx">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="F1l-hT-b7b">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Vs5-us-KJd" id="5Ph-iV-cIQ"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="F1l-hT-b7b" secondAttribute="bottom" id="8yA-x8-ryX"/>
+                            <constraint firstAttribute="trailing" secondItem="F1l-hT-b7b" secondAttribute="trailing" id="ChF-4o-l8q"/>
+                            <constraint firstItem="F1l-hT-b7b" firstAttribute="leading" secondItem="xYm-MM-Vmx" secondAttribute="leading" id="QMi-nZ-JzC"/>
+                            <constraint firstItem="F1l-hT-b7b" firstAttribute="top" secondItem="xYm-MM-Vmx" secondAttribute="top" id="iD3-ix-4by"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="F1l-hT-b7b"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="8yA-x8-ryX"/>
+                                <exclude reference="ChF-4o-l8q"/>
+                                <exclude reference="QMi-nZ-JzC"/>
+                                <exclude reference="iD3-ix-4by"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="F1l-hT-b7b"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="8yA-x8-ryX"/>
+                                <include reference="ChF-4o-l8q"/>
+                                <include reference="QMi-nZ-JzC"/>
+                                <include reference="iD3-ix-4by"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="kuk-r9-08C"/>
+                    <connections>
+                        <outlet property="webview" destination="F1l-hT-b7b" id="66O-PV-IOd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0H3-dw-J6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

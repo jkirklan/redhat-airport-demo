@@ -47,7 +47,7 @@
     [self presentViewController:self.menuTableViewController
                        animated:YES
                      completion:^{
-                         [self.leftBarButtonItem setEnabled:NO];
+                         //[self.leftBarButtonItem setEnabled:NO];
                      }];
 }
 
@@ -59,7 +59,7 @@
         [self dismissViewControllerAnimated:YES
                                  completion:^{
                                     [self.navigationController setViewControllers:@[viewController]];
-                                     [self.leftBarButtonItem setEnabled:YES];
+                                    //[self.leftBarButtonItem setEnabled:YES];
                                  }];
     });
 }

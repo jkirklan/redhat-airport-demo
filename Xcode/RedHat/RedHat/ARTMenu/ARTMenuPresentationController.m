@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) UIView *dimmingView;
 
-- (void)dismissMenu;
+- (void)dismissMenu:(UITapGestureRecognizer *)sender;
 
 @end
 
@@ -26,13 +26,28 @@
                          presentingViewController:presentingViewController];
     
     if (self) {
-        [self.dimmingView setBackgroundColor:[UIColor colorWithWhite:0.0/255.0 alpha:0.75]];
+        //Init code
     }
     return self;
 }
 
 
-- (void)dismissMenu {
+- (UIView *)dimmingView
+{
+    if (_dimmingView == nil)
+    {
+        _dimmingView = [[UIView alloc] initWithFrame:self.containerView.frame];
+        [_dimmingView setBackgroundColor:[UIColor colorWithWhite:255.0/255.0 alpha:0.75]];
+        
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(dismissMenu:)];
+        [_dimmingView addGestureRecognizer:tapRecognizer];
+    }
+    return _dimmingView;
+}
+
+
+- (void)dismissMenu:(UITapGestureRecognizer *)sender {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 

@@ -8,6 +8,9 @@
 
 #import "ARCRootViewController.h"
 
+NSString *const ROOT_URL = @"apple.com";
+
+
 @interface ARCRootViewController ()
 
 @end
@@ -48,8 +51,13 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     BOOL shouldLoad = NO;
+    NSURL *rootURL = [NSURL URLWithString:ROOT_URL];
     
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+    NSString * cleanHost = [[request.URL host] stringByReplacingOccurrencesOfString:@"www." withString:@""];
+    NSURL *hostURL = [NSURL URLWithString:cleanHost];
+    
+    if ( ([rootURL isEqual:hostURL]) ||
+         (navigationType == UIWebViewNavigationTypeLinkClicked) ) {
         shouldLoad = YES;
     }
     return shouldLoad;

@@ -16,8 +16,17 @@
 @implementation ARCRootViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [self loadWebviewWithURL:@"http://apple.com"];
+}
+
+
+- (void)loadWebviewWithURL:(NSString *)urlString
+{
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    [self.webview loadRequest:urlRequest];
 }
 
 

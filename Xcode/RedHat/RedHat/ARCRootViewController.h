@@ -12,5 +12,7 @@
 
 @property (nonatomic, strong) IBOutlet UIWebView *webview;
 
+- (void)loadWebviewWithURL:(NSString *)urlString;
+
 @end
 

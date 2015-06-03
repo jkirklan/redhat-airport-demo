@@ -29,21 +29,20 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="coupon-details-container">
-            <h2 class="coupon-heading">Sorry for the delay.</h2>
-            <h3 class="coupon-flight-details">
-              <span class="bold">AC 257</span> Delayed on Wed, May 20 2015
-            </h3>
-            <div class="coupon-img-container">
-              <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
-            </div>
-            <h3 class="coupon-offer">Get 1 Free Starbucks Coffee</h3>
-            <h3 class="coupon-msg">Redeem this coupon at any Starbucks Coffee location at Toronto Pearson International.</h3>
+            <script id="coupon-details-tmpl" type="text/x-handlebars-template">
+              <h2 class="coupon-heading">Sorry for the delay.</h2>
+              <h3 class="coupon-flight-details">
+                <span class="bold">{{flight.airlineCode}} {{flight.flightNo}}</span> Delayed on {{flight.flightDate}}
+              </h3>
+              <div class="coupon-img-container">
+                <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
+              </div>
+              <h3 class="coupon-offer">Get {{coupon.offer}}</h3>
+              <h3 class="coupon-msg">{{coupon.description}}</h3>
+            </script>
           </div>
         </div>
       </div>
-      <script id="coupon-details-tmpl" type="text/x-handlebars-template">
-
-      </script>
     </div>
 
     <div class="redeem-area">

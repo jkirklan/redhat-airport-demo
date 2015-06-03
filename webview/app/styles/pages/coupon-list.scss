@@ -1,0 +1,28 @@
+html.coupon-list-page {
+  body {
+    background: $page-background-color;
+  }
+  .coupon-list-item {
+    position: relative;
+    padding: 3vw;
+    border-bottom: 1px solid $border-color;
+    .chevron-right-small {
+      position: absolute;
+      top: 8vw;     
+      right: 3vw;
+    }
+  }
+  .coupon-img {
+    width: 15vw;
+    height: 15vw;
+  }
+  .coupon-offer {
+    font-size: 5vw;
+    margin: 3vw 0 0 0;
+  }
+  .coupon-location {
+    font-size: 3vw;
+    color: $font-color-secondary;
+    margin: 0;
+  }
+}

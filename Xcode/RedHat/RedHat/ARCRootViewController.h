@@ -7,15 +7,12 @@
 //
 
 #import "ARCMenuAccessViewController.h"
+#import "ARTWebViewController.h"
 
-@interface ARCRootViewController : ARCMenuAccessViewController <UIWebViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIWebView *webview;
+@interface ARCRootViewController : ARCMenuAccessViewController <ARTWebViewDelegate>
 
-/**
- Sets an NSURL using the string. If `urlString` is nil, the default HTML files embedded into the app are loaded.
- */
-- (void)loadWebviewWithURL:(NSString *)urlString;
+@property (nonatomic, strong) ARTWebViewController *rootWebViewController;
 
 @end
 

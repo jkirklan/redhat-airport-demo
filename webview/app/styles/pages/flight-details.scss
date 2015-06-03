@@ -40,12 +40,10 @@ html.flight-details-page {
       margin: 0;
     }
     .flight-details-divider {
-      border-right: 1px solid $light-gray;
+      border-right: 1px solid $border-color;
       height: 10vw;
     }
-    .flight-details-arrow {
-      height: 10vw;
-      width: 10vw;
+    .arrow-right {
       margin: 0 0 0 1vw;
     }
     .airport-city,
@@ -72,7 +70,7 @@ html.flight-details-page {
     padding: 20px;
     .coupon {
       padding: 10px;
-      border: 3px dashed $light-gray;
+      border: 3px dashed $border-color;
       border-radius: 5px;
     }
     .coupon-heading {

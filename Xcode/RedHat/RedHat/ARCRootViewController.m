@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setDelegate:self];
 }
 
 
@@ -47,13 +48,21 @@
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
         
-        [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];
-        
-        [[nextWebViewController view] setFrame:self.view.bounds];
-        [[nextWebViewController view] setBackgroundColor:[UIColor greenColor]];
+        [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];        
         
         [self.navigationController pushViewController:nextWebViewController
                                              animated:YES];
+    }
+}
+
+
+#pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController
+       didShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([[viewController class] isSubclassOfClass:[ARTWebViewController class]]) {
+        [[viewController view] setFrame:self.containerView.frame];
     }
 }
 

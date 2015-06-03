@@ -55,6 +55,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="kuk-r9-08C"/>
+                    <connections>
+                        <outlet property="containerView" destination="hB6-sR-Gos" id="U0i-yc-tPE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0H3-dw-J6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,6 +72,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tmX-DH-fbC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7oh-N6-HNW">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7r-e0-9Ys">

@@ -10,7 +10,9 @@
 #import "ARTWebViewController.h"
 
 
-@interface ARCRootViewController : ARCMenuAccessViewController <ARTWebViewDelegate>
+@interface ARCRootViewController : ARCMenuAccessViewController <UINavigationControllerDelegate, ARTWebViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UIView *containerView;
 
 @property (nonatomic, strong) ARTWebViewController *rootWebViewController;
 

@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js coupon-details-page" lang="">
+<html class="no-js admin-page" lang="">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Coupon</title>
+    <title>Admin</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -26,29 +26,7 @@
     <![endif]-->
 
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="coupon-details-container">
-            <script id="coupon-details-tmpl" type="text/x-handlebars-template">
-              <h2 class="coupon-heading">Sorry for the delay.</h2>
-              <h3 class="coupon-flight-details">
-                <span class="bold">{{flight.airlineCode}} {{flight.flightNo}}</span> Delayed on {{flight.flightDate}}
-              </h3>
-              <div class="coupon-img-container">
-                <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
-              </div>
-              <h3 class="coupon-offer">Get {{coupon.offer}}</h3>
-              <h3 class="coupon-msg">{{coupon.description}}</h3>
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="redeem-area">
-      <h2 class="redeem-text">Scan here to redeem</h2>
-      <hr />
-      <img src="images/qrcode.png" alt="" class="coupon-qr">
+      
     </div>
 
     <!-- build:js scripts/vendor.js -->
@@ -67,11 +45,11 @@
     <script src="scripts/flight-details.js"></script>
     <script src="scripts/coupon-list.js"></script>
     <script src="scripts/coupon-details.js"></script>
-    <script src="scripts/admin.js"></script>     
+    <script src="scripts/admin.js"></script>      
     <!-- endbuild -->
     <script>
         $(function() {
-          couponDetails.init();
+          admin.init();
         });
     </script>
 </body>

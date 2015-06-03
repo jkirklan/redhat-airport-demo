@@ -11,7 +11,7 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	        <tr class="active">
+<!-- 	        <tr class="active">
 	          <th scope="row">1</th>
 	          <td>Column content</td>
 	          <td>Column content</td>
@@ -45,7 +45,15 @@
 	          <td>Column content</td>
 	          <td>Column content</td>
 	          <td>Column content</td>
-	        </tr>
+	        </tr> -->
+
+			<tr ng-repeat="item in model.someList" ng-animate=" 'animate' "> 
+				<th scope="row">1</th>
+				<td>Column content</td>
+				<td>Column content</td>
+				<td>Column content</td>
+				<td>Column content</td>
+			</tr>
 
 
 	      </tbody>

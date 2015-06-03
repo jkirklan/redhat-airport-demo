@@ -7,8 +7,10 @@ var home = (function($, window, document) {
       this.flightData = this.getFlightData();
 
       this.parseDepartureTime();
+
       this.compileHandlebarsTemplate();
       this.checkFlightStatus();
+      this.createCouponStorage();
     },
     getFlightData: function() {
       // var request = $.ajax({
@@ -26,21 +28,26 @@ var home = (function($, window, document) {
       // });
       
       var mockData = {
-          'flight': {
-              'flightNo': 70,
-              'airlineCode': 'AC',
-              'departure': '2015-06-02T12:00',
-              'arrival': '2015-06-04T13:45',
-              'boarding': '2015-06-02T11:40',
-              'startingAirport': 'BOS',
-              'destinationAirport': 'YYZ',
-              'startingCity': 'Boston',
-              'destinationCity': 'Toronto',
-              'flightStatus': 'On time',
-              'startingGate': 1,
-              'destinationGate': 1
-          },
-          'coupon': {}
+        'flight': {
+            'flightNo': 70,
+            'airlineCode': 'AC',
+            'departure': '2015-06-02T12:00',
+            'arrival': '2015-06-04T13:45',
+            'boarding': '2015-06-02T11:40',
+            'startingAirport': 'BOS',
+            'destinationAirport': 'YYZ',
+            'startingCity': 'Boston',
+            'destinationCity': 'Toronto',
+            'flightStatus': 'On Time',
+            'startingGate': 1,
+            'destinationGate': 1
+        },
+        'coupon': {
+          'id': 1,
+          'path': 'images/starbucks-coupon.png',
+          'offer': '1 Free Starbucks Coffee',
+          'description': 'Redeem this coupon at any Starbucks Coffee location at Logan International Airport.'
+        }
       };
       
       return mockData;
@@ -59,7 +66,7 @@ var home = (function($, window, document) {
       var $departureTime = $('.current-flight-departure'),
           $flightStatus = $('.current-flight-status');
 
-      if (this.flightData.flight.flightStatus === 'On time') {
+      if (this.flightData.flight.flightStatus === 'On Time') {
         $departureTime.addClass('success');
         $flightStatus.addClass('success');
       }
@@ -70,6 +77,11 @@ var home = (function($, window, document) {
       else if (this.flightData.flight.flightStatus === 'Changed') {
         $departureTime.addClass('failure');
         $flightStatus.addClass('failure');
+      }
+    },
+    createCouponStorage: function() {
+      if (!localStorage.getItem('coupons')) {
+        localStorage.setItem('coupons', JSON.stringify([]));
       }
     }
   };

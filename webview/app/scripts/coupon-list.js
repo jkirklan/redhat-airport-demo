@@ -4,18 +4,17 @@ var couponList = (function($, window, document) {
 
   var couponList = {
     init: function() {
-      
-      
+      this.couponData = {};
+      this.couponData.coupons = JSON.parse(localStorage.getItem('coupons')) || '';
+
       this.compileHandlebarsTemplate();
-    },
-    getFlightData: function() {
     },
     compileHandlebarsTemplate: function() {
       var source = $('#coupon-list-tmpl').html(),
           template = Handlebars.compile(source),
-          html = template(this.flightData);
-
-      $('.main-container').append(html);
+          html = template(this.couponData);
+          
+      $('.coupon-list-container').append(html);
     }
   };
 

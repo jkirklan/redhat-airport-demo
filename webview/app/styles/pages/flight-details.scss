@@ -73,7 +73,7 @@ html.flight-details-page {
       border: 3px dashed $border-color;
       border-radius: 5px;
     }
-    .coupon-heading {
+    .coupon-heading, {
       font-size: 6vw;
       text-align: center;
       margin: 0 0 3vw 0;
@@ -104,5 +104,10 @@ html.flight-details-page {
     .glyphicon-plus-sign {
       vertical-align: -1px;
     }
+  }
+  .coupon-saved-heading {
+    font-size: 6vw;
+    text-align: center;
+    margin: 0 0 3vw 0;
   }
 }

@@ -27,32 +27,22 @@
 
     <div class="container">
       <div class="coupon-list-container">
-        <div class="row coupon-list-item">
-          <div class="col-xs-3">
-            <img src="images/starbucks-coupon-list.png" alt="" class="coupon-img">
-          </div>
-          <div class="col-xs-8">
-            <h2 class="coupon-offer">1 Free Starbucks Coffee</h2>
-            <h3 class="coupon-location">YYZ - Toronto</h3>
-          </div>
-          <img src="images/chevron-right.png" alt="" class="chevron-right-small">
-        </div>
-        <div class="row coupon-list-item">
-          <div class="col-xs-3">
-            <img src="images/starbucks-coupon-list.png" alt="" class="coupon-img">
-          </div>
-          <div class="col-xs-8">
-            <h2 class="coupon-offer">1 Free Starbucks Coffee</h2>
-            <h3 class="coupon-location">YYZ - Toronto</h3>
-          </div>
-          <img src="images/chevron-right.png" alt="" class="chevron-right-small">
-        </div>
+        <script id="coupon-list-tmpl" type="text/x-handlebars-template">
+          {{#each coupons}}
+            <div class="row coupon-list-item">
+              <div class="col-xs-3">
+                <img src="images/starbucks-coupon-list.png" alt="" class="coupon-img">
+              </div>
+              <div class="col-xs-8">
+                <h2 class="coupon-offer">{{this.coupon.offer}}</h2>
+                <h3 class="coupon-location">{{this.flight.startingAirport}} - {{this.flight.startingCity}}</h3>
+              </div>
+              <img src="images/chevron-right.png" alt="" class="chevron-right-small">
+            </div>
+          {{/each}}
+        </script>
       </div>
     </div>
-    
-    <script id="coupon-list-tmpl" type="text/x-handlebars-template">
-    </script>
-
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->

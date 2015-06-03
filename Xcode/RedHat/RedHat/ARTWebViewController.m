@@ -8,7 +8,7 @@
 
 #import "ARTWebViewController.h"
 
-NSString *const ROOT_URL = @"apple.com";
+NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 
 
 @interface ARTWebViewController ()
@@ -68,9 +68,13 @@ NSString *const ROOT_URL = @"apple.com";
         shouldLoad = YES;
         
         //Notify delegate...
-        if ([self.delegate respondsToSelector:@selector(webViewIsLoading:forPageRequest:)]) {
-            [self.delegate webViewIsLoading:webView
-                             forPageRequest:request];
+        if ([[request.URL path] length] > 1)
+        {
+//            shouldLoad = NO;
+            if ([self.delegate respondsToSelector:@selector(webViewIsLoading:forPageRequest:)]) {
+                [self.delegate webViewIsLoading:webView
+                                 forPageRequest:request];
+            }
         }
     }
     return shouldLoad;

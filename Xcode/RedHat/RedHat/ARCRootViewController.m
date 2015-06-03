@@ -40,23 +40,29 @@
 #pragma mark - ARTWebViewDelegate
 - (void)webViewIsLoading:(UIWebView *)webView forPageRequest:(NSURLRequest *)request
 {
-    if ([[request.URL path] length] > 1)
-    {
-        [webView stopLoading];
-        
-        //Create a new view controller and pop onto the navigation...
-        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
-        
-        [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];        
-        
-        [self.navigationController pushViewController:nextWebViewController
-                                             animated:YES];
-    }
+    //Create a new view controller and pop onto the navigation...
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    
+    [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];
+    
+    [self.navigationController pushViewController:nextWebViewController
+                                         animated:YES];
 }
 
 
 #pragma mark - UINavigationControllerDelegate
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    //This prevents the root VC from loading the next page...
+    if ([[navigationController topViewController] isEqual:viewController]) {
+        [self.rootWebViewController.webView goBack];
+    }
+}
+
+
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated

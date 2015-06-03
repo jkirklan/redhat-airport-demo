@@ -19,6 +19,9 @@
 @end
 
 
+extern NSString *const ROOT_URL;
+
+
 @interface ARTWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, assign) id <ARTWebViewDelegate> delegate;

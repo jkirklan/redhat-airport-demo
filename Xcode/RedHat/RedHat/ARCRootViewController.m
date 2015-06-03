@@ -8,8 +8,6 @@
 
 #import "ARCRootViewController.h"
 
-NSString *const ROOT_URL = @"apple.com";
-
 
 @interface ARCRootViewController ()
 
@@ -19,25 +17,15 @@ NSString *const ROOT_URL = @"apple.com";
 @implementation ARCRootViewController
 
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self loadWebviewWithURL:@"http://apple.com"];
 }
 
 
-- (void)loadWebviewWithURL:(NSString *)urlString
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (urlString == nil) {
-        //Bundle resource directories are flat to files must have UNIQUE names!
-        NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
-        
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:htmlPath];
-        [self.webview loadRequest:urlRequest];
-    }
-    else {
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
-        [self.webview loadRequest:urlRequest];
+    if ([[segue identifier] isEqualToString:@"WebViewSegue"]) {
+        self.rootWebViewController = (ARTWebViewController *)[segue destinationViewController];
     }
 }
 
@@ -47,35 +35,23 @@ NSString *const ROOT_URL = @"apple.com";
 }
 
 
-#pragma mark - UIWebViewDelegate
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (void)pushNewWebview:(UIWebView *)webView forPageRequest:(NSURLRequest *)request
 {
-    BOOL shouldLoad = NO;
-    NSURL *rootURL = [NSURL URLWithString:ROOT_URL];
-    
-    NSString * cleanHost = [[request.URL host] stringByReplacingOccurrencesOfString:@"www." withString:@""];
-    NSURL *hostURL = [NSURL URLWithString:cleanHost];
-    
-    if ( ([rootURL isEqual:hostURL]) ||
-         (navigationType == UIWebViewNavigationTypeLinkClicked) ) {
-        shouldLoad = YES;
+    if ([[request.URL path] length] > 1)
+    {
+        //Create a new view controller and pop onto the navigation...
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
+        
+//        [[nextWebViewController view] setFrame:self.view.bounds];
+//        [[nextWebViewController view] setBackgroundColor:[UIColor purpleColor]];
+//        [[nextWebViewController view] addSubview:self.webview];
+        
+//        [self.webview loadRequest:request];
+        
+//        [self.navigationController pushViewController:nextWebViewController
+//                                             animated:YES];
     }
-    return shouldLoad;
-}
-
-
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidStartLoad: %@", webView.request.URL);
-}
-
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-    NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
-}
-
-
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"UIWebView failed to load. Error: %@", error.description);
 }
 
 

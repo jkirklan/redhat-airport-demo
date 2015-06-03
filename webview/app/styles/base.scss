@@ -3,6 +3,15 @@ body {
   font-size:  $font-size-base;
 }
 
+hr {
+  border-top: 1px solid $border-color;
+  margin: 0;
+}
+
+.bold {
+  font-family: $font-family-bold;
+}
+
 .arrow-right-small {
   display: inline-block;
   background: url(../images/arrow-right.png) 0 0 no-repeat;

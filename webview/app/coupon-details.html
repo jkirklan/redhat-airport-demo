@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js coupon-list-page" lang="">
+<html class="no-js coupon-details-page" lang="">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Coupons</title>
+    <title>Coupon</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -26,24 +26,30 @@
     <![endif]-->
 
     <div class="container">
-      <div class="coupon-list-container">
-        <script id="coupon-list-tmpl" type="text/x-handlebars-template">
-          {{#each coupons}}
-            <a href="coupon-details.html?id={{this.coupon.id}}">
-              <div class="row coupon-list-item">
-                <div class="col-xs-3">
-                  <img src="images/starbucks-coupon-list.png" alt="" class="coupon-img">
-                </div>
-                <div class="col-xs-8">
-                  <h2 class="coupon-offer">{{this.coupon.offer}}</h2>
-                  <h3 class="coupon-location">{{this.flight.startingAirport}} - {{this.flight.startingCity}}</h3>
-                </div>
-                <img src="images/chevron-right.png" alt="" class="chevron-right-small">
-              </div>
-            </a>
-          {{/each}}
-        </script>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="coupon-details-container">
+            <h2 class="coupon-heading">Sorry for the delay.</h2>
+            <h3 class="coupon-flight-details">
+              <span class="bold">AC 257</span> Delayed on Wed, May 20 2015
+            </h3>
+            <div class="coupon-img-container">
+              <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
+            </div>
+            <h3 class="coupon-offer">Get 1 Free Starbucks Coffee</h3>
+            <h3 class="coupon-msg">Redeem this coupon at any Starbucks Coffee location at Toronto Pearson International.</h3>
+          </div>
+        </div>
       </div>
+      <script id="coupon-details-tmpl" type="text/x-handlebars-template">
+
+      </script>
+    </div>
+
+    <div class="redeem-area">
+      <h2 class="redeem-text">Scan here to redeem</h2>
+      <hr />
+      <img src="images/qrcode.png" alt="" class="coupon-qr">
     </div>
 
     <!-- build:js scripts/vendor.js -->
@@ -61,10 +67,11 @@
     <script src="scripts/home.js"></script>
     <script src="scripts/flight-details.js"></script>
     <script src="scripts/coupon-list.js"></script>
+    <script src="scripts/coupon-details.js"></script>   
     <!-- endbuild -->
     <script>
         $(function() {
-          couponList.init();
+          couponDetails.init();
         });
     </script>
 </body>

@@ -8,7 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ARTWebViewDelegate <NSObject>
+
+@optional
+/**
+ Use this if you're implementing a UINavigationController, and would like to push a new webview when it's loading.
+ */
+- (void)webViewIsLoading:(UIWebView *)webView forPageRequest:(NSURLRequest *)request;
+
+@end
+
+
 @interface ARTWebViewController : UIViewController <UIWebViewDelegate>
+
+@property (nonatomic, assign) id <ARTWebViewDelegate> delegate;
+
+@property (nonatomic, strong) NSURL *urlOnLoad;
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
 

@@ -22,7 +22,13 @@ NSString *const ROOT_URL = @"apple.com";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadWebviewWithURL:@"http://apple.com"];
+    
+    if (self.urlOnLoad == nil) {
+        [self loadWebviewWithURL:[NSString stringWithFormat:@"http://%@", ROOT_URL]];
+    }
+    else {
+        [self loadWebviewWithURL:[self.urlOnLoad absoluteString]];
+    }
 }
 
 
@@ -61,7 +67,11 @@ NSString *const ROOT_URL = @"apple.com";
         (navigationType == UIWebViewNavigationTypeLinkClicked) ) {
         shouldLoad = YES;
         
-//        [self pushNewWebview:webView forPageRequest:request];
+        //Notify delegate...
+        if ([self.delegate respondsToSelector:@selector(webViewIsLoading:forPageRequest:)]) {
+            [self.delegate webViewIsLoading:webView
+                             forPageRequest:request];
+        }
     }
     return shouldLoad;
 }

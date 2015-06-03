@@ -26,6 +26,7 @@
 {
     if ([[segue identifier] isEqualToString:@"WebViewSegue"]) {
         self.rootWebViewController = (ARTWebViewController *)[segue destinationViewController];
+        [self.rootWebViewController setDelegate:self];
     }
 }
 
@@ -35,22 +36,24 @@
 }
 
 
-- (void)pushNewWebview:(UIWebView *)webView forPageRequest:(NSURLRequest *)request
+#pragma mark - ARTWebViewDelegate
+- (void)webViewIsLoading:(UIWebView *)webView forPageRequest:(NSURLRequest *)request
 {
     if ([[request.URL path] length] > 1)
     {
+        [webView stopLoading];
+        
         //Create a new view controller and pop onto the navigation...
         UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
         
-//        [[nextWebViewController view] setFrame:self.view.bounds];
-//        [[nextWebViewController view] setBackgroundColor:[UIColor purpleColor]];
-//        [[nextWebViewController view] addSubview:self.webview];
+        [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];
         
-//        [self.webview loadRequest:request];
+        [[nextWebViewController view] setFrame:self.view.bounds];
+        [[nextWebViewController view] setBackgroundColor:[UIColor greenColor]];
         
-//        [self.navigationController pushViewController:nextWebViewController
-//                                             animated:YES];
+        [self.navigationController pushViewController:nextWebViewController
+                                             animated:YES];
     }
 }
 

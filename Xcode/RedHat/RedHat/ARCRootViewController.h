@@ -10,11 +10,9 @@
 #import "ARTWebViewController.h"
 
 
-@interface ARCRootViewController : ARCMenuAccessViewController 
+@interface ARCRootViewController : ARCMenuAccessViewController <ARTWebViewDelegate>
 
 @property (nonatomic, strong) ARTWebViewController *rootWebViewController;
-
-- (void)pushNewWebview:(UIWebView *)webView forPageRequest:(NSURLRequest *)request;
 
 @end
 

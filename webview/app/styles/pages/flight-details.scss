@@ -23,12 +23,6 @@ html.flight-details-page {
       top: 0;
       right: 0;
       padding: 10px 20px;
-      &.success {
-        background: $color-success;
-      }
-      &.failed {
-        background: $color-fail;
-      }
     }
   }
   .flight-details {
@@ -91,15 +85,8 @@ html.flight-details-page {
       margin: 15px 0;
       color: $font-color-secondary;
     }
-    .coupon-btn {
-      background: $coupon-btn-color;
-      color: $font-color-primary-over-bg;
-      border-radius: 4px;
-      text-transform: uppercase;
-      padding: 10px;
+    .primary-btn {
       margin: 0 7vw 5vw 0;
-      font-size: 4vw;
-      text-align: center;
     }
     .glyphicon-plus-sign {
       vertical-align: -1px;

@@ -31,11 +31,9 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-12">
-                <h2 class="flight-airline">{{flight.airlineCode}} {{flight.flightNo}}</h2>
-                <h3 class="flight-date">{{flight.flightDate}}</h3>
-                <div class="flight-status">
-                  On Time
-                </div>
+                <h2 class="flight-airline">{{airlineCode}} {{flightNo}}</h2>
+                <h3 class="flight-date">{{flightDate}}</h3>
+                <div class="flight-status">{{flightStatus}}</div>
               </div>
             </div>
           </div>
@@ -45,28 +43,28 @@
           <div class="container">
             <div class="row">
               <div class="col-xs-5">
-                <h3 class="airport-city">{{flight.startingCity}}</h3>
-                <h2 class="airport-code">{{flight.startingAirport}}</h2>
+                <h3 class="airport-city">{{startingCity}}</h3>
+                <h2 class="airport-code">{{startingAirport}}</h2>
               </div>
               <div class="col-xs-2">
                 <div class="flight-details-divider"></div>
               </div>
               <div class="col-xs-5 text-right">
-                <h3 class="airport-city">{{flight.destinationCity}}</h3>
-                <h2 class="airport-code">{{flight.destinationAirport}}</h2>
+                <h3 class="airport-city">{{destinationCity}}</h3>
+                <h2 class="airport-code">{{destinationAirport}}</h2>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-5">
                 <h3 class="airport-times-heading">Departs</h3>
-                <h3 class="airport-times">{{flight.departureTime}}</h3>
+                <h3 class="airport-times">{{departureTime}}</h3>
               </div>
               <div class="col-xs-2">
                 <img src="images/arrow-right.png" alt="" class="arrow-right">
               </div>
               <div class="col-xs-5 text-right">
                 <h3 class="airport-times-heading">Arrives</h3>
-                <h3 class="airport-times">{{flight.arrivalTime}}</h3>
+                <h3 class="airport-times">{{arrivalTime}}</h3>
               </div>
             </div>
             <div class="row">
@@ -74,11 +72,11 @@
                 <div class="row">
                   <div class="col-xs-6">
                     <h3 class="airport-boarding-heading">Boarding</h3>
-                    <h3 class="airport-boarding">{{flight.boardingTime}}</h3>
+                    <h3 class="airport-boarding">{{boardingTime}}</h3>
                   </div>
                   <div class="col-xs-6 airport-departure-gate">
                     <h3 class="airport-gate-heading">Gate</h3>
-                    <h3 class="airport-gate">{{flight.startingGate}}</h3>
+                    <h3 class="airport-gate">{{startingGate}}</h3>
                   </div>
                 </div>
               </div>
@@ -87,13 +85,13 @@
               </div>
               <div class="col-xs-5 text-right">
                 <h3 class="airport-gate-heading">Gate</h3>
-                <h3 class="airport-gate">{{flight.destinationGate}}</h3>
+                <h3 class="airport-gate">{{destinationGate}}</h3>
               </div>
             </div>
           </div>
         </div>
 
-        {{#if coupon.id}}
+        {{#if coupon}}
           <div class="coupon-area">
             <div class="container">
               <div class="row">
@@ -107,7 +105,7 @@
                       <div class="col-xs-8">
                         <h3 class="coupon-offer">Get {{coupon.offer}}</h3>
                         <h3 class="coupon-msg">{{coupon.description}}</h3>
-                        <div class="coupon-btn">
+                        <div class="primary-btn coupon-save-btn">
                           <span class="glyphicon glyphicon-plus-sign"></span>
                           Save Coupon
                         </div>

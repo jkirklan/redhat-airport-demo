@@ -2,4 +2,10 @@ html.admin-page {
   body {
     background: $page-background-color;
   }
+  .admin-panel {
+    text-align: center;
+  }
+  .primary-btn {
+    margin: 3vw 20vw;
+  }
 }

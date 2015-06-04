@@ -47,21 +47,19 @@
                 <div class="current-flight">
                   <script id="current-flight-tmpl" type="text/x-handlebars-template">
                     <h3 class="current-flight-heading">Current Flight</h3>
-                    <h2 class="current-flight-airline">{{flight.airlineCode}} {{flight.flightNo}}</h2>
-                    <h3 class="current-flight-route">{{flight.startingCity}} <span class="arrow-right-small"></span> {{flight.destinationCity}}</h3>
+                    <h2 class="current-flight-airline">{{airlineCode}} {{flightNo}}</h2>
+                    <h3 class="current-flight-route">{{startingCity}} <span class="arrow-right-small"></span> {{destinationCity}}</h3>
                     <div class="row current-flight-info">
                       <div class="col-xs-5">
                         <h3 class="current-flight-departure-heading">Departs</h3>
-                        <h3 class="current-flight-departure">{{flight.departureTime}}</h3>
+                        <h3 class="current-flight-departure">{{departureTime}}</h3>
                       </div>
                       <div class="col-xs-6">
                         <h3 class="current-flight-gate-heading">Gate</h3>
-                        <h3 class="current-flight-gate">{{flight.startingGate}}</h3>
+                        <h3 class="current-flight-gate">{{startingGate}}</h3>
                       </div>
                     </div>
-                    <div class="current-flight-status">
-                      {{flight.flightStatus}}
-                    </div>
+                    <div class="current-flight-status">{{flightStatus}}</div>
                   </script>
                 </div>
               </div>

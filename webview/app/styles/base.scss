@@ -29,3 +29,29 @@ hr {
   width: 2vw;
   height: 4vw;
 }
+
+.primary-btn {
+  background: $coupon-btn-color;
+  color: $font-color-primary-over-bg;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 4vw;
+  text-align: center;
+}
+
+.success-bg {
+  background: $color-success;
+}
+
+.failure-bg {
+  background: $color-fail;
+}
+
+.success-color {
+  color: $color-success;
+}
+
+.failure-color {
+  color: $color-fail;
+}

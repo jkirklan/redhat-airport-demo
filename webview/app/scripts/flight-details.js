@@ -15,44 +15,9 @@ var flightDetails = (function($, window, document) {
       this.saveCouponButtonListener();
     },
     getFlightData: function() {
-      // var request = $.ajax({
-      //   url: '',
-      //   method: 'POST',
-      //   data: { id : 257 }
-      // });
+      var flightData = JSON.parse(localStorage.getItem('flightData'));
       
-      // request.done(function(data) {
-      //   console.log(data);
-      // });
-      
-      // request.fail(function(jqXHR, textStatus) {
-      //   console.log('Request failed: ' + textStatus);
-      // });
-      
-      var mockData = {
-        'flight': {
-            'flightNo': 70,
-            'airlineCode': 'AC',
-            'departure': '2015-06-02T12:00',
-            'arrival': '2015-06-04T13:45',
-            'boarding': '2015-06-02T11:40',
-            'startingAirport': 'BOS',
-            'destinationAirport': 'YYZ',
-            'startingCity': 'Boston',
-            'destinationCity': 'Toronto',
-            'flightStatus': 'On Time',
-            'startingGate': 1,
-            'destinationGate': 1
-        },
-        'coupon': {
-          'id': 1,
-          'path': 'images/starbucks-coupon.png',
-          'offer': '1 Free Starbucks Coffee',
-          'description': 'Redeem this coupon at any Starbucks Coffee location at Logan International Airport.'
-        }
-      };
-      
-      return mockData;
+      return flightData;
     },
     compileHandlebarsTemplate: function() {
       var source = $('#flight-details-tmpl').html(),
@@ -62,24 +27,24 @@ var flightDetails = (function($, window, document) {
       $('.main-container').append(html);
     },
     parseFlightDate: function() {
-      this.flightData.flight.flightDate = moment(this.flightData.flight.departure).format('ddd, MMM DD YYYY');
+      this.flightData.flightDate = moment(this.flightData.departure).format('ddd, MMM DD YYYY');
     },
     parseFlightTimes: function() {
-      this.flightData.flight.departureTime = moment(this.flightData.flight.departure).format('HH:mm');
-      this.flightData.flight.arrivalTime = moment(this.flightData.flight.arrival).format('HH:mm');
-      this.flightData.flight.boardingTime = moment(this.flightData.flight.boarding).format('HH:mm');
+      this.flightData.departureTime = moment(this.flightData.departure).format('HH:mm');
+      this.flightData.arrivalTime = moment(this.flightData.arrival).format('HH:mm');
+      this.flightData.boardingTime = moment(this.flightData.boarding).format('HH:mm');
     },
     checkFlightStatus: function() {
       var $flightStatus = $('.flight-status');
 
-      if (this.flightData.flight.flightStatus === 'On Time') {
-        $flightStatus.addClass('success');
+      if (this.flightData.flightStatus === 'On Time') {
+        $flightStatus.addClass('success-bg');
       }
-      else if (this.flightData.flight.flightStatus === 'Delayed') {
-        $flightStatus.addClass('failure');
+      else if (this.flightData.flightStatus === 'Delayed') {
+        $flightStatus.addClass('failure-bg');
       }
-      else if (this.flightData.flight.flightStatus === 'Changed') {
-        $flightStatus.addClass('failure');
+      else if (this.flightData.flightStatus === 'Changed') {
+        $flightStatus.addClass('failure-bg');
       }
     },
     checkCouponStatus: function() {
@@ -98,10 +63,11 @@ var flightDetails = (function($, window, document) {
     },
     saveCouponButtonListener: function() {
       var that = this,
+          $couponSaveBtn = $('.coupon-save-btn'),
           $couponSavedMessage = $('.coupon-saved-area'),
           $coupon = $('.coupon-area');
 
-      $('.coupon-btn').on('click', function() {
+      $couponSaveBtn.on('click', function() {
         var newCoupons = JSON.parse(localStorage.getItem('coupons'));
 
         $coupon.hide();

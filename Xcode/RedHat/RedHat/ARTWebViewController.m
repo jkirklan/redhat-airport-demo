@@ -9,6 +9,7 @@
 #import "ARTWebViewController.h"
 
 NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
+//NSString *const ROOT_URL = @"apple.com";
 
 
 @interface ARTWebViewController ()
@@ -70,7 +71,6 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
         //Notify delegate...
         if ([[request.URL path] length] > 1)
         {
-//            shouldLoad = NO;
             if ([self.delegate respondsToSelector:@selector(webViewIsLoading:forPageRequest:)]) {
                 [self.delegate webViewIsLoading:webView
                                  forPageRequest:request];
@@ -86,7 +86,28 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 }
 
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSError *error;
+    NSString *htmlBody = [NSString stringWithContentsOfURL:[webView.request URL]
+                                                  encoding:NSASCIIStringEncoding
+                                                     error:&error];
+    
+    NSArray *componentOne = [htmlBody componentsSeparatedByString:@"<title>"];
+    
+    if ([componentOne count] >= 2)
+    {
+        NSArray *componentTwo = [[componentOne objectAtIndex:1] componentsSeparatedByString:@"</title>"];
+        if ([componentTwo lastObject]) {
+            NSString *title = [componentTwo firstObject];
+            [self setTitle:[title capitalizedString]];
+            
+            //Notify delegate of title...
+            if ([self.delegate respondsToSelector:@selector(webViewDidFindTitle:)]) {
+                [self.delegate webViewDidFindTitle:title];
+            }
+        }
+    }
     NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
 }
 

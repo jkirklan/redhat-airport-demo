@@ -51,6 +51,11 @@
 }
 
 
+- (void)webViewDidFindTitle:(NSString *)title {
+    [self setTitle:[title capitalizedString]];
+}
+
+
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController
       willShowViewController:(UIViewController *)viewController

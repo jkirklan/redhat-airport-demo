@@ -7,7 +7,7 @@ var admin = (function($, window, document) {
       this.resetCouponButtonListener();
     },
     resetCouponButtonListener: function() {
-      $('.reset-coupons-btn').on('click', function() {
+      $('.clear-coupons-btn').on('click', function() {
         localStorage.removeItem('coupons');
         alert('Saved coupons have been cleared');
       });

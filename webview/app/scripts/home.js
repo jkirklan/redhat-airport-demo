@@ -14,8 +14,14 @@ var home = (function($, window, document) {
     setDemoMode: function() {
       var that = this;
 
-      if (localStorage.getItem('demoMode') === 'true') {
+      if (localStorage.getItem('delayed') === 'true') {
+        this.flightData = this.getFlightData(true);
+      }
+      else {
         this.flightData = this.getFlightData(false);
+      }
+
+      if (localStorage.getItem('demoMode') === 'true') {
         setTimeout(function() {
           that.flightData = that.getFlightData(true);
           $('.current-flight').children().not('#current-flight-tmpl').remove();
@@ -23,10 +29,8 @@ var home = (function($, window, document) {
           that.compileHandlebarsTemplate();
           that.checkFlightStatus();
           localStorage.setItem('demoMode', 'false');
+          localStorage.setItem('delayed', 'true');
         }, 5000);
-      }
-      else {
-        this.flightData = this.getFlightData(false);
       }
     },
     getFlightData: function(demoMode) {
@@ -34,7 +38,7 @@ var home = (function($, window, document) {
           request,
           url;
 
-      url = demoMode ? '/rest/flightStatus/70?demoMode=true' : '/rest/flightStatus/70';
+      url = '/rest/flightStatus/70?demoMode=' + demoMode;
 
       // request = $.ajax({
       //   url: url,

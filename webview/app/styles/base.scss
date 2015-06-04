@@ -29,3 +29,14 @@ hr {
   width: 2vw;
   height: 4vw;
 }
+
+.coupon-btn {
+  background: $coupon-btn-color;
+  color: $font-color-primary-over-bg;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 10px;
+  margin: 0 7vw 5vw 0;
+  font-size: 4vw;
+  text-align: center;
+}

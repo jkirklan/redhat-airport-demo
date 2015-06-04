@@ -1,8 +1,16 @@
 package com.redhat.airport.service;
 
+import javax.inject.Inject;
+
+import com.redhat.airport.data.CouponProducer;
+import com.redhat.airport.model.Coupon;
 import com.redhat.airport.model.Flight;
 
 public class FlightInformationService {
+
+	@Inject
+	private CouponProducer cProducer;
+
 	public Flight getFlightInfo(int flightNo) {
 		Flight flight = retrieveFlightInformation(true);
 
@@ -20,11 +28,18 @@ public class FlightInformationService {
 		flight.setDestinationAirport("YYZ");
 		flight.setStartingCity("Boston");
 		flight.setDestinationCity("Toronto");
-		flight.setFlightStatus("On Time");
 		flight.setStartingGate(1);
 		flight.setDestinationGate(1);
-
-		flight.setCoupon(null);
+		if (demoMode) {
+			Coupon coupon;
+			flight.setFlightStatus("Delayed");
+			coupon = cProducer.getCouponOnDelay();
+			flight.setCoupon(coupon);
+		} else {
+			flight.setFlightStatus("On Time");
+			flight.setCoupon(null);
+		}
 		return flight;
 	}
+
 }

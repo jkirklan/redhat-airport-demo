@@ -4,7 +4,13 @@ var admin = (function($, window, document) {
 
   var admin = {
     init: function() {
-      this.couponData = JSON.parse(localStorage.getItem('coupons')) || '';
+      this.resetCouponButtonListener();
+    },
+    resetCouponButtonListener: function() {
+      $('.reset-coupons-btn').on('click', function() {
+        localStorage.removeItem('coupons');
+        alert('Saved coupons have been cleared');
+      });
     }
   };
 

@@ -98,10 +98,11 @@ var flightDetails = (function($, window, document) {
     },
     saveCouponButtonListener: function() {
       var that = this,
+          $couponSaveBtn = $('.coupon-save-btn'),
           $couponSavedMessage = $('.coupon-saved-area'),
           $coupon = $('.coupon-area');
 
-      $('.coupon-btn').on('click', function() {
+      $couponSaveBtn.on('click', function() {
         var newCoupons = JSON.parse(localStorage.getItem('coupons'));
 
         $coupon.hide();

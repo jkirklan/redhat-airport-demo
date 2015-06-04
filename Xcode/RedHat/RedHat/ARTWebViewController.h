@@ -16,6 +16,11 @@
  */
 - (void)webViewIsLoading:(UIWebView *)webView forPageRequest:(NSURLRequest *)request;
 
+/**
+ Notifies the delegate as soon as the text within the HTML <title> tag is found.
+ */
+- (void)webViewDidFindTitle:(NSString *)title;
+
 @end
 
 

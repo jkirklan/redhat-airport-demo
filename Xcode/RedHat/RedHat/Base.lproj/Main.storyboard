@@ -54,7 +54,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="kuk-r9-08C"/>
+                    <navigationItem key="navigationItem" id="kuk-r9-08C">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="yZ1-8p-l7p"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="hB6-sR-Gos" id="U0i-yc-tPE"/>
                     </connections>
@@ -131,6 +133,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.35294117647058826" green="0.0" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Vs5-us-KJd" kind="relationship" relationship="rootViewController" id="IPS-l7-Hzv"/>

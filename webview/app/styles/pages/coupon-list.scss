@@ -4,6 +4,7 @@ html.coupon-list-page {
   }
   .coupon-list-item {
     position: relative;
+    color: $font-color-primary;
     padding: 3vw;
     border-bottom: 1px solid $border-color;
     .chevron-right-small {

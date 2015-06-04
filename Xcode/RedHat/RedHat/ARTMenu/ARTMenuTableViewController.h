@@ -11,12 +11,12 @@
 
 @protocol ARTMenuTableViewControllerDelegate <NSObject>
 
-- (void)menuDidSelectViewController:(UIViewController *)viewController;
+- (void)menuDidSelectMenuItem:(NSUInteger)menuItem;
 
 @end
 
 
-@interface ARTMenuTableViewController : UIViewController
+@interface ARTMenuTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, assign) id <ARTMenuTableViewControllerDelegate> delegate;
 

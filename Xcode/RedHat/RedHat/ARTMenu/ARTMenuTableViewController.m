@@ -8,6 +8,15 @@
 
 #import "ARTMenuTableViewController.h"
 
+@interface ARTMenuTableViewController()
+
+@property (nonatomic, strong) NSArray *menuItems;
+
+@property (nonatomic, strong) NSArray *menuIcons;
+
+@end
+
+
 @implementation ARTMenuTableViewController
 
 
@@ -22,8 +31,30 @@
 }
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    self.menuItems = @[@"Dashboard"];
 }
+
+
+#pragma mark - UITableViewDataSource 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.menuItems.count;
+}
+
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+//}
+
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.delegate respondsToSelector:@selector(menuDidSelectMenuItem:)]) {
+        [self.delegate menuDidSelectMenuItem:indexPath.row];
+    }
+}
+
 
 @end

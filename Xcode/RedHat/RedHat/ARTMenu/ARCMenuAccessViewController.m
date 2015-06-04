@@ -53,12 +53,22 @@
 
 
 #pragma mark - ARTMenuTableViewControllerDelegate
-- (void)menuDidSelectViewController:(UIViewController *)viewController
+- (void)menuDidSelectMenuItem:(NSUInteger)menuItem
 {
+    NSArray *viewControllers;
+    UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    switch (menuItem) {
+        case 0:
+        default:
+            viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];
+            break;
+    }
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES
                                  completion:^{
-                                    [self.navigationController setViewControllers:@[viewController]];
+                                    [self.navigationController setViewControllers:viewControllers];
                                     //[self.leftBarButtonItem setEnabled:YES];
                                  }];
     });

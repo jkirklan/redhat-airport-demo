@@ -18,7 +18,7 @@
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
         model.someVar = 'blue';
-        model.someList = ['one', 'two', 'three'];
+        model.someList = ['one', 'two', 'three', 'four', 'five', 'six', 'seven','eight','s','q','e','r','t','y','u'];
         model.someFunctionUsedByTheHomePage = someFunctionUsedByTheHomePage;
 
         init();

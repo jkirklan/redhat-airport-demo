@@ -19,17 +19,8 @@
 
 @import 'variables.less';
 
-
-/**
- * Typography
- */
-
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Roboto Regular'), local('Roboto-Regular'), url(fonts/Roboto-Regular.woff) format('woff');
-}
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
 
 /**
  * Global
@@ -38,6 +29,7 @@
 body, html {
 	height:100%;
 	overflow: hidden;
+  font-family: @roboto;
 }
 
 .container-full {

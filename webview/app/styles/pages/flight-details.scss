@@ -23,12 +23,6 @@ html.flight-details-page {
       top: 0;
       right: 0;
       padding: 10px 20px;
-      &.success {
-        background: $color-success;
-      }
-      &.failed {
-        background: $color-fail;
-      }
     }
   }
   .flight-details {

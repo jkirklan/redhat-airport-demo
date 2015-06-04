@@ -22,7 +22,7 @@ var couponDetails = (function($, window, document) {
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     },
     parseFlightDate: function() {
-      this.couponDetails.flight.flightDate = moment(this.couponDetails.flight.departure).format('ddd, MMM DD YYYY');
+      this.couponDetails.flightDate = moment(this.couponDetails.departure).format('ddd, MMM DD YYYY');
     },
     compileHandlebarsTemplate: function() {
       var source = $('#coupon-details-tmpl').html(),

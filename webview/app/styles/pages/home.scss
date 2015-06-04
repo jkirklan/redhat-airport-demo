@@ -68,12 +68,6 @@ html.home-page {
       }
       .current-flight-departure {
         @extend %current-flight-heading;
-        &.success {
-          color: $color-success;
-        }
-        &.failed {
-          color: $color-fail;
-        }
       }
       .current-flight-gate {
         @extend %current-flight-heading;
@@ -86,12 +80,6 @@ html.home-page {
       top: 10px;
       right: 5px;
       padding: 10px 20px;
-      &.success {
-        background: $color-success;
-      }
-      &.failed {
-        background: $color-fail;
-      }
     }
   }
   .flight-menu-col-3 {

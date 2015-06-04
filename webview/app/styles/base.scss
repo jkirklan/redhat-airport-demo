@@ -39,3 +39,19 @@ hr {
   font-size: 4vw;
   text-align: center;
 }
+
+.success-bg {
+  background: $color-success;
+}
+
+.failure-bg {
+  background: $color-fail;
+}
+
+.success-color {
+  color: $color-success;
+}
+
+.failure-color {
+  color: $color-fail;
+}

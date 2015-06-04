@@ -11,8 +11,8 @@ public class FlightInformationService {
 	@Inject
 	private CouponProducer cProducer;
 
-	public Flight getFlightInfo(int flightNo) {
-		Flight flight = retrieveFlightInformation(true);
+	public Flight getFlightInfo(int flightNo, boolean demoMode) {
+		Flight flight = retrieveFlightInformation(demoMode);
 
 		return flight;
 	}

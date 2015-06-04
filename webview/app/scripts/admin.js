@@ -11,7 +11,9 @@ var admin = (function($, window, document) {
     resetButtonListener: function() {
       $('.reset-btn').on('click',function() {
         localStorage.clear();
-        alert('Everything has been cleared');
+        // Send api call to reset here
+        // 
+        alert('Demo has been reset');
       });
     },
     flightTimerButtonListener: function() {

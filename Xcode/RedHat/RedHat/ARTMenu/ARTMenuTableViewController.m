@@ -44,8 +44,15 @@
 }
 
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
+    
+    NSString *menuName = [self.menuItems objectAtIndex:indexPath.row];
+    [[cell textLabel] setText:menuName];
+    
+    return cell;
+}
 
 
 #pragma mark - UITableViewDelegate

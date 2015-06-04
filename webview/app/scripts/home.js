@@ -40,62 +40,62 @@ var home = (function($, window, document) {
 
       url = '/rest/flightStatus/70?demoMode=' + demoMode;
 
-      // request = $.ajax({
-      //   url: url,
-      //   method: 'GET'
-      // });
+      request = $.ajax({
+        url: url,
+        method: 'GET'
+      });
       
-      // request.done(function(data) {
-      //   mockData = data;
-      // });
+      request.done(function(data) {
+        mockData = data;
+      });
       
-      // request.fail(function(jqXHR, textStatus) {
-      //   console.log('Request failed: ' + textStatus);
-      // });
+      request.fail(function(jqXHR, textStatus) {
+        console.log('Request failed: ' + textStatus);
+      });
       
-      if (demoMode === true) {
-        flightData = {
-          'flightNo': 70,
-          'airlineCode': 'AC',
-          'departure': '2015-06-02T12:00',
-          'arrival': '2015-06-02T13:45',
-          'boarding': '2015-06-02T11:40',
-          'startingAirport': 'BOS',
-          'destinationAirport': 'YYZ',
-          'startingCity': 'Boston',
-          'destinationCity': 'Toronto',
-          'flightStatus': 'Delayed',
-          'startingGate': 1,
-          'destinationGate': 1,
-          'coupon': {
-              'id': 0,
-              'company': 'Starbucks',
-              'companyCode': 'STBK',
-              'path': 'images/starbucks-coupon.png',
-              'offer': 'Get 1 Free Starbucks Coffee',
-              'description': 'Redeem this coupon at any Starbucks Coffee location at Boston Logan International.',
-              'delaySeverity': 60,
-              'statusId': 2
-          }
-        };
-      }
-      else {
-        flightData = {
-          'flightNo': 70,
-          'airlineCode': 'AC',
-          'departure': '2015-06-02T12:00',
-          'arrival': '2015-06-02T13:45',
-          'boarding': '2015-06-02T11:40',
-          'startingAirport': 'BOS',
-          'destinationAirport': 'YYZ',
-          'startingCity': 'Boston',
-          'destinationCity': 'Toronto',
-          'flightStatus': 'On Time',
-          'startingGate': 1,
-          'destinationGate': 1,
-          'coupon': null
-        };
-      }
+      // if (demoMode === true) {
+      //   flightData = {
+      //     'flightNo': 70,
+      //     'airlineCode': 'AC',
+      //     'departure': '2015-06-02T12:00',
+      //     'arrival': '2015-06-02T13:45',
+      //     'boarding': '2015-06-02T11:40',
+      //     'startingAirport': 'BOS',
+      //     'destinationAirport': 'YYZ',
+      //     'startingCity': 'Boston',
+      //     'destinationCity': 'Toronto',
+      //     'flightStatus': 'Delayed',
+      //     'startingGate': 1,
+      //     'destinationGate': 1,
+      //     'coupon': {
+      //         'id': 0,
+      //         'company': 'Starbucks',
+      //         'companyCode': 'STBK',
+      //         'path': 'images/starbucks-coupon.png',
+      //         'offer': 'Get 1 Free Starbucks Coffee',
+      //         'description': 'Redeem this coupon at any Starbucks Coffee location at Boston Logan International.',
+      //         'delaySeverity': 60,
+      //         'statusId': 2
+      //     }
+      //   };
+      // }
+      // else {
+      //   flightData = {
+      //     'flightNo': 70,
+      //     'airlineCode': 'AC',
+      //     'departure': '2015-06-02T12:00',
+      //     'arrival': '2015-06-02T13:45',
+      //     'boarding': '2015-06-02T11:40',
+      //     'startingAirport': 'BOS',
+      //     'destinationAirport': 'YYZ',
+      //     'startingCity': 'Boston',
+      //     'destinationCity': 'Toronto',
+      //     'flightStatus': 'On Time',
+      //     'startingGate': 1,
+      //     'destinationGate': 1,
+      //     'coupon': null
+      //   };
+      // }
 
       localStorage.setItem('flightData', JSON.stringify(flightData));
       

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Menu Table View Controller-->
+        <!--Menu Display Controller-->
         <scene sceneID="hRU-66-Sca">
             <objects>
-                <viewController storyboardIdentifier="MenuViewController" id="rs4-Vs-6yT" customClass="ARTMenuTableViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuDisplayController" id="rs4-Vs-6yT" customClass="ARTMenuDisplayController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wFg-e4-zih"/>
                         <viewControllerLayoutGuide type="bottom" id="ZzQ-Fx-A6b"/>
@@ -15,13 +15,58 @@
                     <view key="view" contentMode="scaleToFill" id="MbZ-xK-glf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M9H-l8-Hie">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                                </variation>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" red="0.20784313725490197" green="0.0" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="M9H-l8-Hie"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="M9H-l8-Hie"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sa1-iu-V6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="205" y="357"/>
+            <point key="canvasLocation" x="174" y="357"/>
+        </scene>
+        <!--Menu Display Table View Controller-->
+        <scene sceneID="DcF-bb-ddA">
+            <objects>
+                <tableViewController storyboardIdentifier="MenuDisplayTableViewController" id="gze-yo-pR8" customClass="ARTMenuDisplayTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GZX-mg-xcu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.2214284762" green="0.89411764709999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="50" id="9Z5-Vg-Bg1">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Z5-Vg-Bg1" id="geH-S7-dME">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gze-yo-pR8" id="aCD-jY-lvP"/>
+                            <outlet property="delegate" destination="gze-yo-pR8" id="qPa-UB-b24"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-V0-izL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1074" y="357"/>
         </scene>
     </scenes>
 </document>

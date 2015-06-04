@@ -1,14 +1,14 @@
 //
-//  ARTMenuTableViewController.m
+//  ARTMenuDisplayTableTableViewController.m
 //  RedHat
 //
-//  Created by Mike Post on 2015-06-01.
+//  Created by Mike Post on 2015-06-04.
 //  Copyright (c) 2015 Architech. All rights reserved.
 //
 
-#import "ARTMenuTableViewController.h"
+#import "ARTMenuDisplayTableViewController.h"
 
-@interface ARTMenuTableViewController()
+@interface ARTMenuDisplayTableViewController ()
 
 @property (nonatomic, strong) NSArray *menuItems;
 
@@ -17,28 +17,24 @@
 @end
 
 
-@implementation ARTMenuTableViewController
-
-
-- (id)initWithDelegate:(id <ARTMenuTableViewControllerDelegate>)delegate
-{
-    self = [super init];
-    
-    if (self) {
-        [self setDelegate:delegate];
-    }
-    return self;
-}
+@implementation ARTMenuDisplayTableViewController
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.menuItems = @[@"Dashboard"];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
 }
 
 
-#pragma mark - UITableViewDataSource 
+
+#pragma mark - Table view data source
+
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.menuItems.count;
 }
@@ -58,10 +54,9 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.delegate respondsToSelector:@selector(menuDidSelectMenuItem:)]) {
-        [self.delegate menuDidSelectMenuItem:indexPath.row];
+    if ([self.delegate respondsToSelector:@selector(tableViewDidSelectIndex:)]) {
+        [self.delegate tableViewDidSelectIndex:indexPath];
     }
 }
-
 
 @end

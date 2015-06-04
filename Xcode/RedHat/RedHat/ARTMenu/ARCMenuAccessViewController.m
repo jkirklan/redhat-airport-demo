@@ -30,7 +30,7 @@
 - (void)setupMenu
 {
     UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"ARTMenu" bundle:nil];
-    self.menuTableViewController = (ARTMenuTableViewController *)[menuStoryboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+    self.menuTableViewController = (ARTMenuDisplayController *)[menuStoryboard instantiateViewControllerWithIdentifier:@"MenuDisplayController"];
     
     [self.menuTableViewController setDelegate:self];
     [self.menuTableViewController setModalPresentationStyle:UIModalPresentationCustom];
@@ -52,7 +52,7 @@
 }
 
 
-#pragma mark - ARTMenuTableViewControllerDelegate
+#pragma mark - ARTMenuDisplayDelegate
 - (void)menuDidSelectMenuItem:(NSUInteger)menuItem
 {
     NSArray *viewControllers;

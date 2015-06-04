@@ -10,11 +10,11 @@ public class CouponProducer {
 	// @Inject
 	// private CouponRepository couponRepo;
 
-	public Coupon getCouponOnDelay() {
+	/*
+	 * Method for providing dummy data for Coupon
+	 */
+	public Coupon demoCouponOnDelay() {
 		Coupon coupon = new Coupon();
-		// if (delay > 0 && delay <= 30) {
-		// return null;
-		// } else if (delay > 30 && delay <= 60) {
 		coupon.setCompany("Starbucks");
 		coupon.setCompanyCode("STBK");
 		coupon.setPath("images/starbucks-coupon.png");
@@ -23,8 +23,5 @@ public class CouponProducer {
 		coupon.setDelaySeverity(60);
 		coupon.setStatusId(2);
 		return coupon;
-		// } else {
-		// return coupon;
-		// }
 	}
 }

@@ -79,7 +79,29 @@ html.home-page {
       color: $font-color-primary-over-bg;
       top: 10px;
       right: 5px;
-      padding: 10px 20px;
+      padding: 10px 0;
+      width: 25vw;
+      text-align: center;
+      z-index: 5;
+    }
+    .failure-bg-get-coupon:after {
+      position: absolute;
+      bottom: -10px;
+      left: 45%;
+      border: solid transparent;
+      content: "";
+      height: 0;
+      width: 0;
+      border-width: 5px;
+      border-top-color: $color-fail;
+    }
+    .get-coupon {
+      @extend .current-flight-status;
+      color: $font-color-secondary;
+      top: 40px;
+      border-radius: 5px;
+      border: 1px solid $border-color;
+      z-index: 1;
     }
   }
   .flight-menu-col-3 {

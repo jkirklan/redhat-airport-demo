@@ -88,6 +88,7 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+#warning TODO: if time permits, test the performance time of this method and try to optimise.
     NSError *error;
     NSString *htmlBody = [NSString stringWithContentsOfURL:[webView.request URL]
                                                   encoding:NSASCIIStringEncoding

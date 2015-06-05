@@ -5,11 +5,6 @@ var home = (function($, window, document) {
   var home = {
     init: function() {
       this.setDemoMode();
-
-      this.parseDepartureTime();
-      this.compileHandlebarsTemplate();
-      this.checkFlightStatus();
-      this.createCouponStorage();
     },
     setDemoMode: function() {
       var that = this;
@@ -34,7 +29,8 @@ var home = (function($, window, document) {
       }
     },
     getFlightData: function(demoMode) {
-      var flightData,
+      var that = this,
+          flightData,
           request,
           url;
 
@@ -47,6 +43,10 @@ var home = (function($, window, document) {
       
       request.done(function(data) {
         flightData = data;
+        that.parseDepartureTime();
+        that.compileHandlebarsTemplate();
+        that.checkFlightStatus();
+        that.createCouponStorage();
       });
       
       request.fail(function(jqXHR, textStatus) {

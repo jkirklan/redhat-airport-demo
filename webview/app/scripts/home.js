@@ -10,48 +10,60 @@ var home = (function($, window, document) {
       var that = this;
 
       if (localStorage.getItem('delayed') === 'true') {
-        this.flightData = this.getFlightData(true);
+        // this.flightData = this.getFlightData(true);
+        $.when(this.getFlightData(true)).done(function(data) {
+          that.flightData = data;
+          that.parseDepartureTime();
+          that.compileHandlebarsTemplate();
+          that.checkFlightStatus();
+          that.createCouponStorage();
+          localStorage.setItem('flightData', JSON.stringify(that.flightData));
+        });
       }
       else {
-        this.flightData = this.getFlightData(false);
+        // this.flightData = this.getFlightData(false);
+        $.when(this.getFlightData(false)).done(function(data) {
+          that.flightData = data;
+          that.parseDepartureTime();
+          that.compileHandlebarsTemplate();
+          that.checkFlightStatus();
+          that.createCouponStorage();
+          localStorage.setItem('flightData', JSON.stringify(that.flightData));
+        });
       }
 
       if (localStorage.getItem('demoMode') === 'true') {
         setTimeout(function() {
-          that.flightData = that.getFlightData(true);
-          $('.current-flight').children().not('#current-flight-tmpl').remove();
-          that.parseDepartureTime();
-          that.compileHandlebarsTemplate();
-          that.checkFlightStatus();
-          localStorage.setItem('demoMode', 'false');
-          localStorage.setItem('delayed', 'true');
+          // that.flightData = that.getFlightData(true);
+          $.when(that.getFlightData(true)).done(function(data) {
+            that.flightData = data;
+            $('.current-flight').children().not('#current-flight-tmpl').remove();
+            that.parseDepartureTime();
+            that.compileHandlebarsTemplate();
+            that.checkFlightStatus();
+            localStorage.setItem('demoMode', 'false');
+            localStorage.setItem('delayed', 'true');
+            localStorage.setItem('flightData', JSON.stringify(that.flightData));
+          });
         }, 5000);
       }
+
+      console.log(this.flightData);
     },
     getFlightData: function(demoMode) {
       var that = this,
           flightData,
-          request,
           url;
 
       url = '/rest/flightStatus/70?demoMode=' + demoMode;
-
-      request = $.ajax({
-        url: url,
-        method: 'GET'
-      });
       
-      request.done(function(data) {
-        flightData = data;
-        that.parseDepartureTime();
-        that.compileHandlebarsTemplate();
-        that.checkFlightStatus();
-        that.createCouponStorage();
-      });
+      // request.done(function(data) {
+      //   flightData = data;
+      // });
       
-      request.fail(function(jqXHR, textStatus) {
-        console.log('Request failed: ' + textStatus);
-      });
+      // request.fail(function(jqXHR, textStatus) {
+      //   console.log('Request failed: ' + textStatus);
+      // });
       
       // if (demoMode === true) {
       //   flightData = {
@@ -96,10 +108,13 @@ var home = (function($, window, document) {
       //     'coupon': null
       //   };
       // }
-
-      localStorage.setItem('flightData', JSON.stringify(flightData));
       
-      return flightData;
+      // return flightData;
+
+      return $.ajax({
+        url: url,
+        method: 'GET'
+      });
     },
     compileHandlebarsTemplate: function() {
       var source = $('#current-flight-tmpl').html(),

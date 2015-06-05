@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ARTMenuTransitionManager.h"
-#import "ARTMenuTableViewController.h"
+#import "ARTMenuDisplayController.h"
 
-@interface ARCMenuAccessViewController : UIViewController <ARTMenuTableViewControllerDelegate>
+@interface ARCMenuAccessViewController : UIViewController <ARTMenuDisplayDelegate>
 
 @property (nonatomic, strong) ARTMenuTransitionManager *transitionManager;
 
-@property (nonatomic, strong) ARTMenuTableViewController *menuTableViewController;
+@property (nonatomic, strong) ARTMenuDisplayController *menuTableViewController;
 
 @property (nonatomic, strong) UIBarButtonItem *leftBarButtonItem;
 

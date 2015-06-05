@@ -7,7 +7,7 @@
         <!--Root View Controller-->
         <scene sceneID="Q90-Gm-fh3">
             <objects>
-                <viewController id="Vs5-us-KJd" customClass="ARCRootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootViewController" id="Vs5-us-KJd" customClass="ARCRootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="63E-sI-Gxg"/>
                         <viewControllerLayoutGuide type="bottom" id="cFw-2f-at6"/>

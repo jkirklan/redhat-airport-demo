@@ -46,7 +46,7 @@ var home = (function($, window, document) {
       });
       
       request.done(function(data) {
-        mockData = data;
+        flightData = data;
       });
       
       request.fail(function(jqXHR, textStatus) {

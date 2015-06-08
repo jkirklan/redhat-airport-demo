@@ -2,6 +2,7 @@
 
 .flight-status-details-section .row{
 	margin: 10px !important;
+	margin-top: 50px !important;
 }
 
 .flight-status-details-section{
@@ -15,17 +16,23 @@
 }
 
 .flight-status-details-label1{
-	font-size: 17pt;
+	font-size: 24pt;
 	color: black;
 	font-family: @robotoCondensed;
 }
 
 .flight-status-details-label2{
 	&:extend(.flight-status-details-label1);
+	font-size: 18pt;
+}
+
+.flight-status-details-label3{
+	color: #9B9B9B;
+	font-weight: bold;
 	font-size: 13pt;
 }
 
-.flight-status-late-label{
+.flight-status-danger-label{
 	font-family: @roboto;
 	font-size: 28pt;
 	color: #FF001F;
@@ -35,4 +42,14 @@
 	font-family: @roboto;
 	font-size: 20pt;
 	color: #9B9B9B;
+}
+
+.flight-status-on-time{
+	display: inline-block;
+	background-color: #7ED321;
+	padding: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #FFFFFF;
+	font-size: 15pt;
 }

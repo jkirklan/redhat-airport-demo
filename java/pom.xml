@@ -50,11 +50,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-<<<<<<< Updated upstream
-      <!--        <dependency>
-=======
           <!--    <dependency>
->>>>>>> Stashed changes
                 <groupId>org.jboss.bom.eap</groupId>
                 <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
                 <version>${version.jboss.bom.eap}</version>
@@ -91,12 +87,8 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
 		</dependency>
         
          <!-- Import the JAX-RS API, we use provided scope as the API is included 
-<<<<<<< Updated upstream
-         in JBoss EAP 6 
-=======
          in JBoss EAP 6 -->
 
->>>>>>> Stashed changes
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
@@ -116,11 +108,7 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
             <scope>provided</scope> 
         </dependency>
         
-<<<<<<< Updated upstream
-      Import the JPA API, we use provided scope as the API is included in 
-=======
       <!-- Import the JPA API, we use provided scope as the API is included in 
->>>>>>> Stashed changes
          JBoss EAP 6 
        <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>

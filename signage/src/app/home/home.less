@@ -29,6 +29,10 @@
 	th{
 		height: 20px;
 	}
+
+	table {
+	    table-layout: fixed;
+	}
 }
 
 table, th, td {
@@ -37,7 +41,11 @@ table, th, td {
 }
 
 td{
-	font-size: 13pt;
+	font-size: 1.4vw;
+}
+
+.flight-table-body th{
+	font-size: 1.12vw;
 }
 
 .departure-row-bg-color{
@@ -47,36 +55,10 @@ td{
 }
 
 .departure-label{
-	font-size: 25pt;
+	font-size: 1.75vw;
 }
 
 .row.home-screen{
 	margin-left: 0px;
 	margin-right: 0px;
-}
-
-.animate-enter, 
-.animate-leave
-{ 
-    -webkit-transition: 775ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 775ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 775ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 775ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 775ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    position: relative;
-    display: block;
-} 
-
-.animate-enter.animate-enter-active, 
-.animate-leave {
-    opacity: 1;
-    right: 0;
-    height: 30px;
-}
-
-.animate-leave.animate-leave-active,
-.animate-enter {
-    opacity: 0;
-    right: -50px;
-    height: 0px;
 }

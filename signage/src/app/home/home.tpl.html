@@ -6,7 +6,7 @@
 	          <th colspan="6" class="text-center departure-label">DEPARTURES</th>		
 	        </tr>
 	      </thead>
-	      <tbody>
+	      <tbody class="flight-table-body">
 	        <tr>
 	          <th>DESTINATION</th>
 	          <th>FLIGHT</th>
@@ -16,10 +16,12 @@
 	          <th>GATE</th>
 	        </tr>
 			<tr ng-repeat="item in model.someList" class="departure-row-bg-color"> 
-				<td scope="row" style="width:30%;">HONG KONG</td>
+				<td scope="row" style="width:30%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+						HONG KONG
+				</td>
 				<td style="width:15%;">AC 257</td>
 				<td style="width:15%;">20:35</td>
-				<td style="width:15%; background-color:red;">DELAYED</td>
+				<td style="width:15%; background-color:red; text-align:center;">DELAYED</td>
 				<td style="width:5%"></td>
 				<td style="width:20%;">B5</td>
 			</tr>

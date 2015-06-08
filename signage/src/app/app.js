@@ -17,4 +17,5 @@
     'templates-common',
     'ui.router.state',
     'ui.router',
+    'digitalSignage.flightStatus',
 ])));

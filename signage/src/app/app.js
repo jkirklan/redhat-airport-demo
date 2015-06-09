@@ -19,5 +19,5 @@
     'ui.router',
     'digitalSignage.flightStatus',
     'ngAnimate',
-    'service',
+    'flightServiceModule',
 ])));

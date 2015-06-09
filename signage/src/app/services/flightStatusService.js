@@ -23,5 +23,4 @@
 			}
 		};
 	});
-
-}(angular.module("service", [])));
+}(angular.module("flightServiceModule", [])));

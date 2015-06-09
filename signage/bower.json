@@ -3,16 +3,15 @@
   "version": "0.0.1",
   "_comment": "Any dependencies added here require a manual edit to vendor_files in /Gruntfile.js and (??? verify the following) /build/karma-unit.js (e.g 'vendor/angular-resource/angular-resource.js')",
   "devDependencies": {
-    "angular": "~1.2.9",
-    "angular-resource": "~1.2.9",
-    "angular-mocks": "~1.2.9",
+    "angular": "~1.2.x",
+    "angular-resource": "~1.2.x",
+    "angular-mocks": "~1.2.x",
     "bootstrap": "~3.1",
     "angular-bootstrap": "~0.10.0",
     "angular-ui-router": "~0.2.7",
-    "angular-animate": "~1.4.0"
+    "angular-animate": "~1.2.x"
   },
-  "dependencies": {},
   "resolutions": {
-    "angular": "1.2.28"
+    "angular": "1.2.x"
   }
 }

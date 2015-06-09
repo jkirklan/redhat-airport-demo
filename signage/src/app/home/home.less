@@ -62,3 +62,22 @@ td{
 	margin-left: 0px;
 	margin-right: 0px;
 }
+
+.departure-row-animation.ng-move,
+.departure-row-animation.ng-enter,
+.departure-row-animation.ng-leave {
+  -webkit-transition:all linear 1s;
+  transition:all linear 1s;
+}
+
+.departure-row-animation.ng-leave.ng-leave-active,
+.departure-row-animation.ng-move,
+.departure-row-animation.ng-enter {
+  opacity:0;
+}
+
+.departure-row-animation.ng-leave,
+.departure-row-animation.ng-move.ng-move-active,
+.departure-row-animation.ng-enter.ng-enter-active {
+  opacity:1;
+}

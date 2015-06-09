@@ -13,6 +13,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.redhat.airport.data.CouponProducer;
 import com.redhat.airport.model.Coupon;
 import com.redhat.airport.model.Flight;
@@ -21,6 +24,9 @@ import com.redhat.airport.service.FlightInformationService;
 @Path("/flightStatus")
 @RequestScoped
 public class FlightResourceRESTService {
+
+	private static final Logger logger = LoggerFactory.getLogger(FlightResourceRESTService.class);
+
 	@Inject
 	private FlightInformationService flightService;
 
@@ -44,8 +50,8 @@ public class FlightResourceRESTService {
 			Coupon coupon;
 			coupon = cProducer.demoCouponOnDelay();
 			flight.setCoupon(coupon);
+			logger.info("Firing event for Push Notification...");
 			event.fire(flight);
-
 		} else {
 			flight.setFlightStatus("On Time");
 			flight.setCoupon(null);

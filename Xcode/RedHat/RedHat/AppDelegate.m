@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "AeroGearPush.h"
+
 
 @interface AppDelegate ()
 
@@ -58,9 +60,31 @@
     [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
-- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken {
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
     NSLog(@"Notifications app token: %@", deviceToken);
+    AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:
+                                          [NSURL URLWithString:@"https://aerogear-fguanlao.rhcloud.com/ag-push/"]];
+    
+    [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
+        [clientInfo setDeviceToken:deviceToken];
+        
+        [clientInfo setVariantID:@"aed176c9-d3f3-4acf-bccd-3ef01166ee00"];
+        [clientInfo setVariantSecret:@"e8f63d44-bcce-4092-822a-7546b23a7304"];
+        
+        //Device info...
+        UIDevice *currentDevice = [UIDevice currentDevice];
+        [clientInfo setOperatingSystem:[currentDevice systemName]];
+        [clientInfo setOsVersion:[currentDevice systemVersion]];
+        [clientInfo setDeviceType: [currentDevice model]];
+    } success:^{
+        NSLog(@"UPS registration worked");
+    } failure:^(NSError *error) {
+        NSLog(@"UPS registration Error: %@", error);
+    }];
 }
+
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
     NSLog(@"Failed to get token. Error: %@", error);

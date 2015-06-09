@@ -13,7 +13,7 @@
 
     // As you add controllers to a module and they grow in size, feel free to place them in their own files.
     //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    module.controller('HomeController', function ($http, $interval) {
+    module.controller('HomeController', function ($http, $interval, flightStatusService) {
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
@@ -25,19 +25,12 @@
         function init() {
             // A definitive place to put everything that needs to run when the controller starts. Avoid
             //  writing any code outside of this function that executes immediately.
-
-            $http.get('http://redhatairportdemo-fguanlao.rhcloud.com/rest/flightStatus/list').
-              success(function(data, status, headers, config) {
-                // this callback will be called asynchronously
-                // when the response is available
-                model.flights = data;
+            flightStatusService.flightStatus()
+            .then(function(result) {
+                model.flights = result;
                 model.paginatedFlights = model.flights.splice(0,6);
                 model.paginateInterval = $interval(paginateInterval,3000);
-              }).
-              error(function(data, status, headers, config) {
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-              });
+            });
         }
 
         function paginateInterval() {

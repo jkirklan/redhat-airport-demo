@@ -50,13 +50,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
+          <!--    <dependency>
                 <groupId>org.jboss.bom.eap</groupId>
                 <artifactId>jboss-javaee-6.0-with-hibernate</artifactId>
                 <version>${version.jboss.bom.eap}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency> -->
         </dependencies>
     </dependencyManagement> 
 
@@ -88,14 +88,28 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
         
          <!-- Import the JAX-RS API, we use provided scope as the API is included 
          in JBoss EAP 6 -->
+
         <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.11.Final</version>
             <scope>provided</scope>
+        </dependency> 
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.11.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>3.0.11.Final</version>
+            <scope>provided</scope> 
         </dependency>
         
       <!-- Import the JPA API, we use provided scope as the API is included in 
-         JBoss EAP 6 -->
+         JBoss EAP 6 
        <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -112,7 +126,7 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency> -->
         
         <dependency>
             <groupId>org.jboss.aerogear</groupId>

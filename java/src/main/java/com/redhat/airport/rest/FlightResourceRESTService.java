@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -26,6 +27,9 @@ public class FlightResourceRESTService {
 	@Inject
 	private CouponProducer cProducer;
 
+	@Inject
+	Event<Flight> event;
+
 	/*
 	 * API for Mobile App (Demo Mode)
 	 */
@@ -40,6 +44,8 @@ public class FlightResourceRESTService {
 			Coupon coupon;
 			coupon = cProducer.demoCouponOnDelay();
 			flight.setCoupon(coupon);
+			event.fire(flight);
+
 		} else {
 			flight.setFlightStatus("On Time");
 			flight.setCoupon(null);

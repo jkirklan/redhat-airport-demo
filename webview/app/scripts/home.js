@@ -98,7 +98,7 @@ var home = (function($, window, document) {
       localStorage.setItem('flightData', JSON.stringify(this.flightData));
     },
     getFlightData: function(demoMode) {
-      var url = '/rest/flightStatus/70?demoMode=' + demoMode;
+      var url = 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/flightStatus/70?demoMode=' + demoMode;
 
       return $.ajax({
         url: url,

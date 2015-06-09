@@ -13,12 +13,12 @@
 
     // As you add controllers to a module and they grow in size, feel free to place them in their own files.
     //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    module.controller('HomeController', function ($http) {
+    module.controller('HomeController', function ($http, $interval) {
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
-        model.someVar = 'blue';
-        model.someFunctionUsedByTheHomePage = someFunctionUsedByTheHomePage;
+        model.currentPage = 0;
+        model.maxPageSize = 10;
 
         init();
 
@@ -30,7 +30,9 @@
               success(function(data, status, headers, config) {
                 // this callback will be called asynchronously
                 // when the response is available
-                model.someList=data;
+                model.flights = data;
+                model.paginatedFlights = model.flights.splice(0,6);
+                model.paginateInterval = $interval(paginateInterval,3000);
               }).
               error(function(data, status, headers, config) {
                 // called asynchronously if an error occurs
@@ -38,8 +40,14 @@
               });
         }
 
-        function someFunctionUsedByTheHomePage() {
-            alert('Congratulations');
+        function paginateInterval() {
+            if (model.flights.length > model.maxPageSize){
+                model.paginatedFlights = model.flights.slice(model.currentPage*model.maxPageSize,(model.currentPage*model.maxPageSize)+model.maxPageSize);
+                ++model.currentPage;
+                if (((model.currentPage*model.maxPageSize) + model.maxPageSize) > model.flights.length){
+                    model.currentPage = 0 ;
+                }
+            }
         }
 
     });

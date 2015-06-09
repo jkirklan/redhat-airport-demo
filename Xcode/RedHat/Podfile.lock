@@ -1,0 +1,10 @@
+PODS:
+  - AeroGear-Push (1.0.0)
+
+DEPENDENCIES:
+  - AeroGear-Push (= 1.0.0)
+
+SPEC CHECKSUMS:
+  AeroGear-Push: 2476533f5c2fc1b29e61555ef7c61ac4238a4620
+
+COCOAPODS: 0.35.0

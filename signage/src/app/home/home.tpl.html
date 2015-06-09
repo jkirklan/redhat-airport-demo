@@ -16,12 +16,12 @@
 	        </tr>
 			<tr ng-repeat="item in model.someList" class="departure-row-bg-color"> 
 				<td colspan="40" scope="row" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
-						HONG KONG
+						{{item.destinationCity}}
 				</td>
-				<td colspan="15">AC 257</td>
-				<td colspan="15">20:35</td>
-				<td colspan="15" style="background-color:red; text-align:center;">DELAYED</td>
-				<td colspan="15">B5</td>
+				<td colspan="15">{{item.airlineCode+' '+item.flightNo}}</td>
+				<td colspan="15">{{item.departure | date:'h:mma'}}</td>
+				<td colspan="15" style="background-color:red; text-align:center;">{{item.flightStatus}}</td>
+				<td colspan="15">{{item.startingGate}}</td>
 			</tr>
 	      </tbody>
 	    </table>

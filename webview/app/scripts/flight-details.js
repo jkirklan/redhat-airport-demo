@@ -73,6 +73,7 @@ var flightDetails = (function($, window, document) {
         $coupon.hide();
         $couponSavedMessage.show();
 
+        // Push new coupons saved into local storage object
         newCoupons.push(that.flightData);
         localStorage.setItem('coupons', JSON.stringify(newCoupons));
       });

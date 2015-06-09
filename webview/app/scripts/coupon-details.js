@@ -11,9 +11,9 @@ var couponDetails = (function($, window, document) {
       this.compileHandlebarsTemplate();
     },
     getCouponDetails: function() {
-      var couponId = this.getQueryString('id');
+      var couponId = parseInt(this.getQueryString('id'));
 
-      this.couponDetails = this.couponData[0];
+      this.couponDetails = this.couponData[couponId];
     },
     getQueryString: function(name) {
       name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');

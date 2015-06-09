@@ -9,107 +9,96 @@ var home = (function($, window, document) {
     setDemoMode: function() {
       var that = this;
 
+      var backupOnTimeData = {
+          'flightNo': 70,
+          'airlineCode': 'AC',
+          'departure': '2015-06-02T12:00',
+          'arrival': '2015-06-02T13:45',
+          'boarding': '2015-06-02T11:40',
+          'startingAirport': 'BOS',
+          'destinationAirport': 'YYZ',
+          'startingCity': 'Boston',
+          'destinationCity': 'Toronto',
+          'flightStatus': 'On Time',
+          'startingGate': 1,
+          'destinationGate': 1,
+          'coupon': null
+      };
+
+      var backupDelayedData = {
+          'flightNo': 70,
+          'airlineCode': 'AC',
+          'departure': '2015-06-02T12:00',
+          'arrival': '2015-06-02T13:45',
+          'boarding': '2015-06-02T11:40',
+          'startingAirport': 'BOS',
+          'destinationAirport': 'YYZ',
+          'startingCity': 'Boston',
+          'destinationCity': 'Toronto',
+          'flightStatus': 'Delayed',
+          'startingGate': 1,
+          'destinationGate': 1,
+          'coupon': {
+              'id': 0,
+              'company': 'Starbucks',
+              'companyCode': 'STBK',
+              'path': 'images/starbucks-coupon.png',
+              'offer': 'Get 1 Free Starbucks Coffee',
+              'description': 'Redeem this coupon at any Starbucks Coffee location at Boston Logan International.',
+              'delaySeverity': 60,
+              'statusId': 2
+          }
+      };
+
+      // Set ajax call to receive delayed status
       if (localStorage.getItem('delayed') === 'true') {
-        // this.flightData = this.getFlightData(true);
         $.when(this.getFlightData(true)).done(function(data) {
           that.flightData = data;
-          that.parseDepartureTime();
-          that.compileHandlebarsTemplate();
-          that.checkFlightStatus();
-          that.createCouponStorage();
-          localStorage.setItem('flightData', JSON.stringify(that.flightData));
+          that.updateView();
+        }).fail(function() {
+          that.flightData = backupDelayedData;
+          that.updateView();
         });
       }
       else {
-        // this.flightData = this.getFlightData(false);
         $.when(this.getFlightData(false)).done(function(data) {
           that.flightData = data;
-          that.parseDepartureTime();
-          that.compileHandlebarsTemplate();
-          that.checkFlightStatus();
-          that.createCouponStorage();
-          localStorage.setItem('flightData', JSON.stringify(that.flightData));
+          that.updateView();
+        }).fail(function() {
+          that.flightData = backupOnTimeData;
+          that.updateView();
         });
       }
 
+      that.createCouponStorage();
+
+      // Timeout if demo mode is on
       if (localStorage.getItem('demoMode') === 'true') {
         setTimeout(function() {
-          // that.flightData = that.getFlightData(true);
           $.when(that.getFlightData(true)).done(function(data) {
             that.flightData = data;
             $('.current-flight').children().not('#current-flight-tmpl').remove();
-            that.parseDepartureTime();
-            that.compileHandlebarsTemplate();
-            that.checkFlightStatus();
+            that.updateView();
             localStorage.setItem('demoMode', 'false');
             localStorage.setItem('delayed', 'true');
-            localStorage.setItem('flightData', JSON.stringify(that.flightData));
+          }).fail(function() {
+            that.flightData = backupDelayedData;
+            $('.current-flight').children().not('#current-flight-tmpl').remove();
+            that.updateView();
+            localStorage.setItem('demoMode', 'false');
+            localStorage.setItem('delayed', 'true');
           });
         }, 5000);
       }
-
-      console.log(this.flightData);
+    },
+    updateView: function() {
+      this.parseDepartureTime();
+      this.compileHandlebarsTemplate();
+      this.checkFlightStatus();
+      localStorage.setItem('flightData', JSON.stringify(this.flightData));
     },
     getFlightData: function(demoMode) {
-      var that = this,
-          flightData,
-          url;
-
-      url = '/rest/flightStatus/70?demoMode=' + demoMode;
-      
-      // request.done(function(data) {
-      //   flightData = data;
-      // });
-      
-      // request.fail(function(jqXHR, textStatus) {
-      //   console.log('Request failed: ' + textStatus);
-      // });
-      
-      // if (demoMode === true) {
-      //   flightData = {
-      //     'flightNo': 70,
-      //     'airlineCode': 'AC',
-      //     'departure': '2015-06-02T12:00',
-      //     'arrival': '2015-06-02T13:45',
-      //     'boarding': '2015-06-02T11:40',
-      //     'startingAirport': 'BOS',
-      //     'destinationAirport': 'YYZ',
-      //     'startingCity': 'Boston',
-      //     'destinationCity': 'Toronto',
-      //     'flightStatus': 'Delayed',
-      //     'startingGate': 1,
-      //     'destinationGate': 1,
-      //     'coupon': {
-      //         'id': 0,
-      //         'company': 'Starbucks',
-      //         'companyCode': 'STBK',
-      //         'path': 'images/starbucks-coupon.png',
-      //         'offer': 'Get 1 Free Starbucks Coffee',
-      //         'description': 'Redeem this coupon at any Starbucks Coffee location at Boston Logan International.',
-      //         'delaySeverity': 60,
-      //         'statusId': 2
-      //     }
-      //   };
-      // }
-      // else {
-      //   flightData = {
-      //     'flightNo': 70,
-      //     'airlineCode': 'AC',
-      //     'departure': '2015-06-02T12:00',
-      //     'arrival': '2015-06-02T13:45',
-      //     'boarding': '2015-06-02T11:40',
-      //     'startingAirport': 'BOS',
-      //     'destinationAirport': 'YYZ',
-      //     'startingCity': 'Boston',
-      //     'destinationCity': 'Toronto',
-      //     'flightStatus': 'On Time',
-      //     'startingGate': 1,
-      //     'destinationGate': 1,
-      //     'coupon': null
-      //   };
-      // }
-      
-      // return flightData;
+      var url = '/rest/flightStatus/70?demoMode=' + demoMode;
 
       return $.ajax({
         url: url,

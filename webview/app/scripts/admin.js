@@ -11,8 +11,6 @@ var admin = (function($, window, document) {
     resetButtonListener: function() {
       $('.reset-btn').on('click',function() {
         localStorage.clear();
-        // Send api call to reset here
-        // 
         alert('Demo has been reset');
       });
     },

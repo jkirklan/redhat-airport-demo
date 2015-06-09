@@ -39,6 +39,9 @@
         <version.jboss.bom.eap>6.4.0.GA</version.jboss.bom.eap>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
+        <slf4j.version>1.6.4</slf4j.version>
+        <logback.version>1.0.1</logback.version>
+        <version.jboss.resteasy>3.0.11.Final</version.jboss.resteasy>
 	</properties>
     
     <dependencyManagement>
@@ -92,20 +95,25 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
-            <version>3.0.11.Final</version>
+            <version>${version.jboss.resteasy}</version>
             <scope>provided</scope>
         </dependency> 
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>3.0.11.Final</version>
+            <version>${version.jboss.resteasy}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-multipart-provider</artifactId>
-            <version>3.0.11.Final</version>
+            <version>${version.jboss.resteasy}</version>
             <scope>provided</scope> 
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>1.1.GA</version>
         </dependency>
         
       <!-- Import the JPA API, we use provided scope as the API is included in 
@@ -127,6 +135,25 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
                 </exclusion>
             </exclusions>
         </dependency> -->
+        
+        <!-- Logger -->
+         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+         </dependency>
+
+         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+         </dependency>
+
+         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
         
         <dependency>
             <groupId>org.jboss.aerogear</groupId>

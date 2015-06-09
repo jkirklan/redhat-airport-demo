@@ -1,4 +1,4 @@
-package com.redhat.airport.push;
+package com.redhat.airport.service;
 
 import org.jboss.aerogear.unifiedpush.JavaSender;
 import org.jboss.aerogear.unifiedpush.message.MessageResponseCallback;

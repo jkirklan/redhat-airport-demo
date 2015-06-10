@@ -1,0 +1,72 @@
+<!doctype html>
+<html class="no-js admin-page" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="admin-panel">
+            <div class="primary-btn reset-btn">
+              Reset demo
+            </div>
+            <div class="primary-btn timer-btn">
+              Start delayed timer
+            </div>
+            <div class="primary-btn clear-coupons-btn">
+              Clear coupons
+            </div>
+            <div class="primary-btn start-beacon-btn">
+              Start beacon
+            </div>
+            <div class="primary-btn stop-beacon-btn">
+              Stop beacon
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/home.js"></script>
+    <script src="scripts/flight-details.js"></script>
+    <script src="scripts/coupon-list.js"></script>
+    <script src="scripts/coupon-details.js"></script>
+    <script src="scripts/admin.js"></script>      
+    <!-- endbuild -->
+    <script>
+        $(function() {
+          admin.init();
+        });
+    </script>
+</body>
+</html>

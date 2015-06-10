@@ -75,6 +75,7 @@
          <!-- Import the JAX-RS API, we use provided scope as the API is included 
          in JBoss EAP 6 -->
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jaxrs</artifactId>
@@ -85,7 +86,25 @@
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
             <version>${version.jboss.resteasy}</version>
+=======
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.0.11.Final</version>
+>>>>>>> master
             <scope>provided</scope>
+        </dependency> 
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-client</artifactId>
+            <version>3.0.11.Final</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <version>3.0.11.Final</version>
+            <scope>provided</scope> 
         </dependency>
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
@@ -118,6 +137,7 @@
                 </exclusion>
             </exclusions>
         </dependency> -->
+<<<<<<< HEAD
         
         <!-- Logger -->
          <dependency>
@@ -137,6 +157,8 @@
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
         </dependency>
+=======
+>>>>>>> master
         
         <dependency>
             <groupId>org.jboss.aerogear</groupId>

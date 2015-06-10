@@ -1,0 +1,7 @@
+<!doctype html> <html class="no-js coupon-list-page"> <head> <meta charset=utf-8> <meta name=description> <meta name=viewport content="width=device-width, initial-scale=1"> <title>Coupons</title>  <link rel=stylesheet href=styles/main.css> </head> <body> <!--[if lt IE 10]>
+ <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+ <![endif]--> <div class=container> <div class=coupon-list-container> <script id=coupon-list-tmpl type=text/x-handlebars-template> {{#each coupons}} <a href="coupon-details.html?id={{this.coupon.id}}"> <div class="row coupon-list-item"> <div class="col-xs-3"> <img src="images/starbucks-coupon.png" alt="" class="coupon-img"> </div> <div class="col-xs-8"> <h2 class="coupon-offer">{{this.coupon.offer}}</h2> <h3 class="coupon-location">{{this.startingAirport}} - {{this.startingCity}}</h3> </div> <img src="images/chevron-right.png" alt="" class="chevron-right-small"> </div> </a> {{/each}} </script> </div> </div> <script src=scripts/vendor.js></script> <script src=scripts/main.js></script> <script>
+        $(function() {
+          couponList.init();
+        });
+    </script> </body> </html> 

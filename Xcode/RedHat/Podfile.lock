@@ -1,0 +1,13 @@
+PODS:
+  - AeroGear-Push (1.0.0)
+  - EstimoteSDK (3.2.5)
+
+DEPENDENCIES:
+  - AeroGear-Push (= 1.0.0)
+  - EstimoteSDK
+
+SPEC CHECKSUMS:
+  AeroGear-Push: 2476533f5c2fc1b29e61555ef7c61ac4238a4620
+  EstimoteSDK: df3ab4ee5f5ee32182a8d918321dc9604eda4829
+
+COCOAPODS: 0.37.2

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>webview</title>
+    <title>Home</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css styles/vendor.css -->
@@ -14,10 +14,6 @@
 
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <!-- endbuild -->
-
-    <!-- build:js scripts/vendor/modernizr.js -->
-    <script src="/bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
   <body>
@@ -45,7 +41,22 @@
             <div class="col-xs-12">
               <div class="flight-menu-box">
                 <div class="current-flight">
-                  <!-- current-flight-tmpl handlesbar template here -->
+                  <script id="current-flight-tmpl" type="text/x-handlebars-template">
+                    <h3 class="current-flight-heading">Current Flight</h3>
+                    <h2 class="current-flight-airline">{{airlineCode}} {{flightNo}}</h2>
+                    <h3 class="current-flight-route">{{startingCity}} <span class="arrow-right-small"></span> {{destinationCity}}</h3>
+                    <div class="row current-flight-info">
+                      <div class="col-xs-5">
+                        <h3 class="current-flight-departure-heading">Departs</h3>
+                        <h3 class="current-flight-departure">{{departureTime}}</h3>
+                      </div>
+                      <div class="col-xs-6">
+                        <h3 class="current-flight-gate-heading">Gate</h3>
+                        <h3 class="current-flight-gate">{{startingGate}}</h3>
+                      </div>
+                    </div>
+                    <div class="current-flight-status">{{flightStatus}}</div>
+                  </script>
                 </div>
               </div>
             </div>
@@ -87,25 +98,6 @@
       </div>
     </div>
 
-    <script id="current-flight-tmpl" type="text/x-handlebars-template">
-      <h3 class="current-flight-heading">Current Flight</h3>
-      <h2 class="current-flight-airline">{{flight.airlineCode}} {{flight.flightNo}}</h2>
-      <h3 class="current-flight-route">{{flight.startingCity}} <span class="arrow-right-small"></span> {{flight.destinationCity}}</h3>
-      <div class="row current-flight-info">
-        <div class="col-xs-5">
-          <h3 class="current-flight-departure-heading">Departs</h3>
-          <h3 class="current-flight-departure">{{flight.departureTime}}</h3>
-        </div>
-        <div class="col-xs-6">
-          <h3 class="current-flight-gate-heading">Gate</h3>
-          <h3 class="current-flight-gate">{{flight.startingGate}}</h3>
-        </div>
-      </div>
-      <div class="current-flight-status">
-        {{flight.flightStatus}}
-      </div>
-    </script>
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/moment/min/moment.min.js"></script>
@@ -120,6 +112,9 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/home.js"></script>
     <script src="scripts/flight-details.js"></script>
+    <script src="scripts/coupon-list.js"></script>
+    <script src="scripts/coupon-details.js"></script>
+    <script src="scripts/admin.js"></script>    
     <!-- endbuild -->
     <script>
         $(function() {

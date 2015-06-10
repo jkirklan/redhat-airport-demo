@@ -3,10 +3,55 @@ body {
   font-size:  $font-size-base;
 }
 
+hr {
+  border-top: 1px solid $border-color;
+  margin: 0;
+}
+
+.bold {
+  font-family: $font-family-bold;
+}
+
 .arrow-right-small {
   display: inline-block;
   background: url(../images/arrow-right.png) 0 0 no-repeat;
   height: 12px;
   width: 12px;
   background-size: 12px;
+}
+
+.arrow-right {
+  height: 10vw;
+  width: 10vw;
+}
+
+.chevron-right-small {
+  width: 2vw;
+  height: 4vw;
+}
+
+.primary-btn {
+  background: $coupon-btn-color;
+  color: $font-color-primary-over-bg;
+  border-radius: 4px;
+  text-transform: uppercase;
+  padding: 10px;
+  font-size: 4vw;
+  text-align: center;
+}
+
+.success-bg {
+  background: $color-success;
+}
+
+.failure-bg {
+  background: $color-fail;
+}
+
+.success-color {
+  color: $color-success;
+}
+
+.failure-color {
+  color: $color-fail;
 }

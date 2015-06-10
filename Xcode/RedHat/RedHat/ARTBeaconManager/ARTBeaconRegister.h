@@ -8,6 +8,17 @@
 
 #import <CoreBluetooth/CoreBluetooth.h>
 
+
 @interface ARTBeaconRegister : NSObject
+
+/**
+ Created in case the calling class wants to set the UUID separately to using the convenience initialiser.
+ */
+@property (nonatomic, strong) NSString *uuid;
+
+/**
+ Convenience initialiser.
+ */
+- (id)initWithUUIDString:(NSString *)uuid;
 
 @end

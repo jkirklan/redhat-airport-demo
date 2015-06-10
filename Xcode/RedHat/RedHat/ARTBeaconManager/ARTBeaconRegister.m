@@ -10,4 +10,15 @@
 
 @implementation ARTBeaconRegister
 
+
+- (id)initWithUUIDString:(NSString *)uuid {
+    self = [super init];
+    
+    if (self) {
+        self.uuid = uuid;
+    }
+    return self;
+}
+
+
 @end

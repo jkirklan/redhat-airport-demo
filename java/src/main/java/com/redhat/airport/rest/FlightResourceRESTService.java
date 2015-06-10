@@ -37,7 +37,7 @@ public class FlightResourceRESTService {
 	private CouponProducer cProducer;
 
 	@Inject
-	Event<Flight> event;
+	Event<String> event;
 
 	/*
 	 * API for Mobile App (Demo Mode)
@@ -45,16 +45,35 @@ public class FlightResourceRESTService {
 	@GET
 	@Path("/{flightNo:[0-9][0-9]*}")
 	@Produces({ "application/json" })
-	public Response getFlightStatus(@PathParam("flightNo") int flightNo, @QueryParam("demoMode") boolean demoMode) {
+	public Response getFlightStatus(@PathParam("flightNo") int flightNo, @QueryParam("demoMode") int demoMode) {
 		Flight flight = new Flight();
 		flight = flightService.getFlightInfo(flightNo);
-		if (demoMode) {
-			flight.setFlightStatus("Delayed");
-			Coupon coupon;
-			coupon = cProducer.demoCouponOnDelay();
-			flight.setCoupon(coupon);
-			logger.info("Firing event for Push Notification...");
-			event.fire(flight);
+		Coupon coupon;
+		if (demoMode > 0) {
+			switch (demoMode) {
+			case 1:
+				flight.setFlightStatus("Delayed");
+				coupon = cProducer.demoCouponOnDelay();
+				flight.setCoupon(coupon);
+				logger.info("Firing event for Delayed Push Notification...");
+				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
+				break;
+			case 2:
+				flight.setFlightStatus("Delayed");
+				coupon = cProducer.demoCouponOnDelay();
+				flight.setCoupon(coupon);
+				logger.info("Firing event for Changed Push Notification...");
+				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
+				break;
+			case 3:
+				flight.setFlightStatus("On Time");
+				logger.info("Firing event for On time Push Notification...");
+				event.fire("Your flight is boarding in 10 minutes. Please make your way to the gate");
+				break;
+			default:
+				logger.error("Invalid Demo number");
+				break;
+			}
 		} else {
 			flight.setFlightStatus("On Time");
 			flight.setCoupon(null);

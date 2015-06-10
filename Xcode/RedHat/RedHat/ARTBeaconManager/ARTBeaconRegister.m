@@ -43,6 +43,10 @@
 }
 
 
+- (void)registerBeaconRegionWithIdentifier:(NSString*)identifier {
+}
+
+
 - (void)registerBeaconWithCompletion:(ARTBeaconRegistrationCompletion)completion error:(ARTBeaconRegistrationError)error
 {
     [self setRegistrationCompletion:completion];

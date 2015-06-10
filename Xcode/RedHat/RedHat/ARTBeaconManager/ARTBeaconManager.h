@@ -8,6 +8,27 @@
 
 #import "ARTBeaconRegister.h"
 
-@interface ARTBeaconManager : NSObject
+@protocol ARTBeaconManagerDelegate <NSObject>
+
+@end
+
+
+@interface ARTBeaconManager : NSObject <CLLocationManagerDelegate>
+
+/**
+ Created in case the calling class wants to set the UUID separately to using the convenience initialiser.
+ */
+@property (nonatomic, strong) NSString *uuid;
+
+/**
+ Convenience initialiser.
+ */
+- (id)initWithUUIDString:(NSString *)uuid;
+
+/**
+ Uses the CLLocationManager to monitor the device for entering beacon regions.
+ NOTE: This assumes you've already initialisd the `uuid`!
+ */
+- (void)monitorBeaconRegionWithIdentifier:(NSString*)identifier;
 
 @end

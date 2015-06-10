@@ -28,16 +28,17 @@
             flightStatusService.flightStatus()
             .then(function(result) {
                 model.flights = result;
-                model.paginatedFlights = model.flights.splice(0,6);
+                model.paginatedFlights = model.flights.splice(0,model.maxPageSize);
                 model.paginateInterval = $interval(paginateInterval,3000);
             });
         }
 
         function paginateInterval() {
             if (model.flights.length > model.maxPageSize){
-                model.paginatedFlights = model.flights.slice(model.currentPage*model.maxPageSize,(model.currentPage*model.maxPageSize)+model.maxPageSize);
+                var startingFlight = model.currentPage*model.maxPageSize;
+                model.paginatedFlights = model.flights.slice(startingFlight,startingFlight+model.maxPageSize);
                 ++model.currentPage;
-                if (((model.currentPage*model.maxPageSize) + model.maxPageSize) > model.flights.length){
+                if ((startingFlight + model.maxPageSize) > model.flights.length){
                     model.currentPage = 0 ;
                 }
             }

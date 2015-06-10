@@ -21,6 +21,9 @@ import com.redhat.airport.model.Coupon;
 import com.redhat.airport.model.Flight;
 import com.redhat.airport.service.FlightInformationService;
 
+/*
+ * Service for retrieving any flight data for mobile app and digital signage
+ */
 @Path("/flightStatus")
 @RequestScoped
 public class FlightResourceRESTService {

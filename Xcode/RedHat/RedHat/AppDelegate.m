@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "AeroGearPush.h"
-#import "ARTBeaconManager.h"
 
 
 @interface AppDelegate ()
@@ -54,8 +53,14 @@
 
 - (void)configureDeviceAsBeacon
 {
-    ARTBeaconRegister *beaconRegister = [[ARTBeaconRegister alloc] init];
-    
+    self.beaconRegister = [[ARTBeaconRegister alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+
+    [self.beaconRegister registerBeaconWithCompletion:^{
+        NSLog(@"Device is transmitting as a beacon");
+    }
+                                           error:^(NSError *error) {
+                                               NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
+                                           }];
 }
 
 

@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "ARTBeaconManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, ARTBeaconManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+@property (strong, nonatomic) ARTBeaconManager *beaconManager;
 
 @property (strong, nonatomic) ARTBeaconRegister *beaconRegister;
 

@@ -18,13 +18,22 @@
 
 @end
 
-@implementation AppDelegate
+
+@implementation AppDelegate 
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self registerPushNotifications];
-    [self configureDeviceAsBeacon];
+    
+    //NOTE: only uncomment if you want to set up device as a beacon.
+//    [self configureDeviceAsBeacon];
+    
+    //Set up beacon monitoring...
+    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+    [self.beaconManager setDelegate:self];
+    [self.beaconManager monitorBeaconRegionWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    
     return YES;
 }
 

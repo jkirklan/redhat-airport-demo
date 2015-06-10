@@ -42,7 +42,12 @@
 
 - (void)monitorBeaconRegionWithIdentifier:(NSString*)identifier
 {
+    NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:self.uuid];
     
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID
+                                                                      identifier:identifier];
+    
+    [self.locationManager startMonitoringForRegion:beaconRegion];
 }
 
 

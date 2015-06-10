@@ -15,6 +15,8 @@
 
 @interface ARTBeaconManager : NSObject <CLLocationManagerDelegate>
 
+@property (nonatomic, assign) id <ARTBeaconManagerDelegate> delegate;
+
 /**
  Created in case the calling class wants to set the UUID separately to using the convenience initialiser.
  */

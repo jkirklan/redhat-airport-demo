@@ -7,6 +7,8 @@ var admin = (function($, window, document) {
       this.resetButtonListener();
       this.flightTimerButtonListener();
       this.resetCouponButtonListener();
+      this.startBeaconButtonListener();
+      this.stopBeaconButtonListener();
     },
     resetButtonListener: function() {
       $('.reset-btn').on('click',function() {
@@ -24,6 +26,34 @@ var admin = (function($, window, document) {
       $('.clear-coupons-btn').on('click', function() {
         localStorage.removeItem('coupons');
         alert('Saved coupons have been cleared');
+      });
+    },
+    startBeaconButtonListener: function() {
+      $('.start-beacon-btn').on('click', function() {
+        $.ajax({
+          url: 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/digitalSignage',
+          data: { showDetails: true },
+          method: 'POST'
+        }).done(function() {
+          alert('Beacon started');
+        }).fail(function(jqXHR, textStatus, error) {
+          alert('Beacon start failed');
+          console.log(error);
+        });
+      });
+    },
+    stopBeaconButtonListener: function() {
+      $('.stop-beacon-btn').on('click', function() {
+        $.ajax({
+          url: 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/digitalSignage',
+          data: { showDetails: false },
+          method: 'POST'
+        }).done(function() {
+          alert('Beacon stopped');
+        }).fail(function(jqXHR, textStatus, error) {
+          alert('Beacon stop failed');
+          console.log(error);
+        });
       });
     }
   };

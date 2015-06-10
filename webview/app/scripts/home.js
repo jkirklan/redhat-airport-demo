@@ -55,18 +55,20 @@ var home = (function($, window, document) {
         $.when(this.getFlightData(true)).done(function(data) {
           that.flightData = data;
           that.updateView();
-        }).fail(function() {
+        }).fail(function(jqXHR, textStatus, error) {
           that.flightData = backupDelayedData;
           that.updateView();
+          console.log(error);
         });
       }
       else {
         $.when(this.getFlightData(false)).done(function(data) {
           that.flightData = data;
           that.updateView();
-        }).fail(function() {
+        }).fail(function(jqXHR, textStatus, error) {
           that.flightData = backupOnTimeData;
           that.updateView();
+          console.log(error);
         });
       }
 
@@ -81,12 +83,13 @@ var home = (function($, window, document) {
             that.updateView();
             localStorage.setItem('demoMode', 'false');
             localStorage.setItem('delayed', 'true');
-          }).fail(function() {
+          }).fail(function(jqXHR, textStatus, error) {
             that.flightData = backupDelayedData;
             $('.current-flight').children().not('#current-flight-tmpl').remove();
             that.updateView();
             localStorage.setItem('demoMode', 'false');
             localStorage.setItem('delayed', 'true');
+            console.log(error);
           });
         }, 5000);
       }

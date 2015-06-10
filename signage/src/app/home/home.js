@@ -18,7 +18,7 @@
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
         model.currentPage = 0;
-        model.maxPageSize = 10;
+        model.maxPageSize = 5;
 
         init();
 
@@ -29,7 +29,7 @@
             .then(function(result) {
                 model.flights = result;
                 model.paginatedFlights = model.flights.splice(0,model.maxPageSize);
-                model.paginateInterval = $interval(paginateInterval,3000);
+         //       model.paginateInterval = $interval(paginateInterval,3000);
             });
         }
 

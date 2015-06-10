@@ -52,7 +52,25 @@
 
 
 #pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"Beacon region entered!");
+    
+}
 
+
+- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    //Reset whatever needs resetting...
+    NSLog(@"Exited beacon region...");
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
+    NSLog(@"didDetermineState");
+}
+
+- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
+    NSLog(@"monitoringDidFailForRegion");
+}
 
 
 @end

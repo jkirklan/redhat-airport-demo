@@ -10,9 +10,9 @@
 
 @interface ARTBeaconRegister()
 
-@property (nonatomic, assign) ARTBeaconRegistrationCompletion registrationCompletion;
+@property (nonatomic, copy) ARTBeaconRegistrationCompletion registrationCompletion;
 
-@property (nonatomic, assign) ARTBeaconRegistrationError registrationError;
+@property (nonatomic, copy) ARTBeaconRegistrationError registrationError;
 
 @property (nonatomic, strong) CBPeripheralManager *peripheralManager;
 
@@ -43,10 +43,6 @@
 }
 
 
-- (void)registerBeaconRegionWithIdentifier:(NSString*)identifier {
-}
-
-
 - (void)registerBeaconWithCompletion:(ARTBeaconRegistrationCompletion)completion error:(ARTBeaconRegistrationError)error
 {
     [self setRegistrationCompletion:completion];
@@ -68,14 +64,18 @@
 {
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         //Success
-        self.registrationCompletion();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.registrationCompletion();
+        });
     }
     else {        
         NSError *error = [NSError errorWithDomain:@"REGISTRATION"
                                              code:100
                                          userInfo:@{NSLocalizedDescriptionKey: @"please check Bluetooth and retry!"}];
         
-        self.registrationError(error);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.registrationError(error);
+        });
     }
 }
 

@@ -16,6 +16,8 @@
 
 - (void)configureDeviceAsBeacon;
 
+- (void)monitorForBeacons;
+
 @end
 
 
@@ -30,9 +32,7 @@
 //    [self configureDeviceAsBeacon];
     
     //Set up beacon monitoring...
-    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
-    [self.beaconManager setDelegate:self];
-    [self.beaconManager monitorBeaconRegionWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+    [self monitorForBeacons];
     
     return YES;
 }
@@ -66,10 +66,28 @@
 
     [self.beaconRegister registerBeaconWithCompletion:^{
         NSLog(@"Device is transmitting as a beacon");
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
+                                                                       message:@"Device is transmitting as a beacon!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self.window.rootViewController presentViewController:alert animated:YES completion:nil];
     }
                                            error:^(NSError *error) {
                                                NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
                                            }];
+}
+
+
+- (void)monitorForBeacons
+{
+    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+    [self.beaconManager setDelegate:self];
+    [self.beaconManager monitorBeaconRegionWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
 }
 
 

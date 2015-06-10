@@ -70,8 +70,8 @@
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setDeviceToken:deviceToken];
         
-        [clientInfo setVariantID:@"aed176c9-d3f3-4acf-bccd-3ef01166ee00"];
-        [clientInfo setVariantSecret:@"e8f63d44-bcce-4092-822a-7546b23a7304"];
+        [clientInfo setVariantID:@"fe960d53-0e88-474c-bbee-7072af27d665"];
+        [clientInfo setVariantSecret:@"5c6a99a8-6291-4a37-b314-c80bf35b385e"];
         
         //Device info...
         UIDevice *currentDevice = [UIDevice currentDevice];

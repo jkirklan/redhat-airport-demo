@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48D55FE3FF9F836CA88EEA1A"
+               BlueprintIdentifier = "4AA491ADB21FFB409104F810"
                BuildableName = "libPods-RedHat-AeroGear-Push.a"
                BlueprintName = "Pods-RedHat-AeroGear-Push"
                ReferencedContainer = "container:Pods.xcodeproj">

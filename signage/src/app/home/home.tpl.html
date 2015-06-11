@@ -20,7 +20,7 @@
 				</td>
 				<td colspan="15">{{item.airlineCode+' '+item.flightNo}}</td>
 				<td colspan="15">{{item.departure | date:'h:mma'}}</td>
-				<td colspan="15" style="background-color:red; text-align:center;">{{item.flightStatus}}</td>
+				<td colspan="15" ng-class="{'delayed-status': item.flightStatus == 'Delayed', 'onTime-status': item.flightStatus == 'On Time' }">{{item.flightStatus}}</td>
 				<td colspan="15">{{item.startingGate}}</td>
 			</tr>
 	      </tbody>

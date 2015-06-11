@@ -44,12 +44,22 @@ td{
 	font-size: 1.4vw;
 }
 
+.delayed-status{
+	text-align: center;
+	background-color: #FF001F;
+}
+
+.onTime-status{
+	text-align: center;
+	background-color: #7ED321;
+}
+
 .flight-table-body th{
 	font-size: 1.12vw;
 }
 
 .departure-row-bg-color{
-	td, th{
+	td:not(.delayed-status):not(.onTime-status), th{
 		background-color: #EEEEEE;
 	}
 }

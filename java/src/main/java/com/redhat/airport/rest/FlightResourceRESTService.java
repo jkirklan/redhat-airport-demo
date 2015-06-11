@@ -60,6 +60,7 @@ public class FlightResourceRESTService {
 				break;
 			case 2:
 				flight.setFlightStatus("Delayed");
+				flight.setStartingGate(5);
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Changed Push Notification...");

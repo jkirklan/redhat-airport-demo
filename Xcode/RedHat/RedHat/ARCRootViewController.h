@@ -7,12 +7,14 @@
 //
 
 #import "ARCMenuAccessViewController.h"
+#import "ARTWebViewController.h"
 
-@interface ARCRootViewController : ARCMenuAccessViewController <UIWebViewDelegate>
 
-@property (nonatomic, strong) IBOutlet UIWebView *webview;
+@interface ARCRootViewController : ARCMenuAccessViewController <UINavigationControllerDelegate, ARTWebViewDelegate>
 
-- (void)loadWebviewWithURL:(NSString *)urlString;
+@property (nonatomic, strong) IBOutlet UIView *containerView;
+
+@property (nonatomic, strong) ARTWebViewController *rootWebViewController;
 
 @end
 

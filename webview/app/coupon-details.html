@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js coupon-details-page" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coupon</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="coupon-details-container">
+            <script id="coupon-details-tmpl" type="text/x-handlebars-template">
+              <h2 class="coupon-heading">Sorry for the delay.</h2>
+              <h3 class="coupon-flight-details">
+                <span class="bold">{{airlineCode}} {{flightNo}}</span> Delayed on {{flightDate}}
+              </h3>
+              <div class="coupon-img-container">
+                <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
+              </div>
+              <h3 class="coupon-offer">Get {{coupon.offer}}</h3>
+              <h3 class="coupon-msg">{{coupon.description}}</h3>
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="redeem-area">
+      <h2 class="redeem-text">Scan here to redeem</h2>
+      <hr />
+      <img src="images/qrcode.png" alt="" class="coupon-qr">
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/home.js"></script>
+    <script src="scripts/flight-details.js"></script>
+    <script src="scripts/coupon-list.js"></script>
+    <script src="scripts/coupon-details.js"></script>
+    <script src="scripts/admin.js"></script>     
+    <!-- endbuild -->
+    <script>
+        $(function() {
+          couponDetails.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html class="no-js coupon-list-page" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Coupons</title>
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container">
+      <div class="coupon-list-container">
+        <script id="coupon-list-tmpl" type="text/x-handlebars-template">
+          {{#each coupons}}
+            <a href="coupon-details.html?id={{this.coupon.id}}">
+              <div class="row coupon-list-item">
+                <div class="col-xs-3">
+                  <img src="images/starbucks-coupon.png" alt="" class="coupon-img">
+                </div>
+                <div class="col-xs-8">
+                  <h2 class="coupon-offer">{{this.coupon.offer}}</h2>
+                  <h3 class="coupon-location">{{this.startingAirport}} - {{this.startingCity}}</h3>
+                </div>
+                <img src="images/chevron-right.png" alt="" class="chevron-right-small">
+              </div>
+            </a>
+          {{/each}}
+        </script>
+      </div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/moment/min/moment.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/home.js"></script>
+    <script src="scripts/flight-details.js"></script>
+    <script src="scripts/coupon-list.js"></script>
+    <script src="scripts/coupon-details.js"></script>
+    <script src="scripts/admin.js"></script>    
+    <!-- endbuild -->
+    <script>
+        $(function() {
+          couponList.init();
+        });
+    </script>
+</body>
+</html>

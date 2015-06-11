@@ -1,0 +1,56 @@
+html.coupon-details-page {
+  height: 100%;
+  body {
+    position: relative;
+    background: $page-background-color;
+    text-align: center;
+    height: 100%;
+  }
+  .coupon-details-container {
+    padding: 0 15vw;
+  }
+  .coupon-heading {
+    font-size: 6vw;
+    margin: 3vw 0 1vw 0;
+  }
+  .coupon-flight-details {
+    font-size: 3vw;
+    color: $font-color-secondary;
+    margin: 0;
+  }
+  .coupon-img-container {
+    margin: 6vw 10vw;
+    padding: 6vw;
+    border: 3px dashed $border-color;
+    border-radius: 5px;
+  }
+  .coupon-img {
+    width: 22vw;
+    height: 27vw;
+  }
+  .coupon-offer {
+    font-size: 4vw;
+    margin: 0;
+  }
+  .coupon-msg {
+    font-size: 3vw;
+    margin: 2vw 0;
+    color: $font-color-secondary;
+  }
+  .redeem-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  .redeem-text {
+    font-size: 3vw;
+    margin: 2vw 0;
+    text-transform: uppercase;
+    color: $font-color-secondary;
+  }
+  .coupon-qr {
+    margin: 6vw;
+    width: 25vw;
+    height: 25vw;
+  }
+}

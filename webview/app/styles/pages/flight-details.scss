@@ -23,12 +23,6 @@ html.flight-details-page {
       top: 0;
       right: 0;
       padding: 10px 20px;
-      &.success {
-        background: $color-success;
-      }
-      &.failed {
-        background: $color-fail;
-      }
     }
   }
   .flight-details {
@@ -40,12 +34,10 @@ html.flight-details-page {
       margin: 0;
     }
     .flight-details-divider {
-      border-right: 1px solid $light-gray;
+      border-right: 1px solid $border-color;
       height: 10vw;
     }
-    .flight-details-arrow {
-      height: 10vw;
-      width: 10vw;
+    .arrow-right {
       margin: 0 0 0 1vw;
     }
     .airport-city,
@@ -67,5 +59,42 @@ html.flight-details-page {
     .airport-departure-gate {
       padding: 0 0 0 30px;
     }
+  }
+  .coupon-area {
+    padding: 20px;
+    .coupon {
+      padding: 10px;
+      border: 3px dashed $border-color;
+      border-radius: 5px;
+    }
+    .coupon-heading {
+      font-size: 6vw;
+      text-align: center;
+      margin: 0 0 3vw 0;
+    }
+    .coupon-img {
+      width: 22vw;
+      height: 27vw;
+    }
+    .coupon-offer {
+      font-size: 3vw;
+      margin: 10px 0;
+    }
+    .coupon-msg {
+      font-size: 3vw;
+      margin: 15px 0;
+      color: $font-color-secondary;
+    }
+    .primary-btn {
+      margin: 0 7vw 5vw 0;
+    }
+    .glyphicon-plus-sign {
+      vertical-align: -1px;
+    }
+  }
+  .coupon-saved-heading {
+    font-size: 6vw;
+    text-align: center;
+    margin: 0 0 3vw 0;
   }
 }

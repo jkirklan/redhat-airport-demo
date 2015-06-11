@@ -22,6 +22,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
                                 </variation>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-gf-AKo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="gze-yo-pR8" kind="embed" identifier="MenuDisplayTableSegue" id="3r3-WS-KPS"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.20784313725490197" green="0.0" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -39,14 +45,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sa1-iu-V6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="357"/>
+            <point key="canvasLocation" x="259" y="357"/>
         </scene>
         <!--Menu Display Table View Controller-->
         <scene sceneID="DcF-bb-ddA">
             <objects>
                 <tableViewController storyboardIdentifier="MenuDisplayTableViewController" id="gze-yo-pR8" customClass="ARTMenuDisplayTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GZX-mg-xcu">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.2214284762" green="0.89411764709999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,6 +73,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-V0-izL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1074" y="357"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Aog-eR-hAr">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ac-2C-cBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="IPB-3S-XhN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mK2-OL-c5u"/>
+                        <viewControllerLayoutGuide type="bottom" id="NJb-WJ-U7s"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CQl-GT-zh9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="414" y="1198"/>
         </scene>
     </scenes>
 </document>

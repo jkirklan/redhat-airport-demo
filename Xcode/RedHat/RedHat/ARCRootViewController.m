@@ -15,6 +15,8 @@
 
 - (void)monitorForBeacons;
 
+- (void)adminNotificationReceived:(NSNotification *)notification;
+
 @end
 
 
@@ -25,6 +27,11 @@
 {
     [super viewDidLoad];
     [self.navigationController setDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(adminNotificationReceived:)
+                                                 name:@"ADMIN_RELOAD_REQUEST"
+                                               object:nil];
     
     //NOTE: only uncomment if you want to set up device as a beacon.
 //    [self configureDeviceAsBeacon];
@@ -45,6 +52,13 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+
+
+- (void)adminNotificationReceived:(NSNotification *)notification
+{
+    //Webview reload...
 }
 
 

@@ -64,6 +64,14 @@
 }
 
 
+- (void)locationManager:(CLLocationManager *)manager
+        didRangeBeacons:(NSArray *)beacons
+               inRegion:(CLBeaconRegion *)region
+{
+    NSLog(@"didRangeBeacons");
+}
+
+
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
     NSLog(@"didDetermineState");
 }

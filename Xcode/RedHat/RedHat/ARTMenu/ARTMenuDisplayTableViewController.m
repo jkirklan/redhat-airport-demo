@@ -24,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    self.menuItems = @[@"Dashboard"];
+    self.menuItems = @[@"Dashboard", @"Admin"];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

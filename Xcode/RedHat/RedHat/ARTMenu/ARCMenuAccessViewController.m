@@ -59,6 +59,10 @@
     UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     switch (menuItem) {
+        case 1:
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ADMIN_RELOAD_REQUEST" object:self];
+            break;
+            
         case 0:
         default:
             viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];

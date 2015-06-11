@@ -11,15 +11,33 @@
 
 @interface ARCRootViewController ()
 
+- (void)configureDeviceAsBeacon;
+
+- (void)monitorForBeacons;
+
+- (void)adminNotificationReceived:(NSNotification *)notification;
+
 @end
 
 
 @implementation ARCRootViewController
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     [self.navigationController setDelegate:self];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(adminNotificationReceived:)
+                                                 name:@"ADMIN_RELOAD_REQUEST"
+                                               object:nil];
+    
+    //NOTE: only uncomment if you want to set up device as a beacon.
+//    [self configureDeviceAsBeacon];
+    
+    //Set up beacon monitoring...
+    [self monitorForBeacons];
 }
 
 
@@ -34,6 +52,44 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+
+
+- (void)adminNotificationReceived:(NSNotification *)notification
+{
+    //Webview reload...
+}
+
+
+- (void)configureDeviceAsBeacon
+{
+    self.beaconRegister = [[ARTBeaconRegister alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+    
+    [self.beaconRegister registerBeaconWithCompletion:^{
+        NSLog(@"Device is transmitting as a beacon");
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
+                                                                       message:@"Device is transmitting as a beacon!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+                                                error:^(NSError *error) {
+                                                    NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
+                                                }];
+}
+
+
+- (void)monitorForBeacons
+{
+    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+    [self.beaconManager setDelegate:self];
+    [self.beaconManager monitorBeaconRegionWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
 }
 
 

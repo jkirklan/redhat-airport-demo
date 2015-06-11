@@ -6,5 +6,82 @@
 	img{
 		padding-top: @airport-model-vertical-padding;
 		padding-bottom: @airport-model-vertical-padding;
+		position: absolute;
+		margin: auto;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 80%;
 	}
+}
+
+.home-screen{
+	.col-xs-4, .col-xs-8, .col-xs-7, .col-xs-5{
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+
+	td, th{
+		vertical-align: middle !important;
+	}
+
+	th{
+		height: 20px;
+	}
+
+	table {
+	    table-layout: fixed;
+	}
+}
+
+table, th, td {
+   border-top: 10px solid white !important;
+   font-family: @robotoCondensed;
+}
+
+td{
+	font-size: 1.4vw;
+}
+
+.flight-table-body th{
+	font-size: 1.12vw;
+}
+
+.departure-row-bg-color{
+	td, th{
+		background-color: #EEEEEE;
+	}
+}
+
+.departure-label{
+	font-size: 1.75vw;
+}
+
+.row.home-screen{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.departure-row{
+	height: 8.6vw
+}
+
+.departure-row-animation.ng-move,
+.departure-row-animation.ng-enter,
+.departure-row-animation.ng-leave {
+  -webkit-transition:all linear 1s;
+  transition:all linear 1s;
+}
+
+.departure-row-animation.ng-leave.ng-leave-active,
+.departure-row-animation.ng-move,
+.departure-row-animation.ng-enter {
+  opacity:0;
+}
+
+.departure-row-animation.ng-leave,
+.departure-row-animation.ng-move.ng-move-active,
+.departure-row-animation.ng-enter.ng-enter-active {
+  opacity:1;
 }

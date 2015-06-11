@@ -52,11 +52,11 @@ public class FlightResourceRESTService {
 		if (demoMode > 0) {
 			switch (demoMode) {
 			case 1:
-				flight.setFlightStatus("Delayed");
+				flight.setFlightStatus("On time");
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Delayed Push Notification...");
-				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
+				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
 				break;
 			case 2:
 				flight.setFlightStatus("Delayed");
@@ -64,7 +64,7 @@ public class FlightResourceRESTService {
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Changed Push Notification...");
-				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
+				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
 				break;
 			case 3:
 				flight.setFlightStatus("On Time");

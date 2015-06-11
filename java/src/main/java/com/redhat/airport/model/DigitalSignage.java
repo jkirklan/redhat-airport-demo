@@ -4,6 +4,7 @@ public class DigitalSignage {
 	private int demoSign;
 	private String signHeader;
 	private String signMessage;
+	private Flight flight;
 
 	public int getDemoSign() {
 		return demoSign;
@@ -27,6 +28,14 @@ public class DigitalSignage {
 
 	public void setSignMessage(String signMessage) {
 		this.signMessage = signMessage;
+	}
+
+	public Flight getFlight() {
+		return flight;
+	}
+
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 
 }

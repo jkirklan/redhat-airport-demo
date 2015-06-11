@@ -1,6 +1,7 @@
 package com.redhat.airport.rest;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -12,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.redhat.airport.model.DigitalSignage;
+import com.redhat.airport.model.Flight;
+import com.redhat.airport.service.FlightInformationService;
 
 @ApplicationScoped
 @Path("/digitalSignage")
@@ -20,6 +23,9 @@ public class DigitalSignageRESTService {
 	private static final Logger logger = LoggerFactory.getLogger(DigitalSignageRESTService.class);
 
 	private int updateSign = 0;
+
+	@Inject
+	private FlightInformationService flightService;
 
 	@POST
 	public Response updateDigitalSignage(@FormParam("showDetails") int updateSign) {
@@ -38,9 +44,11 @@ public class DigitalSignageRESTService {
 	@Produces("application/json")
 	public Response retrieveDigitalSignageUpdate() {
 		DigitalSignage ds = new DigitalSignage();
-
+		Flight flight = new Flight();
 		ds.setDemoSign(updateSign);
 		if (updateSign > 0) {
+			flight = flightService.getFlightInfo(70);
+			ds.setFlight(flight);
 			switch (updateSign) {
 			case 1:
 				ds.setSignHeader("You are late!");
@@ -49,6 +57,8 @@ public class DigitalSignageRESTService {
 			case 2:
 				ds.setSignHeader("Your gate has been changed.");
 				ds.setSignMessage("We apologize for the inconvenience.");
+				ds.getFlight().setFlightStatus("Delayed");
+				ds.getFlight().setStartingGate(5);
 				break;
 			case 3:
 				ds.setSignHeader("Your flight is boarding in 10 minutes.");

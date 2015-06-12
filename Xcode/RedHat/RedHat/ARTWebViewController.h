@@ -31,7 +31,7 @@ extern NSString *const ROOT_URL;
 
 @property (nonatomic, assign) id <ARTWebViewDelegate> delegate;
 
-@property (nonatomic, strong) NSURL *urlOnLoad;
+@property (nonatomic, strong) NSURL *urlToLoad;
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;
 

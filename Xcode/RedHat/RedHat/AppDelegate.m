@@ -66,13 +66,13 @@
 {
     NSLog(@"Notifications app token: %@", deviceToken);
     AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:
-                                          [NSURL URLWithString:@"https://aerogear-fguanlao.rhcloud.com/ag-push/"]];
+                                          [NSURL URLWithString:@"https://jbossunifiedpush-fguanlao.rhcloud.com/ag-push/"]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setDeviceToken:deviceToken];
         
-        [clientInfo setVariantID:@"fe960d53-0e88-474c-bbee-7072af27d665"];
-        [clientInfo setVariantSecret:@"5c6a99a8-6291-4a37-b314-c80bf35b385e"];
+        [clientInfo setVariantID:@"4678691c-3aec-4899-8a32-7f5d35e3ef56"];
+        [clientInfo setVariantSecret:@"3ff3722e-ce90-4627-93f1-81c69d6e4209"];
         
         //Device info...
         UIDevice *currentDevice = [UIDevice currentDevice];

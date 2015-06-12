@@ -11,11 +11,6 @@
 
 @interface ARCRootViewController ()
 
-/**
- Not for production code. Remove property and functionality after demo purposes!
- */
-@property (nonatomic, assign) NSUInteger urlRefreshNumber;
-
 - (void)adminNotificationReceived:(NSNotification *)notification;
 
 @end
@@ -61,22 +56,31 @@
 - (void)adminNotificationReceived:(NSNotification *)notification
 {
     //Webview reload...
-    NSMutableString *pageURL = [NSMutableString stringWithString:ROOT_URL];
+    NSMutableString *pageURL = [NSMutableString stringWithString:[NSString stringWithFormat:@"http://%@", ROOT_URL]];
     
-    switch (self.urlRefreshNumber) {
+    /**
+     Not for production code. Remove property and functionality after demo purposes!
+     */
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUInteger urlRefreshNumber = [[defaults objectForKey:@"kvoURLRefreshNumber"] integerValue];
+    NSLog(@"urlRefreshNumber == %ld", urlRefreshNumber);
+    
+    switch (urlRefreshNumber) {
         case 1:
-            [pageURL appendString:@""];
-            break;
-            
-        case 2:
-            [pageURL appendString:@""];
+            [pageURL appendString:@"/index.html?flight=delayed"];
+            urlRefreshNumber = 0;
             break;
             
         case 0:
         default:
-            [pageURL appendString:@""];
+            [pageURL appendString:@"/index.html?flight=ontime"];
+            urlRefreshNumber = 1;
             break;
     }
+    
+    [defaults setObject:[NSString stringWithFormat:@"%ld", urlRefreshNumber]
+                 forKey:@"kvoURLRefreshNumber"];
+    [defaults synchronize];
     
     [self.rootWebViewController loadWebviewWithURL:pageURL];
     
@@ -88,7 +92,6 @@
 #pragma mark - ATBeaconManagerDelegate
 - (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
-    NSLog(@"didFindiOSBeacons");
     if ([beacons lastObject]) {
         [beacons enumerateObjectsUsingBlock:^(CLBeacon *beacon, NSUInteger idx, BOOL *stop) {
             if (beacon.proximity == CLProximityImmediate) {
@@ -141,7 +144,7 @@
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     ARTWebViewController *nextWebViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"WebViewController"];
     
-    [nextWebViewController setUrlOnLoad:[request.URL absoluteURL]];
+    [nextWebViewController setUrlToLoad:[request.URL absoluteURL]];
     
     [self.navigationController pushViewController:nextWebViewController
                                          animated:YES];

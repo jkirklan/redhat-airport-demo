@@ -41,17 +41,22 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 
 - (void)loadWebviewWithURL:(NSString *)urlString
 {
+    NSURLRequest *urlRequest = nil;
+    [self.webView stopLoading];
+    
     if (urlString == nil) {
         //Bundle resource directories are flat to files must have UNIQUE names!
         NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
         
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:htmlPath];
+        urlRequest = [NSURLRequest requestWithURL:htmlPath];
         [self.webView loadRequest:urlRequest];
     }
     else {
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
         [self.webView loadRequest:urlRequest];
     }
+    
+    [self setUrlOnLoad:[urlRequest URL]];
 }
 
 

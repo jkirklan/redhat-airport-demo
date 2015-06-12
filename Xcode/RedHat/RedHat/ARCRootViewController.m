@@ -11,6 +11,11 @@
 
 @interface ARCRootViewController ()
 
+/**
+ Not for production code. Remove property and functionality after demo purposes!
+ */
+@property (nonatomic, assign) NSUInteger urlRefreshNumber;
+
 - (void)configureDeviceAsBeacon;
 
 - (void)monitorForBeacons;
@@ -32,12 +37,13 @@
                                              selector:@selector(adminNotificationReceived:)
                                                  name:@"ADMIN_RELOAD_REQUEST"
                                                object:nil];
+
+    self.beaconManager = [[ATBeaconManager alloc] init];
+    [self.beaconManager setDelegate:self];
+
+//    [self.beaconManager configureDeviceAsBeacon];
     
-    //NOTE: only uncomment if you want to set up device as a beacon.
-//    [self configureDeviceAsBeacon];
-    
-    //Set up beacon monitoring...
-    [self monitorForBeacons];
+//    [self.beaconManager startSearchingForBeacons];
 }
 
 
@@ -59,37 +65,85 @@
 - (void)adminNotificationReceived:(NSNotification *)notification
 {
     //Webview reload...
-}
-
-
-- (void)configureDeviceAsBeacon
-{
-    self.beaconRegister = [[ARTBeaconRegister alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+    NSMutableString *pageURL = [NSMutableString stringWithString:ROOT_URL];
     
-    [self.beaconRegister registerBeaconWithCompletion:^{
-        NSLog(@"Device is transmitting as a beacon");
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
-                                                                       message:@"Device is transmitting as a beacon!"
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
+    switch (self.urlRefreshNumber) {
+        case 1:
+            [pageURL appendString:@""];
+            break;
+            
+        case 2:
+            [pageURL appendString:@""];
+            break;
+            
+        case 0:
+        default:
+            [pageURL appendString:@""];
+            break;
     }
-                                                error:^(NSError *error) {
-                                                    NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
-                                                }];
+    
+    [self.rootWebViewController loadWebviewWithURL:pageURL];
 }
 
 
-- (void)monitorForBeacons
-{
-    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
-    [self.beaconManager setDelegate:self];
-    [self.beaconManager monitorBeaconRegionWithIdentifier:[[NSBundle mainBundle] bundleIdentifier]];
+- (void)configureDeviceAsBeacon {
+    
+}
+
+
+- (void)monitorForBeacons {
+    
+}
+
+
+//- (void)configureDeviceAsBeacon
+//{
+//    //Register as a beacon...
+//    NSString *uuid = @"E48AB15D-7608-4051-956E-AB4351CD3B7F";
+//    self.beaconRegister = [[ARTBeaconRegister alloc] initWithUUIDString:uuid];
+//    
+//    [self.beaconRegister registerBeaconWithCompletion:^{
+//        NSLog(@"Device is transmitting as a beacon");
+//        
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
+//                                                                       message:@"Device is transmitting as a beacon!"
+//                                                                preferredStyle:UIAlertControllerStyleAlert];
+//        
+//        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                              handler:^(UIAlertAction * action) {}];
+//        
+//        [alert addAction:defaultAction];
+//        [self presentViewController:alert animated:YES completion:nil];
+//    }
+//                                                error:^(NSError *error) {
+//                                                    NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
+//                                                }];
+//}
+//
+//
+//- (void)monitorForBeacons
+//{
+//    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+//    [self.beaconManager setDelegate:self];
+//    [self.beaconManager monitorBeaconRegionWithIdentifier:@"ca.architech.DemoRegion"];
+//}
+
+
+#pragma mark - ATBeaconManagerDelegate
+- (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+    NSLog(@"didFindiOSBeacons");
+}
+
+- (void)didFailFindingiOSBeaconsForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
+    NSLog(@"didFailFindingiOSBeaconsForRegion");
+}
+
+- (void)didFailEnablingBluetooth {
+    NSLog(@"didFailEnablingBluetooth");
+}
+
+- (void)didSetupDeviceAsBeacon:(NSDictionary *)beaconInfo {
+    NSLog(@"didSetupDeviceAsBeacon");
 }
 
 

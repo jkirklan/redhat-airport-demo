@@ -33,4 +33,6 @@
  */
 - (void)monitorBeaconRegionWithIdentifier:(NSString*)identifier;
 
+- (void)stopMonitoringBeaconRegion;
+
 @end

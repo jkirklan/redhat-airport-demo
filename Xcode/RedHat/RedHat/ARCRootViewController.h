@@ -8,16 +8,15 @@
 
 #import "ARCMenuAccessViewController.h"
 #import "ARTWebViewController.h"
-#import "ARTBeaconManager.h"
+#import "ATBeaconManager.h"
 
-
-@interface ARCRootViewController : ARCMenuAccessViewController <UINavigationControllerDelegate, ARTWebViewDelegate, ARTBeaconManagerDelegate>
+@interface ARCRootViewController : ARCMenuAccessViewController <UINavigationControllerDelegate, ARTWebViewDelegate, ATBeaconManagerDelegate>
 
 @property (nonatomic, strong) IBOutlet UIView *containerView;
 
-@property (nonatomic, strong) ARTBeaconManager *beaconManager;
+@property (nonatomic, strong) ATBeaconManager *beaconManager;
 
-@property (nonatomic, strong) ARTBeaconRegister *beaconRegister;
+//@property (nonatomic, strong) ARTBeaconRegister *beaconRegister;
 
 @property (nonatomic, strong) ARTWebViewController *rootWebViewController;
 

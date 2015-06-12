@@ -49,10 +49,15 @@
     [self setRegistrationError:error];
     
     NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:self.uuid];
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+    NSString *bundleIdentifier = @"ca.architech.DemoRegion";
     
     CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID
+                                                                           major:1001
                                                                       identifier:bundleIdentifier];
+    
+    [beaconRegion setNotifyEntryStateOnDisplay:YES];
+    [beaconRegion setNotifyOnEntry:NO];
+    [beaconRegion setNotifyOnExit:YES];
     
     NSDictionary *beaconPeripheralData = [beaconRegion peripheralDataWithMeasuredPower:nil];
     [self.peripheralManager startAdvertising:beaconPeripheralData];
@@ -77,6 +82,11 @@
             self.registrationError(error);
         });
     }
+}
+
+
+- (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error {
+    NSLog(@"peripheralManagerDidStartAdvertising");
 }
 
 

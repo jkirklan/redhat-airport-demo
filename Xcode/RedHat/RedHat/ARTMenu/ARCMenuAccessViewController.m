@@ -56,16 +56,18 @@
 - (void)menuDidSelectMenuItem:(NSUInteger)menuItem
 {
     NSArray *viewControllers;
-    UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     switch (menuItem) {
         case 1:
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ADMIN_RELOAD_REQUEST" object:self];
+            viewControllers = @[[[self.navigationController viewControllers] objectAtIndex:0]];
             break;
             
         case 0:
         default:
-            viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];
+            viewControllers = @[[[self.navigationController viewControllers] objectAtIndex:0]];
+            //viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];
             break;
     }
     

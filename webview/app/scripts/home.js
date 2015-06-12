@@ -51,9 +51,15 @@ var home = (function($, window, document) {
       };
 
       // Set ajax call to receive delayed status
-      if (localStorage.getItem('delayed') === 'true') {
-        this.flightData = JSON.parse(localStorage.getItem('flightData'));
-        this.updateView();
+      if (this.getQueryString('flight') === 'delayed') {
+        this.getFlightData(4).done(function(data) {
+          that.flightData = data;
+          that.updateView();
+        }).fail(function(jqXHR, textStatus, error) {
+          that.flightData = backupDelayedData;
+          that.updateView();
+          console.log(error);
+        });
       }
       // Normal view
       else {
@@ -70,9 +76,9 @@ var home = (function($, window, document) {
       that.createCouponStorage();
 
       // Demo modes
-      if (localStorage.getItem('delayedMode') === 'true') {
-        this.setDemoMode(2, 'delayedMode', 'delayed');
-      }
+      // if (localStorage.getItem('delayedMode') === 'true') {
+      //   this.setDemoMode(2, 'delayedMode', 'delayed');
+      // }
 
     },
     setDemoMode: function(id, mode, status) {
@@ -143,6 +149,12 @@ var home = (function($, window, document) {
       if (!localStorage.getItem('coupons')) {
         localStorage.setItem('coupons', JSON.stringify([]));
       }
+    },
+    getQueryString: function(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+          results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
   };
 

@@ -10,7 +10,7 @@
 @import CoreBluetooth;
 
 
-@protocol ATBeaconManagerDelegate <NSObject>
+@protocol ATDemoBeaconDelegate <NSObject>
 
 //- (void)didFindEstimoteBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region;
 
@@ -31,10 +31,10 @@
 /**
  @class The intention is for this to manage both iOS AND Estimote beacons.
  */
-@interface ATBeaconManager : NSObject <CLLocationManagerDelegate, CBPeripheralManagerDelegate> {
+@interface ATDemoBeaconManager : NSObject <CLLocationManagerDelegate, CBPeripheralManagerDelegate> {
 }
 
-@property (nonatomic, assign) id <ATBeaconManagerDelegate> delegate;
+@property (nonatomic, assign) id <ATDemoBeaconDelegate> delegate;
 
 //@property (strong, nonatomic) ESTBeaconManager *beaconManager;
 //@property (strong, nonatomic) ESTBeaconRegion *beaconRegion;

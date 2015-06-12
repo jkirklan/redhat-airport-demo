@@ -38,7 +38,7 @@
                                                  name:@"ADMIN_RELOAD_REQUEST"
                                                object:nil];
 
-    self.beaconManager = [[ATBeaconManager alloc] init];
+    self.beaconManager = [[ATDemoBeaconManager alloc] init];
     [self.beaconManager setDelegate:self];
 
 //    [self.beaconManager configureDeviceAsBeacon];

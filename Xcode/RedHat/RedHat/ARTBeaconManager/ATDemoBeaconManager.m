@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Architech. All rights reserved.
 //
 
-#import "ATBeaconManager.h"
+#import "ATDemoBeaconManager.h"
 
 
 #define ARCHITECH_PROXIMITY_UUID                [[NSUUID alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"]
@@ -14,7 +14,7 @@
 NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 
 
-@interface ATBeaconManager()
+@interface ATDemoBeaconManager()
 
 @property (nonatomic, strong) CLBeaconRegion *iOSBeaconRegion;
 
@@ -25,7 +25,7 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 @end
 
 
-@implementation ATBeaconManager
+@implementation ATDemoBeaconManager
 
 /**
  This should probably be a singleton. Let's not worry about that for prototype 1.

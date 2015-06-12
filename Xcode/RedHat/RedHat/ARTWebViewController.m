@@ -58,6 +58,7 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 #pragma mark - UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    NSLog(@"shouldStartLoadWithRequest");
     BOOL shouldLoad = NO;
     NSURL *rootURL = [NSURL URLWithString:ROOT_URL];
     

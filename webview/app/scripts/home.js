@@ -4,9 +4,9 @@ var home = (function($, window, document) {
 
   var home = {
     init: function() {
-      this.setDemoMode();
+      this.startDemo();
     },
-    setDemoMode: function() {
+    startDemo: function() {
       var that = this;
 
       var backupOnTimeData = {
@@ -51,8 +51,8 @@ var home = (function($, window, document) {
       };
 
       // Set ajax call to receive delayed status
-      if (localStorage.getItem('delayed') === 'true') {
-        $.when(this.getFlightData(true)).done(function(data) {
+      if (this.getQueryString('flight') === 'delayed') {
+        this.getFlightData(4).done(function(data) {
           that.flightData = data;
           that.updateView();
         }).fail(function(jqXHR, textStatus, error) {
@@ -61,8 +61,9 @@ var home = (function($, window, document) {
           console.log(error);
         });
       }
+      // Normal view
       else {
-        $.when(this.getFlightData(false)).done(function(data) {
+        this.getFlightData(0).done(function(data) {
           that.flightData = data;
           that.updateView();
         }).fail(function(jqXHR, textStatus, error) {
@@ -74,25 +75,32 @@ var home = (function($, window, document) {
 
       that.createCouponStorage();
 
-      // Timeout if demo mode is on
-      if (localStorage.getItem('demoMode') === 'true') {
-        setTimeout(function() {
-          $.when(that.getFlightData(true)).done(function(data) {
-            that.flightData = data;
-            $('.current-flight').children().not('#current-flight-tmpl').remove();
-            that.updateView();
-            localStorage.setItem('demoMode', 'false');
-            localStorage.setItem('delayed', 'true');
-          }).fail(function(jqXHR, textStatus, error) {
-            that.flightData = backupDelayedData;
-            $('.current-flight').children().not('#current-flight-tmpl').remove();
-            that.updateView();
-            localStorage.setItem('demoMode', 'false');
-            localStorage.setItem('delayed', 'true');
-            console.log(error);
-          });
-        }, 5000);
-      }
+      // Demo modes
+      // if (localStorage.getItem('delayedMode') === 'true') {
+      //   this.setDemoMode(2, 'delayedMode', 'delayed');
+      // }
+
+    },
+    setDemoMode: function(id, mode, status) {
+      var that = this;
+
+      // Show delayed flight data after timeout
+      setTimeout(function() {
+        that.getFlightData(id).done(function(data) {
+          that.flightData = data;
+          $('.current-flight').children().not('#current-flight-tmpl').remove();
+          that.updateView();
+          localStorage.setItem(mode, 'false');
+          localStorage.setItem(status, 'true');
+        }).fail(function(jqXHR, textStatus, error) {
+          that.flightData = backupDelayedData;
+          $('.current-flight').children().not('#current-flight-tmpl').remove();
+          that.updateView();
+          localStorage.setItem(mode, 'false');
+          localStorage.setItem(status, 'true');
+          console.log(error);
+        });
+      }, 5000);
     },
     updateView: function() {
       this.parseDepartureTime();
@@ -141,6 +149,12 @@ var home = (function($, window, document) {
       if (!localStorage.getItem('coupons')) {
         localStorage.setItem('coupons', JSON.stringify([]));
       }
+    },
+    getQueryString: function(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
+          results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
   };
 

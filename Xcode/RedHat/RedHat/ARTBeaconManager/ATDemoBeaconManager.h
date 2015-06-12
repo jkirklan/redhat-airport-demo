@@ -12,10 +12,6 @@
 
 @protocol ATDemoBeaconDelegate <NSObject>
 
-//- (void)didFindEstimoteBeacons:(NSArray *)beacons inRegion:(ESTBeaconRegion *)region;
-
-//- (void)didFailFindingEstimoteBeaconsForRegion:(ESTBeaconRegion *)region withError:(NSError *)error;
-
 - (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
 
 - (void)didFailFindingiOSBeaconsForRegion:(CLBeaconRegion *)region withError:(NSError *)error;
@@ -36,10 +32,9 @@
 
 @property (nonatomic, assign) id <ATDemoBeaconDelegate> delegate;
 
-//@property (strong, nonatomic) ESTBeaconManager *beaconManager;
-//@property (strong, nonatomic) ESTBeaconRegion *beaconRegion;
-
 @property (strong, nonatomic) CLLocationManager *locationManager;
+
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
 
 
 /**
@@ -51,8 +46,6 @@
  Starts the whole process of searching for ALL beacons.
  */
 - (void)startSearchingForBeacons;
-
-//- (void)stopEstimoteBeacons;
 
 /**
  Sets up the current device as a transmitting beacon, if not already.

@@ -16,10 +16,6 @@
  */
 @property (nonatomic, assign) NSUInteger urlRefreshNumber;
 
-- (void)configureDeviceAsBeacon;
-
-- (void)monitorForBeacons;
-
 - (void)adminNotificationReceived:(NSNotification *)notification;
 
 @end
@@ -40,10 +36,10 @@
 
     self.beaconManager = [[ATDemoBeaconManager alloc] init];
     [self.beaconManager setDelegate:self];
-
-//    [self.beaconManager configureDeviceAsBeacon];
     
-//    [self.beaconManager startSearchingForBeacons];
+//    [self.beaconManager configureDeviceAsBeacon];
+
+    [self.beaconManager startSearchingForBeacons];
 }
 
 
@@ -83,16 +79,6 @@
     }
     
     [self.rootWebViewController loadWebviewWithURL:pageURL];
-}
-
-
-- (void)configureDeviceAsBeacon {
-    
-}
-
-
-- (void)monitorForBeacons {
-    
 }
 
 

@@ -16,9 +16,7 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 
 @interface ATDemoBeaconManager()
 
-@property (nonatomic, strong) CLBeaconRegion *iOSBeaconRegion;
-
-@property (nonatomic, strong) CBPeripheralManager *peripheralManager;
+@property (nonatomic, strong) CLBeaconRegion *beaconRegion;
 
 @property (nonatomic, strong) NSDictionary *transmitterInfo;
 
@@ -34,17 +32,12 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 {
     self = [super init];
     
-    if (self)
-    {
-//        self.beaconManager = [[ESTBeaconManager alloc] init];
-//        [self.beaconManager setDelegate:self];
-//        
-//        self.beaconRegion = [[ESTBeaconRegion alloc] initWithProximityUUID:ARCHITECH_PROXIMITY_UUID
-//                                                                identifier:ESTIMOTE_BEACON_REGION_ID];
-        
-        //Init bluetooth power...
-        [self locationManager];
-        [self peripheralManager];
+    if (self) {
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+        self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"ca.architech.myRegion"];
     }
     
     return self;
@@ -52,56 +45,8 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 
 
 #pragma mark - Getters
-- (CLLocationManager *)locationManager
-{
-    //Check for bluetooth and set CLLocationManager...
-    BOOL hasBluetooth = [CLLocationManager isRangingAvailable];
-    
-    if (hasBluetooth == YES) {
-        _locationManager = [[CLLocationManager alloc] init];
-        [_locationManager setDelegate:self];
-    }
-    else {
-        if ([self.delegate respondsToSelector:@selector(didFailEnablingBluetooth)]) {
-            [self.delegate didFailEnablingBluetooth];
-        }
-    }
-
-    return _locationManager;
-}
-
-
-- (CLBeaconRegion *)iOSBeaconRegion
-{
-    if (_iOSBeaconRegion == nil) {
-        _iOSBeaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:ARCHITECH_PROXIMITY_UUID
-                                                                   major:1001
-                                                              identifier:kvoUserDefaultsDeviceBeaconID];
-
-        [_iOSBeaconRegion setNotifyEntryStateOnDisplay:YES];
-        [_iOSBeaconRegion setNotifyOnEntry:NO];
-        [_iOSBeaconRegion setNotifyOnExit:YES];
-    }
-
-    return _iOSBeaconRegion;
-}
-
-
-- (CBPeripheralManager *)peripheralManager
-{
-    if (_peripheralManager == nil) {
-        _peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
-    }
-    
-    return _peripheralManager;
-}
-
-
-- (NSDictionary *)transmitterInfo
-{
-    if (_transmitterInfo == nil) {
-        _transmitterInfo = [[NSUserDefaults standardUserDefaults] objectForKey:kvoUserDefaultsDeviceBeaconID];
-    }
+- (NSDictionary *)transmitterInfo {
+    _transmitterInfo = [self.beaconRegion peripheralDataWithMeasuredPower:nil];
     return _transmitterInfo;
 }
 
@@ -110,8 +55,9 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 - (BOOL)isTransmitterDevice
 {
     BOOL isTransmitterDevice = YES;
-    
-    if (self.transmitterInfo == nil) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    if ([defaults objectForKey:kvoUserDefaultsDeviceBeaconID] == nil) {
         isTransmitterDevice = NO;
     }
     
@@ -123,56 +69,64 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    //Call the peripheralDataWithMeasuredPower method to get power for the current device (iPad)...
-    NSMutableDictionary *beaconInfo = [self.iOSBeaconRegion peripheralDataWithMeasuredPower:nil];
-    
     //Store the beacon’s identifying information in NSUserDefaults...
-    [defaults setObject:beaconInfo
+    [defaults setObject:self.transmitterInfo
                  forKey:kvoUserDefaultsDeviceBeaconID];
     
     BOOL isSaved = [defaults synchronize];
     
     //Pass the dictionary to the startAdvertising: method of a CBPeripheralManager to begin advertising the beacon...
     if (isSaved == YES) {
-        [self.peripheralManager startAdvertising:beaconInfo];
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
+        self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+                                                                    major:1
+                                                                    minor:1
+                                                               identifier:@"ca.architech.myRegion"];
+
+        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self
+                                                                         queue:nil
+                                                                       options:nil];
     }
 }
 
 
 - (void)startSearchingForBeacons
 {
-    //Confirm it's not an iOS transmitter beacon...
-    if ([self isTransmitterDevice] == YES) {
-        [self.peripheralManager startAdvertising:self.transmitterInfo];
-    }
-    else {
+    if ([self isTransmitterDevice] == NO) {
+        [self.locationManager startMonitoringForRegion:self.beaconRegion];
+        
         [self.locationManager requestWhenInUseAuthorization];
-
-        //Receivers can search for beacons...
-        [self locationManager:self.locationManager didStartMonitoringForRegion:self.iOSBeaconRegion];
+        [self locationManager:self.locationManager didStartMonitoringForRegion:self.beaconRegion];        
     }
 }
 
-
-//- (void)stopEstimoteBeacons {
-//    [self.beaconManager stopRangingBeaconsInRegion:self.beaconRegion];
-//}
 
 
 #pragma mark - CBPeripheralManagerDelegate
-- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
+-(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
-    if ( (peripheral.state < CBPeripheralManagerStatePoweredOn) &&
-         ([self.delegate respondsToSelector:@selector(didFailEnablingBluetooth)]) )
-    {
-        [self.delegate didFailEnablingBluetooth];
-    }
-    else if (peripheral.state == CBPeripheralManagerStatePoweredOn)
-    {
-        NSDictionary *beaconInfo = [self.iOSBeaconRegion peripheralDataWithMeasuredPower:nil];
-        [self.peripheralManager startAdvertising:beaconInfo];
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        NSLog(@"Powered On");
+        [self.peripheralManager startAdvertising:self.transmitterInfo];
+    } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
+        NSLog(@"Powered Off");
+        [self.peripheralManager stopAdvertising];
     }
 }
+
+
+//- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
+//{
+//    if ( (peripheral.state < CBPeripheralManagerStatePoweredOn) &&
+//         ([self.delegate respondsToSelector:@selector(didFailEnablingBluetooth)]) )
+//    {
+//        [self.delegate didFailEnablingBluetooth];
+//    }
+//    else if (peripheral.state == CBPeripheralManagerStatePoweredOn)
+//    {
+//        [self.peripheralManager startAdvertising:self.transmitterInfo];
+//    }
+//}
 
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
@@ -188,65 +142,27 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
-    NSLog(@"didStartMonitoringForRegion");
-    [self.locationManager startRangingBeaconsInRegion:self.iOSBeaconRegion];
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
 }
 
 
-- (void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
-    NSLog(@"didRangeBeacons");
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"Beacon Region Entered: didEnterRegion");
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    NSLog(@"Left Region");
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
 }
 
 
-- (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
-    NSLog(@"rangingBeaconsDidFailForRegion");
-}
-
-
-#pragma mark - ESTBeaconManagerDelegate
-/*
-- (void)beaconManager:(ESTBeaconManager *)manager
-      didRangeBeacons:(NSArray *)beacons
-             inRegion:(ESTBeaconRegion *)region
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
-    NSLog(@"didRangeBeacons -> number found: %d", beacons.count);
-    
-    if ([beacons lastObject])
-    {
-        //For this prototype, we're only interested in the BLUE beacon!!!
-        [beacons enumerateObjectsUsingBlock:^(ESTBeacon *beacon, NSUInteger idx, BOOL *stop)
-        {
-            BeaconIdentifier *beaconIdentifier = [[BeaconIdentifier alloc] initWithBeacon:beacon];
-            
-            if ([beaconIdentifier color] == ATBeaconColorBlue)
-            {
-                [self.beaconManager stopRangingBeaconsInRegion:self.beaconRegion];
-                *stop = YES;
-                NSLog(@"Found Blue! beaconIdentifier: %@", beaconIdentifier);
-                
-                if ([_delegate respondsToSelector:@selector(didFindEstimoteBeacons:inRegion:)]) {
-                    [self.delegate didFindEstimoteBeacons:beacons
-                                                 inRegion:region];
-                }
-            }
-        }];
-    }
+    NSLog(@"Beacon Found: didRangeBeacons %@", beacons);
+    CLBeacon *beacon = [[CLBeacon alloc] init];
+    beacon = [beacons lastObject];
 }
-
-
--(void)beaconManager:(ESTBeaconManager *)manager
-rangingBeaconsDidFailForRegion:(ESTBeaconRegion *)region
-           withError:(NSError *)error
-{
-    NSLog(@"rangingBeaconsDidFailForRegion %@", error);
-
-    if ([_delegate respondsToSelector:@selector(didFailFindingEstimoteBeaconsForRegion:withError:)]) {
-        [self.delegate didFailFindingEstimoteBeaconsForRegion:region
-                                                    withError:error];
-    }
-}
- */
-
 
 @end
 

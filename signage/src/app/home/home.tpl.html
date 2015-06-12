@@ -1,63 +1,34 @@
-<div class="row" style="height:40%">
-	<div class="col-xs-12" style="height:100%">
-		<div class="text-center home-model-container" style="height:100%">
-			<img src="assets/airport_model.png" style="height:100%;"> 
-		</div>
+<div class="row home-screen" style="height:100%">
+	<div class="col-xs-7" style="height:100%;">
+	    <table class="table" cellspacing="0" cellpadding="0">
+	      <thead>
+		    <tr>
+	          <th colspan="100" class="text-center departure-label">DEPARTURES</th>		
+	        </tr>
+	      </thead>
+	      <tbody class="flight-table-body">
+	        <tr>
+	          <th colspan="40">DESTINATION</th>
+	          <th colspan="15">FLIGHT</th>
+	          <th colspan="15">TIME</th>
+	          <th colspan="15">STATUS</th>
+	          <th colspan="15">GATE</th>
+	        </tr>
+			<tr ng-repeat="item in model.paginatedFlights" class="departure-row-bg-color departure-row-animation departure-row"> 
+				<td colspan="40" scope="row" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+						{{item.destinationCity}}
+				</td>
+				<td colspan="15">{{item.airlineCode+' '+item.flightNo}}</td>
+				<td colspan="15">{{item.departure | date:'h:mma'}}</td>
+				<td colspan="15" style="background-color:red; text-align:center;">{{item.flightStatus}}</td>
+				<td colspan="15">{{item.startingGate}}</td>
+			</tr>
+	      </tbody>
+	    </table>
 	</div>
-</div>
-<div class="row" style="height:60%;">
-	<div class="col-xs-12" style="height:100%;">
-
-    <table class="table" style="height:100%;">
-      <thead>
-        <tr>
-          <th>Destination</th>
-          <th>Flight</th>
-          <th>Time</th>
-          <th>Status</th>
-          <th>Gate</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-        <tr class="active">
-          <th scope="row">1</th>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-          <td>Column content</td>
-        </tr>
-
-
-      </tbody>
-    </table>
-  
+	<div class="col-xs-5" style="height:100%">
+		<div class="text-center home-model-container" style="height:100%">
+			<img src="assets/airport_model_no_directions.png">
+		</div>
 	</div>
 </div>

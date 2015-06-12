@@ -73,6 +73,8 @@ public class FlightResourceRESTService {
 				break;
 			case 4:
 				flight.setFlightStatus("Delayed");
+				coupon = cProducer.demoCouponOnDelay();
+				flight.setCoupon(coupon);
 				break;
 			default:
 				logger.error("Invalid Demo number");

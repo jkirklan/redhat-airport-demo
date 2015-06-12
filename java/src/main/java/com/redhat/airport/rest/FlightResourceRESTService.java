@@ -71,6 +71,9 @@ public class FlightResourceRESTService {
 				logger.info("Firing event for On time Push Notification...");
 				event.fire("Your flight is boarding in 10 minutes. Please make your way to the gate");
 				break;
+			case 4:
+				flight.setFlightStatus("Delayed");
+				break;
 			default:
 				logger.error("Invalid Demo number");
 				break;

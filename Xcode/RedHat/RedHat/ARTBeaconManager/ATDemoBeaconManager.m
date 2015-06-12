@@ -155,7 +155,7 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
-    NSLog(@"Beacon Found: didRangeBeacons %@", beacons);
+//    NSLog(@"Beacon Found: didRangeBeacons %@", beacons);
     if ([self.delegate respondsToSelector:@selector(didFindiOSBeacons:inRegion:)]) {
         [self.delegate didFindiOSBeacons:beacons
                                 inRegion:region];

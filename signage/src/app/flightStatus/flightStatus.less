@@ -62,3 +62,13 @@
 	font-size: 1.68vw;
 	margin-top: -0.4vw;
 }
+
+.flight-status-changed{
+	&:extend(.flight-status-on-time);
+	background-color: #FF6500;
+}
+
+.flight-status-delayed{
+	&:extend(.flight-status-on-time);
+	background-color: #FF001F;
+}

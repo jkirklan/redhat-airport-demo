@@ -44,12 +44,30 @@ td{
 	font-size: 1.4vw;
 }
 
+.delayed-status{
+	text-align: center;
+	background-color: #FF001F;
+	color: white;
+}
+
+.onTime-status{
+	text-align: center;
+	background-color: #7ED321;
+	color: white;
+}
+
+.changed-status{
+	text-align: center;
+	background-color: #FF6500;
+	color: white;
+}
+
 .flight-table-body th{
 	font-size: 1.12vw;
 }
 
 .departure-row-bg-color{
-	td, th{
+	td:not(.delayed-status):not(.onTime-status):not(.changed-status), th{
 		background-color: #EEEEEE;
 	}
 }
@@ -64,7 +82,7 @@ td{
 }
 
 .departure-row{
-	height: 8.6vw
+	height: 6.8vw
 }
 
 .departure-row-animation.ng-move,

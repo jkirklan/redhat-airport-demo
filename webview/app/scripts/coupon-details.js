@@ -11,15 +11,9 @@ var couponDetails = (function($, window, document) {
       this.compileHandlebarsTemplate();
     },
     getCouponDetails: function() {
-      var couponId = parseInt(this.getQueryString('id'));
+      var couponId = parseInt(home.getQueryString('id'));
 
       this.couponDetails = this.couponData[couponId];
-    },
-    getQueryString: function(name) {
-      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-          results = regex.exec(location.search);
-      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     },
     parseFlightDate: function() {
       this.couponDetails.flightDate = moment(this.couponDetails.departure).format('ddd, MMM DD YYYY');

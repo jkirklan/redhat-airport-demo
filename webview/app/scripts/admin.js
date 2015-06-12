@@ -28,6 +28,7 @@ var admin = (function($, window, document) {
           method: 'GET'
         }).done(function() {
           alert('On time flight on');
+          window.location.href = '/index.html?flight=ontime';
         }).fail(function(jqXHR, textStatus, error) {
           alert('On time flight failed');
           console.log(error);
@@ -36,8 +37,16 @@ var admin = (function($, window, document) {
     },
     flightDelayedButtonListener: function() {
       $('.flight-delayed-btn').on('click', function() {
-        localStorage.setItem('delayedMode', 'true');
-        alert('Delayed flight on');
+        $.ajax({
+          url: 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/flightStatus/70?demoMode=2',
+          method: 'GET'
+        }).done(function() {
+          alert('Delayed flight on');
+          window.location.href = '/index.html?flight=delayed';
+        }).fail(function(jqXHR, textStatus, error) {
+          alert('Delayed flight failed');
+          console.log(error);
+        });
       });
     },
     flightLateButtonListener: function() {
@@ -47,6 +56,7 @@ var admin = (function($, window, document) {
           method: 'GET'
         }).done(function() {
           alert('Running late on');
+          window.location.href = '/index.html?flight=ontime';
         }).fail(function(jqXHR, textStatus, error) {
           alert('Running late failed');
           console.log(error);

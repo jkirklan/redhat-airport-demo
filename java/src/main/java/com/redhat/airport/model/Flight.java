@@ -1,13 +1,12 @@
 package com.redhat.airport.model;
 
-import java.util.Calendar;
 
 public class Flight {
 	private int flightNo;
 	private String airlineCode;
-	private Calendar departure;
-	private Calendar arrival;
-	private Calendar boarding;
+	private String departure;
+	private String arrival;
+	private String boarding;
 	private String startingAirport;
 	private String destinationAirport;
 	private String startingCity;
@@ -33,27 +32,27 @@ public class Flight {
 		this.airlineCode = airlineCode;
 	}
 
-	public Calendar getDeparture() {
+	public String getDeparture() {
 		return this.departure;
 	}
 
-	public void setDeparture(Calendar departure) {
+	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
 
-	public Calendar getArrival() {
+	public String getArrival() {
 		return this.arrival;
 	}
 
-	public void setArrival(Calendar arrival) {
+	public void setArrival(String arrival) {
 		this.arrival = arrival;
 	}
 
-	public Calendar getBoarding() {
+	public String getBoarding() {
 		return this.boarding;
 	}
 
-	public void setBoarding(Calendar boarding) {
+	public void setBoarding(String boarding) {
 		this.boarding = boarding;
 	}
 

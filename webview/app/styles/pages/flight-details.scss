@@ -87,6 +87,9 @@ html.flight-details-page {
     }
     .primary-btn {
       margin: 0 7vw 5vw 0;
+      @media only screen and (min-device-width : 320px) and (max-device-width : 320px) {
+        font-size: 3.8vw;
+      }
     }
     .glyphicon-plus-sign {
       vertical-align: -1px;

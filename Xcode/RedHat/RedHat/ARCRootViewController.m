@@ -86,10 +86,25 @@
 
 
 #pragma mark - ATBeaconManagerDelegate
-- (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
+- (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
+{
     NSLog(@"didFindiOSBeacons");
     if ([beacons lastObject]) {
-        [self.beaconManager stopSearchingForBeacons];
+        [beacons enumerateObjectsUsingBlock:^(CLBeacon *beacon, NSUInteger idx, BOOL *stop) {
+            if (beacon.proximity == CLProximityImmediate) {
+                [self.beaconManager stopSearchingForBeacons];
+                
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Beacon Found!"
+                                                                               message:@"Please look at the screen for flight information."
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                      handler:^(UIAlertAction * action) {}];
+                
+                [alert addAction:defaultAction];
+                [self presentViewController:alert animated:YES completion:nil];
+            }
+        }];
     }
 }
 

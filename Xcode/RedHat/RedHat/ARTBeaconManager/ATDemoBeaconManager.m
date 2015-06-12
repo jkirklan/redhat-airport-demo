@@ -101,6 +101,12 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 }
 
 
+- (void)stopSearchingForBeacons {
+    [self.locationManager stopMonitoringForRegion:self.beaconRegion];
+    [self.locationManager stopRangingBeaconsInRegion:self.beaconRegion];
+}
+
+
 
 #pragma mark - CBPeripheralManagerDelegate
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
@@ -108,25 +114,15 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
     if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
         NSLog(@"Powered On");
         [self.peripheralManager startAdvertising:self.transmitterInfo];
-    } else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
+    }
+    else if (peripheral.state == CBPeripheralManagerStatePoweredOff) {
         NSLog(@"Powered Off");
         [self.peripheralManager stopAdvertising];
+        if ([self.delegate respondsToSelector:@selector(didFailEnablingBluetooth)]) {
+            [self.delegate didFailEnablingBluetooth];
+        }
     }
 }
-
-
-//- (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
-//{
-//    if ( (peripheral.state < CBPeripheralManagerStatePoweredOn) &&
-//         ([self.delegate respondsToSelector:@selector(didFailEnablingBluetooth)]) )
-//    {
-//        [self.delegate didFailEnablingBluetooth];
-//    }
-//    else if (peripheral.state == CBPeripheralManagerStatePoweredOn)
-//    {
-//        [self.peripheralManager startAdvertising:self.transmitterInfo];
-//    }
-//}
 
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral error:(NSError *)error
@@ -160,8 +156,10 @@ NSString *const kvoUserDefaultsDeviceBeaconID   = @"DeviceBeaconID";
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
     NSLog(@"Beacon Found: didRangeBeacons %@", beacons);
-    CLBeacon *beacon = [[CLBeacon alloc] init];
-    beacon = [beacons lastObject];
+    if ([self.delegate respondsToSelector:@selector(didFindiOSBeacons:inRegion:)]) {
+        [self.delegate didFindiOSBeacons:beacons
+                                inRegion:region];
+    }
 }
 
 @end

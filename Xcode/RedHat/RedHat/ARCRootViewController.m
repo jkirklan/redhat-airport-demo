@@ -79,57 +79,43 @@
     }
     
     [self.rootWebViewController loadWebviewWithURL:pageURL];
+    
+    //Restart the search for beacons...
+    [self.beaconManager startSearchingForBeacons];
 }
-
-
-//- (void)configureDeviceAsBeacon
-//{
-//    //Register as a beacon...
-//    NSString *uuid = @"E48AB15D-7608-4051-956E-AB4351CD3B7F";
-//    self.beaconRegister = [[ARTBeaconRegister alloc] initWithUUIDString:uuid];
-//    
-//    [self.beaconRegister registerBeaconWithCompletion:^{
-//        NSLog(@"Device is transmitting as a beacon");
-//        
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
-//                                                                       message:@"Device is transmitting as a beacon!"
-//                                                                preferredStyle:UIAlertControllerStyleAlert];
-//        
-//        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-//                                                              handler:^(UIAlertAction * action) {}];
-//        
-//        [alert addAction:defaultAction];
-//        [self presentViewController:alert animated:YES completion:nil];
-//    }
-//                                                error:^(NSError *error) {
-//                                                    NSLog(@"Device is unable to transmit as a beacon: %@", error.description);
-//                                                }];
-//}
-//
-//
-//- (void)monitorForBeacons
-//{
-//    self.beaconManager = [[ARTBeaconManager alloc] initWithUUIDString:@"E48AB15D-7608-4051-956E-AB4351CD3B7F"];
-//    [self.beaconManager setDelegate:self];
-//    [self.beaconManager monitorBeaconRegionWithIdentifier:@"ca.architech.DemoRegion"];
-//}
 
 
 #pragma mark - ATBeaconManagerDelegate
 - (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region {
     NSLog(@"didFindiOSBeacons");
+    if ([beacons lastObject]) {
+        [self.beaconManager stopSearchingForBeacons];
+    }
 }
 
 - (void)didFailFindingiOSBeaconsForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
     NSLog(@"didFailFindingiOSBeaconsForRegion");
 }
 
+
 - (void)didFailEnablingBluetooth {
     NSLog(@"didFailEnablingBluetooth");
 }
 
-- (void)didSetupDeviceAsBeacon:(NSDictionary *)beaconInfo {
+
+- (void)didSetupDeviceAsBeacon:(NSDictionary *)beaconInfo
+{
     NSLog(@"didSetupDeviceAsBeacon");
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Registered"
+                                                                   message:@"Device is transmitting as a beacon!"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

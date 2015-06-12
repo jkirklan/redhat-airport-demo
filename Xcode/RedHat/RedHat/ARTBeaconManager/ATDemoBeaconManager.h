@@ -43,13 +43,15 @@
 - (BOOL)isTransmitterDevice;
 
 /**
+ Sets up the current device as a transmitting beacon, if not already.
+ */
+- (void)configureDeviceAsBeacon;
+
+/**
  Starts the whole process of searching for ALL beacons.
  */
 - (void)startSearchingForBeacons;
 
-/**
- Sets up the current device as a transmitting beacon, if not already.
- */
-- (void)configureDeviceAsBeacon;
+- (void)stopSearchingForBeacons;
 
 @end

@@ -33,7 +33,6 @@ public class FlightInformationService {
 		logger.info("Retrieving Flight Info...");
 		List<Flight> flightList = parseFlightInformation(false);
 		Flight flight = flightList.get(0);
-		// Flight flight = demoFlightInformation();
 		return flight;
 	}
 

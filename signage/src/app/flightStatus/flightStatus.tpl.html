@@ -1,6 +1,6 @@
 <div class="row flight-s" style="height:100%">
 	<div class="col-xs-7 flight-status-details-section" style="height:100%;">
-	    <div class="row" style="height:20%;">
+	    <div class="row" style="height:30%;">
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">FLIGHT</span> </br>
 				<span class="flight-status-details-label1">{{model.flight.airlineCode+' '+model.flight.flightNo}}</span> </br>
@@ -8,9 +8,9 @@
 			</div>
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">BOARDING TIME</span> </br>
-				<span class="flight-status-details-label1">20:35</span> </br> <br>
+				<span class="flight-status-details-label1">{{model.flight.boarding | date:'h:mm'}}</span> </br> <br>
 				<span class="flight-status-details-label3">CURRENT TIME</span></br>
-				<span class="flight-status-details-label1">20:40</span>
+				<span class="flight-status-details-label1">{{model.flight.currentTime | date:'h:mm'}}</span>
 			</div>
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">GATE</span> </br>

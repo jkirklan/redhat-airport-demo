@@ -13,23 +13,24 @@
 
     // As you add controllers to a module and they grow in size, feel free to place them in their own files.
     //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    module.controller('HomeController', function ($http, $interval, flightStatusService) {
+    module.controller('HomeController', function ($http, $interval, flightStatusService, $state) {
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
         model.currentPage = 0;
-        model.maxPageSize = 5;
+        model.maxPageSize = 6;
 
         init();
 
         function init() {
             // A definitive place to put everything that needs to run when the controller starts. Avoid
             //  writing any code outside of this function that executes immediately.
-            flightStatusService.flightStatus()
+            flightStatusService.flightList()
             .then(function(result) {
                 model.flights = result;
                 model.paginatedFlights = model.flights.splice(0,model.maxPageSize);
          //       model.paginateInterval = $interval(paginateInterval,3000);
+                model.checkSignStatusInterval = $interval(checkSignStatus, 3000);
             });
         }
 
@@ -42,6 +43,15 @@
                     model.currentPage = 0 ;
                 }
             }
+        }
+
+        function checkSignStatus(){
+            flightStatusService.updateSign()
+            .then(function(result){
+                if (result.demoSign >0){
+                    $state.go('flightStatus');
+                }
+            });
         }
 
     });

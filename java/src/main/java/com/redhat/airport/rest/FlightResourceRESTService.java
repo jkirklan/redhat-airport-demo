@@ -52,23 +52,29 @@ public class FlightResourceRESTService {
 		if (demoMode > 0) {
 			switch (demoMode) {
 			case 1:
-				flight.setFlightStatus("Delayed");
+				flight.setFlightStatus("On time");
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Delayed Push Notification...");
-				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
+				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
 				break;
 			case 2:
 				flight.setFlightStatus("Delayed");
+				flight.setStartingGate(5);
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Changed Push Notification...");
-				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
+				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
 				break;
 			case 3:
 				flight.setFlightStatus("On Time");
 				logger.info("Firing event for On time Push Notification...");
 				event.fire("Your flight is boarding in 10 minutes. Please make your way to the gate");
+				break;
+			case 4:
+				flight.setFlightStatus("Delayed");
+				coupon = cProducer.demoCouponOnDelay();
+				flight.setCoupon(coupon);
 				break;
 			default:
 				logger.error("Invalid Demo number");

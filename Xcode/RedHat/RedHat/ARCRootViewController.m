@@ -17,6 +17,8 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
 
 - (void)viewControllerDidReceiveRemoteNotification:(NSNotification *)notification;
 
+- (void)alertBeaconFound:(CLBeacon *)beacon;
+
 @end
 
 
@@ -34,12 +36,20 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                                                  name:@"ADMIN_RELOAD_REQUEST"
                                                object:nil];
 
+    //Set up beacons...
+    self.estimoteBeaconManager = [[ARTEstimoteBeaconManager alloc] init];
+    [self.estimoteBeaconManager setDelegate:self];
+    
+    [self.estimoteBeaconManager startSearchingForBeacons];
+    
+/*
     self.beaconManager = [[ARTNativeBeaconManager alloc] init];
     [self.beaconManager setDelegate:self];
-    
+
     //Only uncomment ONE of these, depending on if you want the device to be a transmitter beacon or not:
     //[self.beaconManager configureDeviceAsBeacon];
     [self.beaconManager startSearchingForBeacons];
+*/
     
     //Listen for Remote notifications...
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -137,29 +147,52 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
     [self.rootWebViewController loadWebviewWithURL:pageURL];
     
     //Restart the search for beacons...
-    [self.beaconManager startSearchingForBeacons];
+    [self.estimoteBeaconManager startSearchingForBeacons];
 }
 
 
-#pragma mark - ATBeaconManagerDelegate
+#pragma mark - Beacon handling
+- (void)alertBeaconFound:(CLBeacon *)beacon
+{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Beacon Found!"
+                                                                       message:@"Please look at the screen for flight information."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * action) {}];
+        
+        [alert addAction:defaultAction];
+        [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+#pragma mark - ARTEstimoteBeaconDelegate
+- (void)didFindEstimoteBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
+{
+    if ([beacons lastObject])
+    {
+        [beacons enumerateObjectsUsingBlock:^(CLBeacon *beacon, NSUInteger idx, BOOL *stop)
+        {
+            if (beacon.proximity == CLProximityImmediate) {
+                [self.estimoteBeaconManager stopSearchingForBeacons];
+                [self alertBeaconFound:beacon];
+            }
+        }];
+    }
+}
+
+
+- (void)didFailFindingEstimoteBeaconsForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
+    NSLog(@"didFailFindingEstimoteBeaconsForRegion: %@", [error description]);
+}
+
+
+#pragma mark - ARTNativeBeaconDelegate
+/*
 - (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
     if ([beacons lastObject]) {
-        [beacons enumerateObjectsUsingBlock:^(CLBeacon *beacon, NSUInteger idx, BOOL *stop) {
-            if (beacon.proximity == CLProximityImmediate) {
-                [self.beaconManager stopSearchingForBeacons];
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Beacon Found!"
-                                                                               message:@"Please look at the screen for flight information."
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-        }];
+        [self alertBeaconsFound:beacons];
     }
 }
 
@@ -187,6 +220,7 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
+ */
 
 
 #pragma mark - ARTWebViewDelegate

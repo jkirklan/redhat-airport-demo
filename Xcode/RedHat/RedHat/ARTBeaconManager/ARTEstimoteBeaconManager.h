@@ -14,7 +14,7 @@
 #import <EstimoteSDK/EstimoteSDK.h>
 
 
-@protocol ARTNativeBeaconDelegate <NSObject>
+@protocol ARTEstimoteBeaconDelegate <NSObject>
 
 - (void)didFindEstimoteBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
 
@@ -23,9 +23,9 @@
 @end
 
 
-@interface ARTEsimoteBeaconManager : NSObject <ESTBeaconManagerDelegate, ESTUtilityManagerDelegate>
+@interface ARTEstimoteBeaconManager : NSObject <ESTBeaconManagerDelegate, ESTUtilityManagerDelegate>
 
-@property (assign, nonatomic) id <ARTNativeBeaconDelegate> delegate;
+@property (assign, nonatomic) id <ARTEstimoteBeaconDelegate> delegate;
 
 /**
  */
@@ -34,5 +34,10 @@
 /**
  */
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+
+
+- (void)startSearchingForBeacons;
+
+- (void)stopSearchingForBeacons;
 
 @end

@@ -1,6 +1,6 @@
-<div class="row flight-s" style="height:100%">
-	<div class="col-xs-7 flight-status-details-section" style="height:100%;">
-	    <div class="row" style="height:20%;">
+<div class="row fill-screen">
+	<div class="col-xs-7 flight-status-details-section">
+	    <div class="row" style="height:30%;">
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">FLIGHT</span> </br>
 				<span class="flight-status-details-label1">{{model.flight.airlineCode+' '+model.flight.flightNo}}</span> </br>
@@ -8,7 +8,9 @@
 			</div>
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">BOARDING TIME</span> </br>
-				<span class="flight-status-details-label1">20:35</span>
+				<span class="flight-status-details-label1">{{model.flight.boarding | date:'h:mm'}}</span> </br> <br>
+				<span class="flight-status-details-label3">CURRENT TIME</span></br>
+				<span class="flight-status-details-label1">{{model.flight.currentTime | date:'h:mm'}}</span>
 			</div>
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">GATE</span> </br>
@@ -21,27 +23,26 @@
 			</div>
 	    </div>
 	    <div class="row">
-	    	<div class="col-xs-10">
+	    	<div class="col-xs-11">
 				<span class="flight-status-danger-label">{{model.signHeader}}</span></br>
 				<span class="flight-status-late-description">{{model.signMessage}}</span>
 	    	</div>
 	    </div>
-	    <div class="row">
-	    	<div class="col-xs-8">
-				<span class="flight-status-details-label3">Approximate Time to Gate</span></br>
-				<span class="flight-status-danger-label">5 minutes</span>
-	    	</div>
-	    </div>
-	    <div class="row">
-	    	<div class="col-xs-8">
-				<span class="flight-status-details-label3">CURRENT TIME</span></br>
-				<span class="flight-status-details-label1">20:40</span>
-	    	</div>
-	    </div>
-	</div>
+	</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 	<div class="col-xs-5" style="height:100%">
-		<div class="text-center home-model-container" style="height:100%">
-			<img src="assets/airport_model.png">
+		<div id="outer" class="greenBorder">
+			<div id="middle">
+				<div id="inner" class="greenBorder">
+					<div style="display:block; float:left; height:100px; font-size: 2.2vw;">
+						From here, Go Right<br>
+						<b>APPROX 3 MIN WALK</b><br>
+					</div>
+					<div style="display:block; float:right; height:100px;">
+						<img src="assets/green_rectangle.png" style="max-height:100px;">
+					</div>
+					<img src="assets/airport_model_no_directions.png" style="max-width:100%;">
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

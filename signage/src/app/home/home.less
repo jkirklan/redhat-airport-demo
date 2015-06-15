@@ -1,5 +1,15 @@
 @airport-model-vertical-padding: 40px;
 
+#outer {height: 100%; overflow: hidden; position: relative; width: 100%; background-color: black;}
+#outer[id] {display: table; position: static;}
+
+#middle {position: absolute; top: 50%; width: 100%; text-align: center;} /* for explorer only*/
+#middle[id] {display: table-cell; vertical-align: middle; position: static;}
+
+#inner {position: relative; top: -50%; text-align: left;} /* for explorer only */
+#inner {width: 80%; margin-left: auto; margin-right: auto;} /* for all browsers*/
+
+
 .home-model-container{
 	background-color: black;
 

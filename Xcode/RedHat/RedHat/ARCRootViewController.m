@@ -34,7 +34,7 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                                                  name:@"ADMIN_RELOAD_REQUEST"
                                                object:nil];
 
-    self.beaconManager = [[ATDemoBeaconManager alloc] init];
+    self.beaconManager = [[ARTNativeBeaconManager alloc] init];
     [self.beaconManager setDelegate:self];
     
 //    [self.beaconManager configureDeviceAsBeacon];

@@ -6,11 +6,16 @@
 //  Copyright (c) 2014 Architech. All rights reserved.
 //
 
+
+/**
+ @class A manager to be used to set up or monitor any native iOS beacons, set up on any iOS devices.
+ */
+
 @import CoreLocation;
 @import CoreBluetooth;
 
 
-@protocol ATDemoBeaconDelegate <NSObject>
+@protocol ARTNativeBeaconDelegate <NSObject>
 
 - (void)didFindiOSBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region;
 
@@ -27,15 +32,14 @@
 /**
  @class The intention is for this to manage both iOS AND Estimote beacons.
  */
-@interface ATDemoBeaconManager : NSObject <CLLocationManagerDelegate, CBPeripheralManagerDelegate> {
+@interface ARTNativeBeaconManager : NSObject <CLLocationManagerDelegate, CBPeripheralManagerDelegate> {
 }
 
-@property (nonatomic, assign) id <ATDemoBeaconDelegate> delegate;
+@property (nonatomic, assign) id <ARTNativeBeaconDelegate> delegate;
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
 @property (strong, nonatomic) CBPeripheralManager *peripheralManager;
-
 
 /**
  @return YES if the device has been configured to be a beacon transmitter.

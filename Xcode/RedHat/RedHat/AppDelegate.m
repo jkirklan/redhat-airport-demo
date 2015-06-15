@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AeroGearPush.h"
+#import "ARCRootViewController.h"
 
 
 @interface AppDelegate ()
@@ -53,8 +54,20 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     //Called when the user opens the app via the notification...
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSString *flightStatus = [[defaults objectForKey:@"NOTIFICATION_TYPE"] stringValue];
+    static NSString *notificationType = @"NOTIFICATION_TYPE";
+    
+    if ([userInfo count] > 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ARCFlightStatus status = [(NSNumber *)[userInfo objectForKey:notificationType] floatValue];
+        
+        [defaults setObject:@(status)
+                     forKey:notificationType];
+        [defaults synchronize];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ARCApplicationDidReceiveRemoteNotification
+                                                        object:self
+                                                      userInfo:userInfo];
     
     completionHandler(UIBackgroundFetchResultNoData);
 }

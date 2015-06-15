@@ -8,10 +8,14 @@
 
 #import "ARCRootViewController.h"
 
+NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDidReceiveRemoteNotification";
+
 
 @interface ARCRootViewController ()
 
 - (void)adminNotificationReceived:(NSNotification *)notification;
+
+- (void)viewControllerDidReceiveRemoteNotification:(NSNotification *)notification;
 
 @end
 
@@ -21,6 +25,7 @@
 
 - (void)viewDidLoad
 {
+    //Load order 2.
     [super viewDidLoad];
     [self.navigationController setDelegate:self];
     
@@ -33,13 +38,25 @@
     [self.beaconManager setDelegate:self];
     
 //    [self.beaconManager configureDeviceAsBeacon];
-
     [self.beaconManager startSearchingForBeacons];
+    
+    //Listen for Remote notifications...
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(viewControllerDidReceiveRemoteNotification:)
+                                                 name:ARCApplicationDidReceiveRemoteNotification
+                                               object:nil];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    //Load order 3.
+    [super viewDidAppear:animated];
 }
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //Load order 1.
     if ([[segue identifier] isEqualToString:@"WebViewSegue"]) {
         self.rootWebViewController = (ARTWebViewController *)[segue destinationViewController];
         [self.rootWebViewController setDelegate:self];
@@ -51,6 +68,42 @@
     [super didReceiveMemoryWarning];
 }
 
+
+- (NSString *)paramaterForFlightStatus:(ARCFlightStatus)flightStatus
+{
+    NSString *parameter;
+    
+    switch (flightStatus) {
+        case ARCFlightStatusDelayed:
+            parameter = @"delayed";
+            break;
+            
+        case ARCFlightStatusLate:
+            //No change in display content as of yet!
+            parameter = @"ontime";
+            break;
+            
+        case ARCFlightStatusOnTime:
+        default:
+            parameter = @"ontime";
+            break;
+    }
+    return parameter;
+}
+
+
+#pragma mark - NSNotifications
+- (void)viewControllerDidReceiveRemoteNotification:(NSNotification *)notification
+{
+    if ([notification userInfo]) {
+        ARCFlightStatus status = [(NSNumber *)[[notification userInfo] objectForKey:@"NOTIFICATION_TYPE"] floatValue];
+        
+        NSMutableString *webURL = [NSMutableString stringWithString:[NSString stringWithFormat:@"http://%@/index.html?flight=", ROOT_URL]];
+        [webURL appendString:[self paramaterForFlightStatus:status]];
+
+        [self.rootWebViewController loadWebviewWithURL:webURL];
+    }
+}
 
 
 - (void)adminNotificationReceived:(NSNotification *)notification
@@ -70,9 +123,13 @@
             break;
             
         case 0:
-        default:
-            [pageURL appendString:@"/index.html"];
-            //[pageURL appendString:@"/index.html?flight=ontime"];
+        default: {
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            ARCFlightStatus statusInt = [(NSNumber *)[userDefaults objectForKey:@"NOTIFICATION_TYPE"] floatValue];
+            
+            NSString *status = [self paramaterForFlightStatus:statusInt];
+            [pageURL appendFormat:@"/index.html?flight=%@", status];
+        }
             break;
     }
     

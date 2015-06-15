@@ -57,30 +57,24 @@
 {
     //Webview reload...
     NSMutableString *pageURL = [NSMutableString stringWithString:[NSString stringWithFormat:@"http://%@", ROOT_URL]];
+        
+    NSNumber *menuItemTapped = [[notification userInfo] objectForKey:@"MENU_ITEM_TAPPED"];
     
-    /**
-     Not for production code. Remove property and functionality after demo purposes!
-     */
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSUInteger urlRefreshNumber = [[defaults objectForKey:@"kvoURLRefreshNumber"] integerValue];
-    NSLog(@"urlRefreshNumber == %ld", urlRefreshNumber);
-    
-    switch (urlRefreshNumber) {
+    switch ([menuItemTapped integerValue]) {
         case 1:
-            [pageURL appendString:@"/index.html?flight=delayed"];
-            urlRefreshNumber = 0;
+            [pageURL appendString:@"/coupon-list.html"];
+            break;
+            
+        case 2:
+            [pageURL appendString:@"/admin.html"];
             break;
             
         case 0:
         default:
-            [pageURL appendString:@"/index.html?flight=ontime"];
-            urlRefreshNumber = 1;
+            [pageURL appendString:@"/index.html"];
+            //[pageURL appendString:@"/index.html?flight=ontime"];
             break;
     }
-    
-    [defaults setObject:[NSString stringWithFormat:@"%ld", urlRefreshNumber]
-                 forKey:@"kvoURLRefreshNumber"];
-    [defaults synchronize];
     
     [self.rootWebViewController loadWebviewWithURL:pageURL];
     

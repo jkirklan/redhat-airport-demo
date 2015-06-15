@@ -50,6 +50,22 @@
 
 
 #pragma mark - Push Notifications
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    //Called when the user opens the app via the notification...
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    NSString *flightStatus = [[defaults objectForKey:@"NOTIFICATION_TYPE"] stringValue];
+    
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)())completionHandler {
+    completionHandler();
+}
+
+
 - (void)registerPushNotifications
 {
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge |

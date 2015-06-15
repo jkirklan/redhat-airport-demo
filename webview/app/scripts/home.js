@@ -51,15 +51,9 @@ var home = (function($, window, document) {
       };
 
       // Set ajax call to receive delayed status
-      if (this.getQueryString('flight') === 'delayed') {
-        this.getFlightData(4).done(function(data) {
-          that.flightData = data;
-          that.updateView();
-        }).fail(function(jqXHR, textStatus, error) {
-          that.flightData = backupDelayedData;
-          that.updateView();
-          console.log(error);
-        });
+      if (localStorage.getItem('delayed') === 'true') {
+        this.flightData = JSON.parse(localStorage.getItem('flightData'));
+        this.updateView();
       }
       // Normal view
       else {
@@ -76,9 +70,9 @@ var home = (function($, window, document) {
       that.createCouponStorage();
 
       // Demo modes
-      // if (localStorage.getItem('delayedMode') === 'true') {
-      //   this.setDemoMode(2, 'delayedMode', 'delayed');
-      // }
+      if (localStorage.getItem('delayedMode') === 'true') {
+        this.setDemoMode(2, 'delayedMode', 'delayed');
+      }
 
     },
     setDemoMode: function(id, mode, status) {

@@ -37,7 +37,8 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
     self.beaconManager = [[ARTNativeBeaconManager alloc] init];
     [self.beaconManager setDelegate:self];
     
-//    [self.beaconManager configureDeviceAsBeacon];
+    //Only uncomment ONE of these, depending on if you want the device to be a transmitter beacon or not:
+    //[self.beaconManager configureDeviceAsBeacon];
     [self.beaconManager startSearchingForBeacons];
     
     //Listen for Remote notifications...

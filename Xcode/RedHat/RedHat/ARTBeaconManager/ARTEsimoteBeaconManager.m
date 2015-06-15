@@ -6,37 +6,28 @@
 //  Copyright (c) 2015 Architech. All rights reserved.
 //
 
-#import "ARTEsimoteBeaconViewController.h"
+#import "ARTEsimoteBeaconManager.h"
 
-@interface ARTEsimoteBeaconViewController ()
+@interface ARTEsimoteBeaconManager ()
 
 @end
 
 
-@implementation ARTEsimoteBeaconViewController
+@implementation ARTEsimoteBeaconManager
 
 
-- (id)initWithCoder:(NSCoder *)aDecoder
+- (id)init
 {
-    self = [super initWithCoder:aDecoder];
+    self = [super init];
     
     if (self) {
+        [self beaconManager];
     }
     return self;
 }
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];    
-    [self beaconManager];
-}
-
-
+#pragma mark - Getters
 - (ESTBeaconManager *)beaconManager
 {
     if (_beaconManager == nil) {

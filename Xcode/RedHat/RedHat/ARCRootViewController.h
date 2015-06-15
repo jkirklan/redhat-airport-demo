@@ -10,6 +10,7 @@
 #import "ARTWebViewController.h"
 #import "ARTNativeBeaconManager.h"
 #import "ARTEstimoteBeaconManager.h"
+#import "ARCNetworkManager.h"
 
 extern NSString *const ARCApplicationDidReceiveRemoteNotification;
 
@@ -28,6 +29,8 @@ typedef enum ARCFlightStatus {
 @property (nonatomic, strong) ARTNativeBeaconManager *beaconManager;
 
 @property (nonatomic, strong) ARTEstimoteBeaconManager *estimoteBeaconManager;
+
+@property (nonatomic, strong) ARCNetworkManager *networkManager;
 
 @property (nonatomic, strong) ARTWebViewController *rootWebViewController;
 

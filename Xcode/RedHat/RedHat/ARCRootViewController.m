@@ -75,8 +75,13 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - Getters
+- (ARCNetworkManager *)networkManager
+{
+    if (_networkManager == nil) {
+        _networkManager = [[ARCNetworkManager alloc] init];
+    }
+    return _networkManager;
 }
 
 

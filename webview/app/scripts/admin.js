@@ -61,9 +61,9 @@ var admin = (function($, window, document) {
           data: { showDetails: localStorage.getItem('demoMode') },
           method: 'POST'
         }).done(function() {
-          alert('Beacon on time started');
+          alert('Beacon started');
         }).fail(function(jqXHR, textStatus, error) {
-          alert('Beacon on time failed');
+          alert('Beacon start failed');
           console.log(error);
         });
       });

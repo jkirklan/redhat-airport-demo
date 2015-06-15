@@ -27,6 +27,9 @@ public class DigitalSignageRESTService {
 	@Inject
 	private FlightInformationService flightService;
 
+	/*
+	 * API to receive demo scenario to change sign
+	 */
 	@POST
 	public Response updateDigitalSignage(@FormParam("showDetails") int updateSign) {
 
@@ -39,6 +42,9 @@ public class DigitalSignageRESTService {
 				.build();
 	}
 
+	/*
+	 * API to update sign
+	 */
 	@GET
 	@Path("/updateSign")
 	@Produces("application/json")

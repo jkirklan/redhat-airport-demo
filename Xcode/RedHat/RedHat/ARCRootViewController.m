@@ -129,8 +129,22 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             [pageURL appendString:@"/coupon-list.html"];
             break;
             
-        case 2:
-            [pageURL appendString:@"/admin.html"];
+        case 2: {
+            //Reset defaults:
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            
+            ARCFlightStatus statusInt = ARCFlightStatusOnTime;
+            [userDefaults setObject:[NSNumber numberWithInt:statusInt]
+                         forKey:@"NOTIFICATION_TYPE"];
+            [userDefaults synchronize];
+            
+            //Reload page:
+//            NSString *status = [self paramaterForFlightStatus:statusInt];
+//            [pageURL appendFormat:@"/index.html?flight=%@", status];
+            
+            //Re-monitor beacons...
+            [self.estimoteBeaconManager startSearchingForBeacons];
+        }
             break;
             
         case 0:
@@ -145,9 +159,6 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
     }
     
     [self.rootWebViewController loadWebviewWithURL:pageURL];
-    
-    //Restart the search for beacons...
-    [self.estimoteBeaconManager startSearchingForBeacons];
 }
 
 

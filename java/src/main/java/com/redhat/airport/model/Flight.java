@@ -1,6 +1,5 @@
 package com.redhat.airport.model;
 
-
 public class Flight {
 	private int flightNo;
 	private String airlineCode;
@@ -14,6 +13,7 @@ public class Flight {
 	private String flightStatus;
 	private int startingGate;
 	private int destinationGate;
+	private String currentTime;
 	private Coupon coupon;
 
 	public int getFlightNo() {
@@ -110,6 +110,14 @@ public class Flight {
 
 	public void setDestinationGate(int destinationGate) {
 		this.destinationGate = destinationGate;
+	}
+
+	public String getCurrentTime() {
+		return currentTime;
+	}
+
+	public void setCurrentTime(String currentTime) {
+		this.currentTime = currentTime;
 	}
 
 	public Coupon getCoupon() {

@@ -29,11 +29,15 @@ html.home-page {
     background: $menu-box-bg-color;
     color: $font-color-secondary;
     border-radius: 2px;
-    padding: 5px;
-    margin: 5px 0 0 0;
+    padding: 10px;
+    margin: 2.8vw 0 0 0;
     -webkit-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
     box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.5);
+    min-height: 32vw;
+    @media only screen and (min-device-width : 320px) and (max-device-width : 320px) {
+      margin: 2.5vw 0 0 0;
+    }
   }
   .current-flight {
     position: relative;
@@ -78,7 +82,7 @@ html.home-page {
       position: absolute;
       color: $font-color-primary-over-bg;
       top: 10px;
-      right: 5px;
+      right: 0;
       padding: 10px 0;
       width: 25vw;
       text-align: center;
@@ -105,13 +109,17 @@ html.home-page {
     }
   }
   .flight-menu-col-3 {
-    width: 33.33%;
-    padding: 0 6px;
+    width: 28.8vw;
+    padding: 0;
+    margin: 0 2.8vw;
+    @media only screen and (min-device-width : 320px) and (max-device-width : 320px) {
+      margin: 0 2.5vw;
+    }
     &:first-child {
-      padding: 0 0 0 15px;
+      margin: 0 0 0 4vw;
     }
     &:last-child {
-      padding: 0 15px 0 0;
+      margin: 0 4vw 0 0;
     }
   }
   .flight-count {
@@ -119,8 +127,14 @@ html.home-page {
     background: $color-primary;
     color: $font-color-primary-over-bg;
     border-radius: 50%;
-    padding: 0 5px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    padding: 0.5vw 0 0 0;
     vertical-align: middle;
+    @media only screen and (min-device-width : 320px) and (max-device-width : 320px) {
+      padding: 1vw 0 0 0;
+    }
   }
   .flight-menu-icon {
     margin: 1vw 0 0 0;
@@ -140,7 +154,7 @@ html.home-page {
   .flight-menu-heading {
     color: $font-color-primary;
     text-transform: none;
-    font-size: 8vw;
+    font-size: 5.7vw;
     margin: 3vw 0;
   }
 }

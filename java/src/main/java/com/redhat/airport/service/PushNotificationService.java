@@ -17,10 +17,12 @@ public class PushNotificationService {
 
 	public void sendFlightNotification(@Observes String message) {
 
-		JavaSender sender = new SenderClient.Builder("https://aerogear-fguanlao.rhcloud.com/ag-push/").build();
+		// JavaSender sender = new
+		// SenderClient.Builder("https://aerogear-fguanlao.rhcloud.com/ag-push/").build();
+		JavaSender sender = new SenderClient.Builder("https://jbossunifiedpush-fguanlao.rhcloud.com/ag-push").build();
 		logger.info("Sending push notification...");
-		UnifiedMessage unifiedMessage = new UnifiedMessage.Builder().pushApplicationId("3a99104b-cc88-4744-9004-d2341d30907d")
-				.masterSecret("640f3bd2-3d63-48fb-874a-452b2f7ffdf7").alert(message).build();
+		UnifiedMessage unifiedMessage = new UnifiedMessage.Builder().pushApplicationId("31ab23f8-e430-4956-adaa-b58ee6cf6c1a")
+				.masterSecret("c0862d46-9cb0-4bdd-81d2-15e3f5c860eb").alert(message).build();
 
 		sender.send(unifiedMessage, new MessageResponseCallback() {
 			@Override

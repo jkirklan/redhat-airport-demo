@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
+@property (nonatomic, strong) CLBeaconRegion *beaconRegion;
+
 @end
 
 
@@ -25,6 +27,8 @@
     if (self) {
         self.locationManager = [[CLLocationManager alloc] init];
         [self.locationManager setDelegate:self];
+        
+        [self.locationManager requestWhenInUseAuthorization];
     }
     return self;
 }
@@ -44,14 +48,28 @@
 {
     NSUUID *proximityUUID = [[NSUUID alloc] initWithUUIDString:self.uuid];
     
-    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID
-                                                                      identifier:identifier];
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:proximityUUID
+                                                           identifier:identifier];
     
-    [self.locationManager startMonitoringForRegion:beaconRegion];
+    [self locationManager:self.locationManager didStartMonitoringForRegion:self.beaconRegion];
+}
+
+
+- (void)stopMonitoringBeaconRegion
+{
+    if (self.beaconRegion) {
+        [self.locationManager stopMonitoringForRegion:self.beaconRegion];
+    }
 }
 
 
 #pragma mark - CLLocationManagerDelegate
+- (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    //Hack to search for iOS beacons!
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
     NSLog(@"Beacon region entered!");
     
@@ -68,7 +86,7 @@
         didRangeBeacons:(NSArray *)beacons
                inRegion:(CLBeaconRegion *)region
 {
-    NSLog(@"didRangeBeacons");
+    NSLog(@"didRangeBeacons: %@", beacons);
 }
 
 

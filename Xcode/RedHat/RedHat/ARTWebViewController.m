@@ -24,11 +24,13 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 {
     [super viewDidLoad];
     
-    if (self.urlOnLoad == nil) {
-        [self loadWebviewWithURL:[NSString stringWithFormat:@"http://%@", ROOT_URL]];
+    if (self.urlToLoad == nil) {
+        NSString *urlString = [NSString stringWithFormat:@"http://%@/", ROOT_URL];
+        [self loadWebviewWithURL:urlString];
+        self.urlToLoad = [NSURL URLWithString:urlString];
     }
     else {
-        [self loadWebviewWithURL:[self.urlOnLoad absoluteString]];
+        [self loadWebviewWithURL:[self.urlToLoad absoluteString]];
     }
 }
 
@@ -41,15 +43,19 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
 
 - (void)loadWebviewWithURL:(NSString *)urlString
 {
+    NSURLRequest *urlRequest = nil;
+    [self setUrlToLoad:[NSURL URLWithString:urlString]];
+    [self.webView stopLoading];
+    
     if (urlString == nil) {
         //Bundle resource directories are flat to files must have UNIQUE names!
         NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
         
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:htmlPath];
+        urlRequest = [NSURLRequest requestWithURL:htmlPath];
         [self.webView loadRequest:urlRequest];
     }
     else {
-        NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
         [self.webView loadRequest:urlRequest];
     }
 }
@@ -62,21 +68,25 @@ NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
     BOOL shouldLoad = NO;
     NSURL *rootURL = [NSURL URLWithString:ROOT_URL];
     
-    NSString * cleanHost = [[request.URL host] stringByReplacingOccurrencesOfString:@"www." withString:@""];
+    NSString *cleanHost = [[request.URL host] stringByReplacingOccurrencesOfString:@"www." withString:@""];
     NSURL *hostURL = [NSURL URLWithString:cleanHost];
     
-    if ( ([rootURL isEqual:hostURL]) ||
-        (navigationType == UIWebViewNavigationTypeLinkClicked) ) {
+    if ([rootURL isEqual:hostURL]) {
         shouldLoad = YES;
         
         //Notify delegate...
-        if ([[request.URL path] length] > 1)
+        if ( ([[request.URL path] length] > 1) &&
+             (navigationType == UIWebViewNavigationTypeLinkClicked) )
         {
             if ([self.delegate respondsToSelector:@selector(webViewIsLoading:forPageRequest:)]) {
                 [self.delegate webViewIsLoading:webView
                                  forPageRequest:request];
             }
         }
+    }
+    
+    if ([[[request URL] description] isEqualToString:[self.urlToLoad description]] == NO) {
+        shouldLoad = NO;
     }
     return shouldLoad;
 }

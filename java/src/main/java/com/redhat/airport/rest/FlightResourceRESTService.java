@@ -1,6 +1,9 @@
 package com.redhat.airport.rest;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -37,7 +40,7 @@ public class FlightResourceRESTService {
 	private CouponProducer cProducer;
 
 	@Inject
-	Event<String> event;
+	Event<Integer> event;
 
 	/*
 	 * API for Mobile App (Demo Mode)
@@ -49,6 +52,9 @@ public class FlightResourceRESTService {
 		Flight flight = new Flight();
 		flight = flightService.getFlightInfo(flightNo);
 		Coupon coupon;
+		/*
+		 * Only used during demo
+		 */
 		if (demoMode > 0) {
 			switch (demoMode) {
 			case 1:
@@ -56,20 +62,34 @@ public class FlightResourceRESTService {
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Delayed Push Notification...");
-				event.fire("You are late for your flight. Your boarding gate staff have been notified that you are on your way");
+				event.fire(demoMode);
 				break;
 			case 2:
 				flight.setFlightStatus("Delayed");
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+				Calendar c = Calendar.getInstance();
+				try {
+					c.setTime(sdf.parse(flight.getDeparture()));
+					c.add(Calendar.MINUTE, 20);
+					flight.setDeparture(sdf.format(c.getTime()));
+				} catch (ParseException e) {
+					logger.error("Error parsing time.");
+				}
 				flight.setStartingGate(5);
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				logger.info("Firing event for Changed Push Notification...");
-				event.fire("Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain");
+				event.fire(demoMode);
 				break;
 			case 3:
 				flight.setFlightStatus("On Time");
 				logger.info("Firing event for On time Push Notification...");
-				event.fire("Your flight is boarding in 10 minutes. Please make your way to the gate");
+				event.fire(demoMode);
+				break;
+			case 4:
+				flight.setFlightStatus("Delayed");
+				coupon = cProducer.demoCouponOnDelay();
+				flight.setCoupon(coupon);
 				break;
 			default:
 				logger.error("Invalid Demo number");

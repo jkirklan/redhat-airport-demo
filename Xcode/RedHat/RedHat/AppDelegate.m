@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AeroGearPush.h"
+#import "ARCRootViewController.h"
 
 
 @interface AppDelegate ()
@@ -50,6 +51,34 @@
 
 
 #pragma mark - Push Notifications
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    //Called when the user opens the app via the notification...
+    static NSString *notificationType = @"NOTIFICATION_TYPE";
+    
+    if ([userInfo count] > 0) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        ARCFlightStatus status = [(NSNumber *)[userInfo objectForKey:notificationType] floatValue];
+        
+        [defaults setObject:@(status)
+                     forKey:notificationType];
+        [defaults synchronize];
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ARCApplicationDidReceiveRemoteNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+    
+    completionHandler(UIBackgroundFetchResultNoData);
+}
+
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
+  completionHandler:(void (^)())completionHandler {
+    completionHandler();
+}
+
+
 - (void)registerPushNotifications
 {
     UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge |
@@ -66,13 +95,13 @@
 {
     NSLog(@"Notifications app token: %@", deviceToken);
     AGDeviceRegistration *registration = [[AGDeviceRegistration alloc] initWithServerURL:
-                                          [NSURL URLWithString:@"https://aerogear-fguanlao.rhcloud.com/ag-push/"]];
+                                          [NSURL URLWithString:@"https://jbossunifiedpush-fguanlao.rhcloud.com/ag-push/"]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setDeviceToken:deviceToken];
         
-        [clientInfo setVariantID:@"fe960d53-0e88-474c-bbee-7072af27d665"];
-        [clientInfo setVariantSecret:@"5c6a99a8-6291-4a37-b314-c80bf35b385e"];
+        [clientInfo setVariantID:@"4678691c-3aec-4899-8a32-7f5d35e3ef56"];
+        [clientInfo setVariantSecret:@"3ff3722e-ce90-4627-93f1-81c69d6e4209"];
         
         //Device info...
         UIDevice *currentDevice = [UIDevice currentDevice];

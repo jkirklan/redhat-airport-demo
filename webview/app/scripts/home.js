@@ -61,6 +61,10 @@ var home = (function($, window, document) {
           console.log(error);
         });
       }
+      else if (localStorage.getItem('delayed') === 'true') {
+        this.flightData = JSON.parse(localStorage.getItem('flightData'));
+        this.updateView();
+      }
       // Normal view
       else {
         this.getFlightData(0).done(function(data) {
@@ -76,9 +80,9 @@ var home = (function($, window, document) {
       that.createCouponStorage();
 
       // Demo modes
-      // if (localStorage.getItem('delayedMode') === 'true') {
-      //   this.setDemoMode(2, 'delayedMode', 'delayed');
-      // }
+      if (localStorage.getItem('delayedMode') === 'true') {
+        this.setDemoMode(2, 'delayedMode', 'delayed');
+      }
 
     },
     setDemoMode: function(id, mode, status) {

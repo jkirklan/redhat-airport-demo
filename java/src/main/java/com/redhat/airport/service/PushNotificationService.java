@@ -15,12 +15,36 @@ public class PushNotificationService {
 
 	private static final Logger logger = LoggerFactory.getLogger(PushNotificationService.class);
 
-	public void sendFlightNotification(@Observes String message) {
+	public void sendFlightNotification(@Observes int demoMode) {
 
-		JavaSender sender = new SenderClient.Builder("https://aerogear-fguanlao.rhcloud.com/ag-push/").build();
+		// JavaSender sender = new
+		// SenderClient.Builder("https://aerogear-fguanlao.rhcloud.com/ag-push/").build();
+		JavaSender sender = new SenderClient.Builder("https://jbossunifiedpush-fguanlao.rhcloud.com/ag-push").build();
+
+		String message;
+
+		/*
+		 * Selecting scenario for demo
+		 */
+		switch (demoMode) {
+		case 1:
+			message = "You are late for your flight. Your boarding gate staff have been notified that you are on your way";
+			break;
+		case 2:
+			message = "Your flight is delayed. We apologize for the inconvenience. Swipe to collect an offer to ease the pain";
+			break;
+		case 3:
+			message = "Your flight is boarding in 10 minutes. Please make your way to the gate";
+			break;
+		default:
+			message = null;
+			logger.error("Invalid Demo type");
+			break;
+		}
+
 		logger.info("Sending push notification...");
-		UnifiedMessage unifiedMessage = new UnifiedMessage.Builder().pushApplicationId("3a99104b-cc88-4744-9004-d2341d30907d")
-				.masterSecret("640f3bd2-3d63-48fb-874a-452b2f7ffdf7").alert(message).build();
+		UnifiedMessage unifiedMessage = new UnifiedMessage.Builder().pushApplicationId("31ab23f8-e430-4956-adaa-b58ee6cf6c1a")
+				.masterSecret("c0862d46-9cb0-4bdd-81d2-15e3f5c860eb").alert(message).attribute("NOTIFICATION_TYPE", Integer.toString(demoMode)).build();
 
 		sender.send(unifiedMessage, new MessageResponseCallback() {
 			@Override

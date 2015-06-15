@@ -55,19 +55,14 @@
 #pragma mark - ARTMenuDisplayDelegate
 - (void)menuDidSelectMenuItem:(NSUInteger)menuItem
 {
-    NSArray *viewControllers;
-    UIStoryboard *menuStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];
     
-    switch (menuItem) {
-        case 1:
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ADMIN_RELOAD_REQUEST" object:self];
-            break;
-            
-        case 0:
-        default:
-            viewControllers = @[[menuStoryboard instantiateViewControllerWithIdentifier:@"RootViewController"]];
-            break;
-    }
+    NSDictionary *userInfo = @{@"MENU_ITEM_TAPPED": (NSNumber *)@(menuItem)};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ADMIN_RELOAD_REQUEST"
+                                                        object:self
+                                                      userInfo:userInfo];
+    NSArray *viewControllers = @[[[self.navigationController viewControllers] objectAtIndex:0]];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self dismissViewControllerAnimated:YES

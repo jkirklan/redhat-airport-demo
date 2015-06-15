@@ -35,9 +35,17 @@ var admin = (function($, window, document) {
     },
     flightDelayedButtonListener: function() {
       $('.flight-delayed-btn').on('click', function() {
-        localStorage.setItem('demoMode', '2');
-        localStorage.setItem('delayedMode', 'true');
-        alert('Delayed flight on');
+        $.ajax({
+          url: 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/flightStatus/70?demoMode=2',
+          method: 'GET'
+        }).done(function() {
+          localStorage.setItem('delayedMode', 'true');
+          localStorage.setItem('demoMode', '2');
+          alert('Delayed flight on');
+        }).fail(function(jqXHR, textStatus, error) {
+          alert('Delayed flight failed');
+          console.log(error);
+        });
       });
     },
     flightLateButtonListener: function() {

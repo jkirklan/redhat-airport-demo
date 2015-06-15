@@ -80,9 +80,9 @@ var home = (function($, window, document) {
       that.createCouponStorage();
 
       // Demo modes
-      if (localStorage.getItem('delayedMode') === 'true') {
-        this.setDemoMode(2, 'delayedMode', 'delayed');
-      }
+      // if (localStorage.getItem('delayedMode') === 'true') {
+      //   this.setDemoMode(2, 'delayedMode', 'delayed');
+      // }
 
     },
     setDemoMode: function(id, mode, status) {

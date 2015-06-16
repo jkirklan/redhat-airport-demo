@@ -88,6 +88,16 @@ public class FlightResourceRESTService {
 				break;
 			case 4:
 				flight.setFlightStatus("Delayed");
+				SimpleDateFormat sdfo = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+				Calendar ca = Calendar.getInstance();
+				try {
+					ca.setTime(sdfo.parse(flight.getDeparture()));
+					ca.add(Calendar.MINUTE, 20);
+					flight.setDeparture(sdfo.format(ca.getTime()));
+				} catch (ParseException e) {
+					logger.error("Error parsing time.");
+				}
+				flight.setStartingGate(5);
 				coupon = cProducer.demoCouponOnDelay();
 				flight.setCoupon(coupon);
 				break;

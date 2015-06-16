@@ -6,6 +6,7 @@ html.admin-page {
     text-align: center;
   }
   .primary-btn {
+    cursor: pointer;
     margin: 3vw 20vw;
     @media (min-width: 992px) {
       font-size: 3vw;

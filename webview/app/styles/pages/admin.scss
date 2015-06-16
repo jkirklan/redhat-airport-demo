@@ -7,5 +7,12 @@ html.admin-page {
   }
   .primary-btn {
     margin: 3vw 20vw;
+    @media (min-width: 992px) {
+      font-size: 3vw;
+      margin: 3vw 28vw;
+    }
+    @media (min-width: 1200px) {
+      font-size: 2vw;
+    }
   }
 }

@@ -32,6 +32,7 @@ public class DigitalSignageRESTService {
 	// @POST
 	// public Response updateDigitalSignage(@FormParam("showDetails") int
 	// updateSign) {
+	@GET
 	@Path("/{showDetails:[0-9]*}")
 	public Response updateDigitalSignage(@PathParam("showDetails") int updateSign) {
 		this.updateSign = updateSign;

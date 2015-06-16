@@ -145,7 +145,13 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             
             //Reset the cache...
             [self.rootWebViewController deleteCache];
-                        
+            
+            //Notify the server...
+            [self.networkManager postBeaconExitedWithMethod:HTTP_METHOD_GET
+                                                completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                                    NSLog(@"networkManager completed! Response: %@", response);
+                                                }];
+            
             //Reload page:
 //            NSString *status = [self paramaterForFlightStatus:statusInt];
 //            [pageURL appendFormat:@"/index.html?flight=%@", status];

@@ -85,6 +85,29 @@ NSString *const HTTP_METHOD_POST    = @"POST";
 }
 
 
+- (void)postBeaconExitedWithMethod:(NSString *)httpMethod completion:(ARCNetworkCompletion)completion
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/%@",
+                                       ROOT_URL,
+                                       @"rest/digitalSignage/0"]];
+    
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:15.0];
+    
+    if ([httpMethod isEqualToString:HTTP_METHOD_GET]) {
+        [self sendGETRequest:urlRequest
+              withCompletion:completion];
+    }
+    else if ([httpMethod isEqualToString:HTTP_METHOD_POST]) {
+        [self sendPOSTRequest:(NSMutableURLRequest *)urlRequest
+               withCompletion:completion];
+    }
+}
+
+
 - (void)sendGETRequest:(NSURLRequest *)urlRequest withCompletion:(ARCNetworkCompletion)completion
 {
     [NSURLConnection sendAsynchronousRequest:urlRequest

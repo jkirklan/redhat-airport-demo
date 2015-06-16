@@ -47,6 +47,7 @@
 - (void)startSearchingForBeacons
 {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self.beaconManager startMonitoringForRegion:self.beaconRegion];
     [self.beaconManager startRangingBeaconsInRegion:self.beaconRegion];
 }
 
@@ -60,9 +61,8 @@
 
 
 #pragma mark - ESTBeaconManagerDelegate
-- (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(CLBeaconRegion *)region
-{
-    //Awakes from the background mode.
+- (void)beaconManager:(ESTBeaconManager *)manager didEnterRegion:(CLBeaconRegion *)region {
+    //This is called when the app awakes from the background...
     NSLog(@"didEnterRegion");
 }
 

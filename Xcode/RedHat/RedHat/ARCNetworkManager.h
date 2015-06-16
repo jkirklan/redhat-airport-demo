@@ -27,4 +27,9 @@ typedef void(^ARCNetworkCompletion)(NSURLResponse *response, NSData *data, NSErr
  */
 - (void)postBeaconFoundWithMethod:(NSString *)httpMethod completion:(ARCNetworkCompletion)completion;
 
+/**
+ @param httpMethod is either HTTP_METHOD_GET or HTTP_METHOD_POST
+ */
+- (void)postBeaconExitedWithMethod:(NSString *)httpMethod completion:(ARCNetworkCompletion)completion;
+
 @end

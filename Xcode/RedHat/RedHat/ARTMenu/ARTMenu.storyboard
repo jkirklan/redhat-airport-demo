@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MTd-gf-AKo">
-                                <rect key="frame" x="0.0" y="48" width="600" height="552"/>
+                                <rect key="frame" x="0.0" y="68" width="600" height="532"/>
                                 <connections>
                                     <segue destination="gze-yo-pR8" kind="embed" identifier="MenuDisplayTableSegue" id="3r3-WS-KPS"/>
                                 </connections>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" red="0.20784313725490197" green="0.0" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="MTd-gf-AKo" firstAttribute="top" secondItem="MbZ-xK-glf" secondAttribute="top" constant="48" id="0FV-Gv-kLe"/>
+                            <constraint firstItem="MTd-gf-AKo" firstAttribute="top" secondItem="MbZ-xK-glf" secondAttribute="top" constant="68" id="0FV-Gv-kLe"/>
                             <constraint firstAttribute="bottom" secondItem="MTd-gf-AKo" secondAttribute="bottom" id="EXH-jO-Mt9"/>
                             <constraint firstAttribute="trailing" secondItem="MTd-gf-AKo" secondAttribute="trailing" id="TPe-J1-hhG"/>
                             <constraint firstItem="MTd-gf-AKo" firstAttribute="leading" secondItem="MbZ-xK-glf" secondAttribute="leading" id="ezT-on-cPu"/>
@@ -41,17 +41,27 @@
         <scene sceneID="DcF-bb-ddA">
             <objects>
                 <tableViewController storyboardIdentifier="MenuDisplayTableViewController" id="gze-yo-pR8" customClass="ARTMenuDisplayTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GZX-mg-xcu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="552"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="GZX-mg-xcu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="532"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.67450980390000004" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="50" id="9Z5-Vg-Bg1">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" textLabel="Yxf-yh-YMA" rowHeight="48" style="IBUITableViewCellStyleDefault" id="9Z5-Vg-Bg1">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Z5-Vg-Bg1" id="geH-S7-dME">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Menu" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yxf-yh-YMA">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>

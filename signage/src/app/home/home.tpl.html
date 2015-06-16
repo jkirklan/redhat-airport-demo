@@ -1,5 +1,5 @@
-<div class="row home-screen" style="height:100%">
-	<div class="col-xs-7" style="height:100%;">
+<div class="row home-screen fill-screen">
+	<div class="col-xs-7 fill-screen">
 	    <table class="table" cellspacing="0" cellpadding="0">
 	      <thead>
 		    <tr>
@@ -15,7 +15,7 @@
 	          <th colspan="15">GATE</th>
 	        </tr>
 			<tr ng-repeat="item in model.paginatedFlights" class="departure-row-bg-color departure-row-animation departure-row"> 
-				<td colspan="40" scope="row" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+				<td colspan="40" scope="row">
 						{{item.destinationCity}}
 				</td>
 				<td colspan="15">{{item.airlineCode+' '+item.flightNo}}</td>
@@ -26,8 +26,8 @@
 	      </tbody>
 	    </table>
 	</div>
-	<div class="col-xs-5" style="height:100%">
-		<div class="text-center home-model-container" style="height:100%">
+	<div class="col-xs-5 fill-screen">
+		<div class="text-center home-model-container fill-screen">
 			<img src="assets/airport_model_no_directions.png">
 		</div>
 	</div>

@@ -192,7 +192,8 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             if (beacon.proximity == CLProximityImmediate) {
                 [self.estimoteBeaconManager stopSearchingForBeacons];
                 
-                [self.networkManager postBeaconFoundWithCompletion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                [self.networkManager postBeaconFoundWithMethod:HTTP_METHOD_GET
+                                                    completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                     NSLog(@"networkManager completed! Response: %@", response);
                     
                     if (connectionError) {

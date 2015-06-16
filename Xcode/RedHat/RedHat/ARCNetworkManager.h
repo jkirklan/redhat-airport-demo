@@ -8,14 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <NetworkExtension/NetworkExtension.h>
 
 extern NSString *const ROOT_URL;
+extern NSString *const HTTP_METHOD_GET;
+extern NSString *const HTTP_METHOD_POST;
+
 
 typedef void(^ARCNetworkCompletion)(NSURLResponse *response, NSData *data, NSError *connectionError);
 
 
-@interface ARCNetworkManager : NSObject
+@interface ARCNetworkManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 
-- (void)postBeaconFoundWithCompletion:(ARCNetworkCompletion)completion;
+@property (nonatomic, strong) NSURLSession *urlSession;
+
+/**
+ @param httpMethod is either HTTP_METHOD_GET or HTTP_METHOD_POST
+ */
+- (void)postBeaconFoundWithMethod:(NSString *)httpMethod completion:(ARCNetworkCompletion)completion;
 
 @end

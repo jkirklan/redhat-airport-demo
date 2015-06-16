@@ -6,13 +6,16 @@ html.admin-page {
     text-align: center;
   }
   .primary-btn {
+    cursor: pointer;
     margin: 3vw 20vw;
+    padding: 40px 10px;
     @media (min-width: 992px) {
       font-size: 3vw;
       margin: 3vw 28vw;
+      padding: 80px 10px;
     }
     @media (min-width: 1200px) {
-      font-size: 2vw;
+      padding: 50px 10px;
     }
   }
 }

@@ -4,14 +4,9 @@ var admin = (function($, window, document) {
 
   var admin = {
     init: function() {
-      this.resetButtonListener();
-
       this.flightOnTimeButtonListener();
       this.flightDelayedButtonListener();
       this.flightLateButtonListener();
-
-      this.startBeaconButtonListener();
-      this.stopBeaconButtonListener();
     },
     resetButtonListener: function() {
       $('.reset-btn').on('click',function() {

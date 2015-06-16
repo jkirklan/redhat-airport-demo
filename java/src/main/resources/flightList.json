@@ -25,7 +25,7 @@
             "startingCity": "Boston",
             "destinationCity": "New York",
             "flightStatus": "Delayed",
-            "startingGate": 1,
+            "startingGate": 7,
             "destinationGate": 1,
             "coupon": null
         },
@@ -40,7 +40,7 @@
             "startingCity": "Boston",
             "destinationCity": "Chicago",
             "flightStatus": "On Time",
-            "startingGate": 1,
+            "startingGate": 4,
             "destinationGate": 1,
             "coupon": null
         },
@@ -55,7 +55,7 @@
             "startingCity": "Boston",
             "destinationCity": "Montreal",
             "flightStatus": "Delayed",
-            "startingGate": 1,
+            "startingGate": 2,
             "destinationGate": 1,
             "coupon": null
         },
@@ -69,8 +69,8 @@
             "destinationAirport": "DCA",
             "startingCity": "Boston",
             "destinationCity": "Washington",
-            "flightStatus": "Changed",
-            "startingGate": 1,
+            "flightStatus": "On Time",
+            "startingGate": 6,
             "destinationGate": 1,
             "coupon": null
         },
@@ -84,8 +84,8 @@
             "destinationAirport": "PHL",
             "startingCity": "Boston",
             "destinationCity": "Philadelphia",
-            "flightStatus": "Changed",
-            "startingGate": 1,
+            "flightStatus": "On Time",
+            "startingGate": 3,
             "destinationGate": 1,
             "coupon": null
         }]

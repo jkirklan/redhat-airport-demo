@@ -1,10 +1,10 @@
-<div class="row fill-screen">
+<div class="fill-screen">
 	<div class="col-xs-7 flight-status-details-section">
-	    <div class="row" style="height:30%;">
+	    <div class="row">
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">FLIGHT</span> </br>
 				<span class="flight-status-details-label1">{{model.flight.airlineCode+' '+model.flight.flightNo}}</span> </br>
-				<span class="flight-status-details-label2">{{model.destinationCity}}</span>
+				<span class="flight-status-details-label2">{{model.flight.destinationCity | uppercase}}</span>
 			</div>
 			<div class="col-xs-3">
 				<span class="flight-status-details-header">BOARDING TIME</span> </br>
@@ -28,19 +28,19 @@
 				<span class="flight-status-late-description">{{model.signMessage}}</span>
 	    	</div>
 	    </div>
-	</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-	<div class="col-xs-5" style="height:100%">
-		<div id="outer" class="greenBorder">
-			<div id="middle">
-				<div id="inner" class="greenBorder">
-					<div style="display:block; float:left; height:100px; font-size: 2.2vw;">
-						From here, Go Right<br>
-						<b>APPROX 3 MIN WALK</b><br>
-					</div>
-					<div style="display:block; float:right; height:100px;">
-						<img src="assets/green_rectangle.png" style="max-height:100px;">
-					</div>
-					<img src="assets/airport_model_no_directions.png" style="max-width:100%;">
+	</div>
+
+
+	<div class="col-xs-5 fill-screen flight-status-details-section no-padding">
+		<div id="outer">
+			<div class="row">
+				<div class="map-container">
+					<p class="map-walking-directions">From here, go right</p>
+					<p>ABOUT 3 MIN WALK</p>
+				</div>
+				<img src="assets/green_rectangle.png" class="map-direction-arrow">
+				<div class="text-center row">
+					<img class="map-image" src="assets/map_path.png">
 				</div>
 			</div>
 		</div>

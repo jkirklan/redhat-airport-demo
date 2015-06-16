@@ -191,7 +191,25 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
         {
             if (beacon.proximity == CLProximityImmediate) {
                 [self.estimoteBeaconManager stopSearchingForBeacons];
-                [self alertBeaconFound:beacon];
+                
+                [self.networkManager postBeaconFoundWithCompletion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                    NSLog(@"networkManager completed! Response: %@", response);
+                    
+                    if (connectionError) {
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Network Failure"
+                                                                                       message:@"Please enable Wifi or check your network connection."
+                                                                                preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                              handler:^(UIAlertAction * action) {}];
+                        
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                    else {
+                        [self alertBeaconFound:beacon];
+                    }
+                }];
             }
         }];
     }

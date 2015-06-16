@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+extern NSString *const ROOT_URL;
+
+typedef void(^ARCNetworkCompletion)(NSURLResponse *response, NSData *data, NSError *connectionError);
+
 
 @interface ARCNetworkManager : NSObject
+
+- (void)postBeaconFoundWithCompletion:(ARCNetworkCompletion)completion;
 
 @end

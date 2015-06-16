@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ARCNetworkManager.h"
+
 
 @protocol ARTWebViewDelegate <NSObject>
 
@@ -22,9 +24,6 @@
 - (void)webViewDidFindTitle:(NSString *)title;
 
 @end
-
-
-extern NSString *const ROOT_URL;
 
 
 @interface ARTWebViewController : UIViewController <UIWebViewDelegate>

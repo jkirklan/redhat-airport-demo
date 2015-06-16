@@ -8,7 +8,7 @@
 
 #import "ARTWebViewController.h"
 
-NSString *const ROOT_URL = @"redhatairportdemo-fguanlao.rhcloud.com";
+
 //NSString *const ROOT_URL = @"apple.com";
 
 

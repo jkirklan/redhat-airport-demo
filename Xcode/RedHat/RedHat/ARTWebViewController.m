@@ -24,6 +24,11 @@
 {
     [super viewDidLoad];
     
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1
+                                                            diskCapacity:1
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    
     if (self.urlToLoad == nil) {
         NSString *urlString = [NSString stringWithFormat:@"http://%@/", ROOT_URL];
         [self loadWebviewWithURL:urlString];
@@ -57,6 +62,19 @@
     else {
         urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
         [self.webView loadRequest:urlRequest];
+    }
+}
+
+
+- (void)deleteCache
+{
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+    {
+        if([[cookie domain] isEqualToString:ROOT_URL]) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        }
     }
 }
 

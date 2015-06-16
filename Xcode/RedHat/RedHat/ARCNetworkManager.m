@@ -62,9 +62,13 @@ NSString *const HTTP_METHOD_POST    = @"POST";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSNumber *statusNum = [userDefaults objectForKey:@"NOTIFICATION_TYPE"];
     
+    if (statusNum == nil) {
+        statusNum = @2;
+    }
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/%@",
                                        ROOT_URL,
-                                       [NSString stringWithFormat:@"rest/digitalSignage?showDetails=%@", statusNum]]];
+                                       [NSString stringWithFormat:@"rest/digitalSignage/%@", statusNum]]];
 
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy

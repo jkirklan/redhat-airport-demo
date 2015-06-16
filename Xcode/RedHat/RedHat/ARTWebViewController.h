@@ -39,4 +39,6 @@
  */
 - (void)loadWebviewWithURL:(NSString *)urlString;
 
+- (void)deleteCache;
+
 @end

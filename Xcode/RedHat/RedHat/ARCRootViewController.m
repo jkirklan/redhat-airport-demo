@@ -143,6 +143,9 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                          forKey:@"NOTIFICATION_TYPE"];
             [userDefaults synchronize];
             
+            //Reset the cache...
+            [self.rootWebViewController deleteCache];
+                        
             //Reload page:
 //            NSString *status = [self paramaterForFlightStatus:statusInt];
 //            [pageURL appendFormat:@"/index.html?flight=%@", status];

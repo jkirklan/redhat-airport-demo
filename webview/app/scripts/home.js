@@ -61,10 +61,6 @@ var home = (function($, window, document) {
           console.log(error);
         });
       }
-      else if (localStorage.getItem('delayed') === 'true') {
-        this.flightData = JSON.parse(localStorage.getItem('flightData'));
-        this.updateView();
-      }
       // Normal view
       else {
         this.getFlightData(0).done(function(data) {
@@ -107,6 +103,7 @@ var home = (function($, window, document) {
       }, 5000);
     },
     updateView: function() {
+      $('.current-flight-temp').hide();
       this.parseDepartureTime();
       this.compileHandlebarsTemplate();
       this.checkFlightStatus();
@@ -159,6 +156,9 @@ var home = (function($, window, document) {
       var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
           results = regex.exec(location.search);
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    },
+    clearLocalStorage: function() {
+      localStorage.clear();
     }
   };
 

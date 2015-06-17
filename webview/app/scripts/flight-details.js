@@ -24,6 +24,7 @@ var flightDetails = (function($, window, document) {
           template = Handlebars.compile(source),
           html = template(this.flightData);
 
+      $('.flight-details-temp').hide();
       $('.main-container').append(html);
     },
     parseFlightDate: function() {

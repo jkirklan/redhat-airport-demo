@@ -6,3 +6,4 @@ webview/test/bower_components
 signage/node_modules
 signage/vendor
 signage/build
+.DS_Store

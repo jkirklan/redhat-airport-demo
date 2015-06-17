@@ -151,11 +151,7 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                                                 completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                                     NSLog(@"networkManager completed! Response: %@", response);
                                                 }];
-            
-            //Reload page:
-//            NSString *status = [self paramaterForFlightStatus:statusInt];
-//            [pageURL appendFormat:@"/index.html?flight=%@", status];
-            
+                        
             //Re-monitor beacons...
             [self.estimoteBeaconManager startSearchingForBeacons];
         }

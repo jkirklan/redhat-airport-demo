@@ -24,8 +24,8 @@
 {
     [super viewDidLoad];
     
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1
-                                                            diskCapacity:1
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
     
@@ -56,11 +56,17 @@
         //Bundle resource directories are flat to files must have UNIQUE names!
         NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
         
-        urlRequest = [NSURLRequest requestWithURL:htmlPath];
+        urlRequest = [NSURLRequest requestWithURL:htmlPath
+                                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                  timeoutInterval:15];
+        
         [self.webView loadRequest:urlRequest];
     }
     else {
-        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                  timeoutInterval:15];
+        
         [self.webView loadRequest:urlRequest];
     }
 }
@@ -69,6 +75,11 @@
 - (void)deleteCache
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
+ 
+//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@""]
+//                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+//                                         timeoutInterval:15];
+//    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
     
     for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
     {

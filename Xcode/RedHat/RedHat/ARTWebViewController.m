@@ -14,6 +14,8 @@
 
 @interface ARTWebViewController ()
 
+@property (nonatomic, strong) NSString *jsEmptyCacheMethod;
+
 @end
 
 
@@ -72,14 +74,12 @@
 }
 
 
-- (void)deleteCache
+- (void)deleteCacheWithJSMethod:(NSString *)methodName
 {
+    [self setJsEmptyCacheMethod:methodName];
+    
+    //Delete local cache (doesn't really work)...
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
- 
-//    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@""]
-//                                             cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-//                                         timeoutInterval:15];
-//    [[NSURLCache sharedURLCache] removeCachedResponseForRequest:request];
     
     for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
     {
@@ -134,6 +134,7 @@
                                                   encoding:NSASCIIStringEncoding
                                                      error:&error];
     
+    //Set the title...
     NSArray *componentOne = [htmlBody componentsSeparatedByString:@"<title>"];
     
     if ([componentOne count] >= 2)
@@ -149,6 +150,13 @@
             }
         }
     }
+    
+    //Call the javascript function to empty the cache...
+    if (self.jsEmptyCacheMethod) {
+        [webView stringByEvaluatingJavaScriptFromString:self.jsEmptyCacheMethod];
+        [self setJsEmptyCacheMethod:nil];
+    }
+    
     NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
 }
 

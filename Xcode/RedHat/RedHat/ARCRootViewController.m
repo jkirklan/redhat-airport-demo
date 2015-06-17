@@ -135,6 +135,9 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             break;
             
         case 2: {
+            //Reset the cache...
+            [self.rootWebViewController deleteCacheWithJSMethod:@"home.clearLocalStorage()"];
+            
             //Reset defaults:
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             
@@ -142,9 +145,6 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             [userDefaults setObject:[NSNumber numberWithInt:statusInt]
                          forKey:@"NOTIFICATION_TYPE"];
             [userDefaults synchronize];
-            
-            //Reset the cache...
-            [self.rootWebViewController deleteCache];
             
             //Notify the server...
             [self.networkManager postBeaconExitedWithMethod:HTTP_METHOD_GET

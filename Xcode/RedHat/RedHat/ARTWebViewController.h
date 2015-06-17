@@ -39,6 +39,9 @@
  */
 - (void)loadWebviewWithURL:(NSString *)urlString;
 
-- (void)deleteCache;
+/**
+ Pass the javascript function that clears the cache, and it'll be called on `webViewDidFinishLoad`.
+ */
+- (void)deleteCacheWithJSMethod:(NSString *)methodName;
 
 @end

@@ -135,6 +135,9 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             break;
             
         case 2: {
+            //Reset the cache...
+            [self.rootWebViewController deleteCacheWithJSMethod:@"home.clearLocalStorage()"];
+            
             //Reset defaults:
             NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
             
@@ -143,10 +146,12 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                          forKey:@"NOTIFICATION_TYPE"];
             [userDefaults synchronize];
             
-            //Reload page:
-//            NSString *status = [self paramaterForFlightStatus:statusInt];
-//            [pageURL appendFormat:@"/index.html?flight=%@", status];
-            
+            //Notify the server...
+            [self.networkManager postBeaconExitedWithMethod:HTTP_METHOD_GET
+                                                completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                                    NSLog(@"networkManager completed! Response: %@", response);
+                                                }];
+                        
             //Re-monitor beacons...
             [self.estimoteBeaconManager startSearchingForBeacons];
         }

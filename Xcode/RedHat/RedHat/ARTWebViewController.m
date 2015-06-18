@@ -14,6 +14,8 @@
 
 @interface ARTWebViewController ()
 
+@property (nonatomic, strong) NSString *jsEmptyCacheMethod;
+
 @end
 
 
@@ -23,6 +25,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
+                                                            diskCapacity:0
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
     
     if (self.urlToLoad == nil) {
         NSString *urlString = [NSString stringWithFormat:@"http://%@/", ROOT_URL];
@@ -51,12 +58,34 @@
         //Bundle resource directories are flat to files must have UNIQUE names!
         NSURL *htmlPath = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html"];
         
-        urlRequest = [NSURLRequest requestWithURL:htmlPath];
+        urlRequest = [NSURLRequest requestWithURL:htmlPath
+                                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                  timeoutInterval:15];
+        
         [self.webView loadRequest:urlRequest];
     }
     else {
-        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]
+                                      cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                  timeoutInterval:15];
+        
         [self.webView loadRequest:urlRequest];
+    }
+}
+
+
+- (void)deleteCacheWithJSMethod:(NSString *)methodName
+{
+    [self setJsEmptyCacheMethod:methodName];
+    
+    //Delete local cache (doesn't really work)...
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    for(NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies])
+    {
+        if([[cookie domain] isEqualToString:ROOT_URL]) {
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+        }
     }
 }
 
@@ -105,6 +134,7 @@
                                                   encoding:NSASCIIStringEncoding
                                                      error:&error];
     
+    //Set the title...
     NSArray *componentOne = [htmlBody componentsSeparatedByString:@"<title>"];
     
     if ([componentOne count] >= 2)
@@ -120,6 +150,13 @@
             }
         }
     }
+    
+    //Call the javascript function to empty the cache...
+    if (self.jsEmptyCacheMethod) {
+        [webView stringByEvaluatingJavaScriptFromString:self.jsEmptyCacheMethod];
+        [self setJsEmptyCacheMethod:nil];
+    }
+    
     NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
 }
 

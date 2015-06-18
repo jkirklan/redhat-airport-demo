@@ -85,7 +85,7 @@
                                 </connections>
                             </webView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20784313730000001" green="0.0" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="a7r-e0-9Ys" secondAttribute="bottom" id="9qP-IZ-3Wk"/>
@@ -122,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X56-Hl-KRL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2193" y="394"/>
+            <point key="canvasLocation" x="1936" y="394"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="stf-By-olC">

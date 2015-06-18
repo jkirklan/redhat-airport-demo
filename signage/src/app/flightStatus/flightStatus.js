@@ -1,11 +1,12 @@
 (function(module) {
 
-module.controller('FlightStatusController', function ($state, $interval, flightStatusService) {
+module.controller('FlightStatusController', function ($state, $interval, flightStatusService, $scope) {
 	var model = this;
 
 	init();
 
 	function init() {
+		stopInterval();
 		checkSignStatus();
 		model.checkSignStatusInterval = $interval(checkSignStatus, 3000);
 	}
@@ -22,6 +23,14 @@ module.controller('FlightStatusController', function ($state, $interval, flightS
 			}
 		});
 	}
+
+	function stopInterval(){
+		$interval.cancel(model.checkSignStatusInterval);
+	}
+
+	$scope.$on('$destroy', function() {
+		stopInterval();
+	});
 });
 
 }(angular.module("digitalSignage.flightStatus")));

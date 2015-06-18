@@ -62,14 +62,41 @@ NSString *const HTTP_METHOD_POST    = @"POST";
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSNumber *statusNum = [userDefaults objectForKey:@"NOTIFICATION_TYPE"];
     
+    if (statusNum == nil) {
+        statusNum = @2;
+    }
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/%@",
                                        ROOT_URL,
-                                       [NSString stringWithFormat:@"rest/digitalSignage?showDetails=%@", statusNum]]];
+                                       [NSString stringWithFormat:@"rest/digitalSignage/%@", statusNum]]];
 
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
                                             timeoutInterval:15.0];
 
+    if ([httpMethod isEqualToString:HTTP_METHOD_GET]) {
+        [self sendGETRequest:urlRequest
+              withCompletion:completion];
+    }
+    else if ([httpMethod isEqualToString:HTTP_METHOD_POST]) {
+        [self sendPOSTRequest:(NSMutableURLRequest *)urlRequest
+               withCompletion:completion];
+    }
+}
+
+
+- (void)postBeaconExitedWithMethod:(NSString *)httpMethod completion:(ARCNetworkCompletion)completion
+{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@/%@",
+                                       ROOT_URL,
+                                       @"rest/digitalSignage/0"]];
+    
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url
+                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                            timeoutInterval:15.0];
+    
     if ([httpMethod isEqualToString:HTTP_METHOD_GET]) {
         [self sendGETRequest:urlRequest
               withCompletion:completion];

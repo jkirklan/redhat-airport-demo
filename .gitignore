@@ -7,3 +7,4 @@ signage/node_modules
 signage/vendor
 signage/build
 .DS_Store
+signage/bin

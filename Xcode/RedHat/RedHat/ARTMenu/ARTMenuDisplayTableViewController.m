@@ -49,8 +49,28 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MenuCell" forIndexPath:indexPath];
     
+    //Set cell label...
     NSString *menuName = [self.menuItems objectAtIndex:indexPath.row];
     [[cell textLabel] setText:menuName];
+    
+    //Set cell image...
+    switch (indexPath.row) {
+        case 1: {
+            [[cell imageView] setImage:[UIImage imageNamed:@"menu_icon_coupons"]];
+        }
+            break;
+            
+        case 2: {
+            [[cell imageView] setImage:[UIImage imageNamed:@"menu_icon_settings"]];
+        }
+            break;
+     
+        case 0:
+        default: {
+            [[cell imageView] setImage:[UIImage imageNamed:@"menu_icon_dashboard"]];
+        }
+            break;
+    }
     
     return cell;
 }

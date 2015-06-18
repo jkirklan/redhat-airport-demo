@@ -7,14 +7,13 @@
 //
 
 #import "ARTWebViewController.h"
+#import "NSURL+Ext.h"
 
 
 //NSString *const ROOT_URL = @"apple.com";
 
 
 @interface ARTWebViewController ()
-
-@property (nonatomic, strong) NSString *jsEmptyCacheMethod;
 
 @end
 
@@ -26,11 +25,13 @@
 {
     [super viewDidLoad];
     
+    //Set cache...
     NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0
                                                             diskCapacity:0
                                                                 diskPath:nil];
     [NSURLCache setSharedURLCache:sharedCache];
     
+    //Load default page if it exists...
     if (self.urlToLoad == nil) {
         NSString *urlString = [NSString stringWithFormat:@"http://%@/", ROOT_URL];
         [self loadWebviewWithURL:urlString];
@@ -38,7 +39,12 @@
     }
     else {
         [self loadWebviewWithURL:[self.urlToLoad absoluteString]];
-    }
+    }    
+}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 
@@ -76,7 +82,10 @@
 
 - (void)deleteCacheWithJSMethod:(NSString *)methodName
 {
-    [self setJsEmptyCacheMethod:methodName];
+    //Call the javascript function to empty the cache...
+    if (methodName != nil) {
+        [self.webView stringByEvaluatingJavaScriptFromString:methodName];
+    }
     
     //Delete local cache (doesn't really work)...
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
@@ -87,13 +96,15 @@
             [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
         }
     }
+    
+    //Reload webview...
+    [self.webView reload];
 }
 
 
 #pragma mark - UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"shouldStartLoadWithRequest");
     BOOL shouldLoad = NO;
     NSURL *rootURL = [NSURL URLWithString:ROOT_URL];
     
@@ -114,9 +125,10 @@
         }
     }
     
-    if ([[[request URL] description] isEqualToString:[self.urlToLoad description]] == NO) {
+    if ([request.URL isEqualToURL:self.urlToLoad] == NO) {
         shouldLoad = NO;
     }
+    NSLog(@"shouldStartLoadWithRequest? %@", (shouldLoad==YES) ? @"YES" : @"NO");
     return shouldLoad;
 }
 
@@ -150,19 +162,15 @@
             }
         }
     }
-    
-    //Call the javascript function to empty the cache...
-    if (self.jsEmptyCacheMethod) {
-        [webView stringByEvaluatingJavaScriptFromString:self.jsEmptyCacheMethod];
-        [self setJsEmptyCacheMethod:nil];
-    }
-    
     NSLog(@"webViewDidFinishLoad: %@", webView.request.URL);
 }
 
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     NSLog(@"UIWebView failed to load. Error: %@", error.description);
+    
+    //Try to reload. Dangerous: it'll trigger an infinite loop of reloading!
+//    [webView reload];
 }
 
 

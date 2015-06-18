@@ -213,7 +213,7 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
                         [self presentViewController:alert animated:YES completion:nil];
                     }
                     else {
-                        [self alertBeaconFound:beacon];
+//                        [self alertBeaconFound:beacon];
                     }
                 }];
             }

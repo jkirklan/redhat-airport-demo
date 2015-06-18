@@ -71,7 +71,7 @@
       didRangeBeacons:(NSArray *)beacons
              inRegion:(CLBeaconRegion *)region
 {
-    NSLog(@"didRangeBeacons %@", beacons);
+//    NSLog(@"didRangeBeacons %@", beacons);
     
     if ([beacons lastObject])
     {

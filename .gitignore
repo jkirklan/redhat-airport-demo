@@ -8,3 +8,4 @@ signage/vendor
 signage/build
 .DS_Store
 signage/bin
+webview/dist

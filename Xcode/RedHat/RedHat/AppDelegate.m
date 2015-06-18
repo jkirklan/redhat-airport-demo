@@ -103,8 +103,13 @@
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         [clientInfo setDeviceToken:deviceToken];
         
-        [clientInfo setVariantID:@"5c7387c7-8d85-4ee2-bd4a-74e4f5aebf88"];
-        [clientInfo setVariantSecret:@"9e876606-8362-493d-8fc9-9f6a5487eb4c"];
+        //Development:
+        [clientInfo setVariantID:@"4678691c-3aec-4899-8a32-7f5d35e3ef56"];
+        [clientInfo setVariantSecret:@"3ff3722e-ce90-4627-93f1-81c69d6e4209"];
+        
+        //Production:
+//        [clientInfo setVariantID:@"5c7387c7-8d85-4ee2-bd4a-74e4f5aebf88"];
+//        [clientInfo setVariantSecret:@"9e876606-8362-493d-8fc9-9f6a5487eb4c"];
         
         //Device info...
         UIDevice *currentDevice = [UIDevice currentDevice];

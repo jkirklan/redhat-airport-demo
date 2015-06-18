@@ -13,7 +13,7 @@
 
     // As you add controllers to a module and they grow in size, feel free to place them in their own files.
     //  Let each module grow organically, adding appropriate organization and sub-folders as needed.
-    module.controller('HomeController', function ($http, $interval, flightStatusService, $state) {
+    module.controller('HomeController', function ($http, $interval, flightStatusService, $state, $scope) {
         // The top section of a controller should be lean and make it easy to see the "signature" of the controller
         //  at a glance.  All function definitions should be contained lower down.
         var model = this;
@@ -23,6 +23,8 @@
         init();
 
         function init() {
+
+            stopInterval();
             // A definitive place to put everything that needs to run when the controller starts. Avoid
             //  writing any code outside of this function that executes immediately.
             flightStatusService.flightList()
@@ -53,6 +55,14 @@
                 }
             });
         }
+
+        function stopInterval(){
+            $interval.cancel(model.checkSignStatusInterval);
+        }
+
+        $scope.$on('$destroy', function() {
+            stopInterval();
+        });
 
     });
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B17AA0A83D5088537398C8FC /* libPods-RedHat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091CC97E8BF283958B68EE0A /* libPods-RedHat.a */; };
 		D711DE0E1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE0D1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m */; };
 		D711DE111B1CCECA00CA3E34 /* ARTMenuTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE101B1CCECA00CA3E34 /* ARTMenuTransitionManager.m */; };
 		D711DE141B1CCF0400CA3E34 /* ARTMenuPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE131B1CCF0400CA3E34 /* ARTMenuPresentationController.m */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		091CC97E8BF283958B68EE0A /* libPods-RedHat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RedHat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D711DE0C1B1CBAB400CA3E34 /* ARCMenuAccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMenuAccessViewController.h; sourceTree = "<group>"; };
 		D711DE0D1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCMenuAccessViewController.m; sourceTree = "<group>"; };
 		D711DE0F1B1CCECA00CA3E34 /* ARTMenuTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuTransitionManager.h; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 		D7D091AC1B28ACDB0055344B /* ARTBeaconRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTBeaconRegister.m; sourceTree = "<group>"; };
 		D7E324A11B20F68900C843DD /* ARTMenuDisplayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuDisplayTableViewController.h; sourceTree = "<group>"; };
 		D7E324A21B20F68900C843DD /* ARTMenuDisplayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTMenuDisplayTableViewController.m; sourceTree = "<group>"; };
+		F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedHat.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedHat/Pods-RedHat.release.xcconfig"; sourceTree = "<group>"; };
+		FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedHat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedHat/Pods-RedHat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,7 @@
 			files = (
 				D72431AC1B2A23F4000F42D0 /* CoreLocation.framework in Frameworks */,
 				D7A0F0FC1B28A68400B0269F /* CoreBluetooth.framework in Frameworks */,
+				B17AA0A83D5088537398C8FC /* libPods-RedHat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +118,7 @@
 			children = (
 				D72431AB1B2A23F4000F42D0 /* CoreLocation.framework */,
 				D7A0F0FB1B28A68400B0269F /* CoreBluetooth.framework */,
+				091CC97E8BF283958B68EE0A /* libPods-RedHat.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,6 +167,7 @@
 				D7C948431B1678C100C240C3 /* RedHatTests */,
 				D7C948281B1678C100C240C3 /* Products */,
 				73D62B0827220E77AC6911FE /* Frameworks */,
+				E515A576DD0C9E78EE45940F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +243,15 @@
 			path = ARTBeaconManager;
 			sourceTree = "<group>";
 		};
+		E515A576DD0C9E78EE45940F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */,
+				F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -243,9 +259,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7C9484A1B1678C100C240C3 /* Build configuration list for PBXNativeTarget "RedHat" */;
 			buildPhases = (
+				4BCC7418666FC1F6ECAB312D /* Check Pods Manifest.lock */,
 				D7C948231B1678C100C240C3 /* Sources */,
 				D7C948241B1678C100C240C3 /* Frameworks */,
 				D7C948251B1678C100C240C3 /* Resources */,
+				2033BD4CDAE3F8CD4D0B25E1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,6 +357,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2033BD4CDAE3F8CD4D0B25E1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedHat/Pods-RedHat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BCC7418666FC1F6ECAB312D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7C948231B1678C100C240C3 /* Sources */ = {
@@ -483,6 +534,7 @@
 		};
 		D7C9484B1B1678C100C240C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Post (9FV4W7HN5W)";
@@ -500,6 +552,7 @@
 		};
 		D7C9484C1B1678C100C240C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Architech Solutions Consulting Services Inc. (225U8GB784)";

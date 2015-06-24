@@ -17,7 +17,7 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
 
 - (void)viewControllerDidReceiveRemoteNotification:(NSNotification *)notification;
 
-- (void)alertBeaconFound:(CLBeacon *)beacon;
+- (void)alertBeaconFound:(CLBeacon *)beacon withMessage:(NSString *)customMessage;
 
 @end
 
@@ -150,6 +150,8 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
             [self.networkManager postBeaconExitedWithMethod:HTTP_METHOD_GET
                                                 completion:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                                     NSLog(@"networkManager completed! Response: %@", response);
+                                                    [self alertBeaconFound:nil
+                                                               withMessage:[[response URL] description]];
                                                 }];
                         
             //Re-monitor beacons...
@@ -173,17 +175,21 @@ NSString *const ARCApplicationDidReceiveRemoteNotification = @"ARTApplicationDid
 
 
 #pragma mark - Beacon handling
-- (void)alertBeaconFound:(CLBeacon *)beacon
+- (void)alertBeaconFound:(CLBeacon *)beacon withMessage:(NSString *)customMessage
 {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Beacon Found!"
-                                                                       message:@"Please look at the screen for flight information."
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                              handler:^(UIAlertAction * action) {}];
-        
-        [alert addAction:defaultAction];
-        [self presentViewController:alert animated:YES completion:nil];
+    if (customMessage == nil) {
+        customMessage = @"Please look at the screen for flight information.";
+    }
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Beacon Found!"
+                                                                   message:customMessage
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

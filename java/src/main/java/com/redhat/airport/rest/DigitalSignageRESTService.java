@@ -71,6 +71,8 @@ public class DigitalSignageRESTService {
 			case 3:
 				ds.setSignHeader("Your flight is boarding in 10 minutes.");
 				break;
+			case 4:
+				break;
 			default:
 				logger.error("Invalid demo number");
 				break;

@@ -7,6 +7,7 @@ var admin = (function($, window, document) {
       this.flightOnTimeButtonListener();
       this.flightDelayedButtonListener();
       this.flightLateButtonListener();
+      this.technicalDetailsButtonListener();
     },
     resetButtonListener: function() {
       $('.reset-btn').on('click',function() {
@@ -51,6 +52,20 @@ var admin = (function($, window, document) {
         }).done(function() {
           localStorage.setItem('demoMode', '1');
           alert('Running late on');
+        }).fail(function(jqXHR, textStatus, error) {
+          alert('Running late failed');
+          console.log(error);
+        });
+      });
+    },
+    technicalDetailsButtonListener: function() {
+      $('.technical-details-btn').on('click', function() {
+        $.ajax({
+          url: 'http://redhatairportdemo-fguanlao.rhcloud.com/rest/digitalSignage/4',
+          method: 'GET'
+        }).done(function() {
+          // localStorage.setItem('demoMode', '4');
+          alert('Showing tech specs');
         }).fail(function(jqXHR, textStatus, error) {
           alert('Running late failed');
           console.log(error);

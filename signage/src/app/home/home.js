@@ -50,7 +50,9 @@
         function checkSignStatus(){
             flightStatusService.updateSign()
             .then(function(result){
-                if (result.demoSign >0){
+                if (result.demoSign === 4){
+                    $state.go('about');
+                } else if (result.demoSign > 0){
                     $state.go('flightStatus');
                 }
             });

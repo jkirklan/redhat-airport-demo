@@ -1,6 +1,4 @@
-# README #
-
-### What is this repository for? ###
+### Summary ###
 
 This repository is for the RedHat Airport demo. Each component(iOS, Java, Angular) is currently separate. The deployment instructions are below.
 
@@ -14,10 +12,34 @@ This repository is for the RedHat Airport demo. Each component(iOS, Java, Angula
 * Apple Push Notification Server
 * JavaScript(Webview)
 * AngularJS (Digital Signage)
+* Jenkins
 
-### How do I get set up? ###
+### Setup ###
 
-* Summary of set up
+**Java/Red Hat:**
+
+Install RHC
+
+1. Make sure you have [ruby installed](https://www.ruby-lang.org/en/documentation/installation/) and ensure it is update to date
+2. Install rhc **sudo gem install rhc**
+3. **rhc setup**
+4. Login with your OpenShift account
+5. Generating a token will allow you to login without a password for a day
+6. Upload your SSH key to allow authentication to your remote server
+7. Set your domain name
+
+For more details: Go [here](https://developers.openshift.com/en/getting-started-osx.html#rhc-setup)
+
+iOS Setup:
+
+1. cd into /redhat-airport-demo/Xcode/RedHat
+2. sudo gem uninstall cocoapods
+3. sudo gem install cocoapods
+4. pod setup
+5. pod update
+6. Open RedHat.xcworkspace
+7. Build and Run
+
 * Configuration
 * Dependencies
 * Database configuration

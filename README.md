@@ -16,7 +16,7 @@ This repository is for the RedHat Airport demo. Each component(iOS, Java, Angula
 
 ### Setup ###
 
-**Java/Red Hat:**
+**Java/Red Hat Setup:**
 
 Install RHC
 
@@ -30,7 +30,13 @@ Install RHC
 
 For more details: Go [here](https://developers.openshift.com/en/getting-started-osx.html#rhc-setup)
 
-iOS Setup:
+Create JBoss EAP Application:
+
+1. Ensure RHC command line tools are set up
+2. To create the application use **rhc app-create *appname* jbosseap**
+3. The application will generate in the current working directory
+
+**iOS Setup:**
 
 1. cd into /redhat-airport-demo/Xcode/RedHat
 2. sudo gem uninstall cocoapods

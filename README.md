@@ -6,16 +6,18 @@ This repository is for the RedHat Airport demo. Each component(iOS, Java, Angula
 
 ### Technologies ###
 
-* Red Hat:
+Red Hat:
   - JBoss EAP(Weld CDI, RESTEasy, Hibernate)
   - OpenShift
   - JBoss Unified Push Server
+
 * Hybrid iOS
-* Native iOS components:
-  - Beacons
+
+Native iOS components:
+  - Estimote Beacons
   - Push notifications
-* Estimote Beacons
-* UI:
+
+UI:
   - JavaScript(Webview)
   - AngularJS (Digital Signage)
 

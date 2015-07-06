@@ -29,9 +29,6 @@ public class DigitalSignageRESTService {
 	/*
 	 * API to receive demo scenario to change sign
 	 */
-	// @POST
-	// public Response updateDigitalSignage(@FormParam("showDetails") int
-	// updateSign) {
 	@GET
 	@Path("/{showDetails:[0-9]*}")
 	public Response updateDigitalSignage(@PathParam("showDetails") int updateSign) {

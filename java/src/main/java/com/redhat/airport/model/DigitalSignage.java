@@ -1,5 +1,8 @@
 package com.redhat.airport.model;
 
+/*
+ *  Object for updating digital signage
+ */
 public class DigitalSignage {
 	private int demoSign;
 	private String signHeader;

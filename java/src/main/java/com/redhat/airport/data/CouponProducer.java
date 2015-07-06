@@ -11,7 +11,8 @@ public class CouponProducer {
 	// private CouponRepository couponRepo;
 
 	/*
-	 * Method for providing dummy data for Coupon
+	 * Method for providing dummy data for Coupon. Coupons should be stored in
+	 * database. TODO Setup hibernate
 	 */
 	public Coupon demoCouponOnDelay() {
 		Coupon coupon = new Coupon();

@@ -17,8 +17,6 @@ public class PushNotificationService {
 
 	public void sendFlightNotification(@Observes int demoMode) {
 
-		// JavaSender sender = new
-		// SenderClient.Builder("https://aerogear-fguanlao.rhcloud.com/ag-push/").build();
 		JavaSender sender = new SenderClient.Builder("https://jbossunifiedpush-fguanlao.rhcloud.com/ag-push").build();
 
 		String message;

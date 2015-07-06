@@ -100,8 +100,4 @@ The id_rsa generated when you created the project will need to be added:
 6. Drag the war file to the server
 7. You will know it's deployed when a ROOT.war.deployed generates
 
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+### Contact ###

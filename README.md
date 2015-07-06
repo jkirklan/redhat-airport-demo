@@ -49,6 +49,7 @@ Create JBoss EAP Application:
 **Digital Signage/Webview Setup:**
 
 Front End Dependencies:
+
 * Node.js
 * Bower
 * Grunt

@@ -7,9 +7,9 @@ This repository is for the RedHat Airport demo. Each component(iOS, Java, Angula
 ### Technologies ###
 
 Red Hat:
-  * JBoss EAP(Weld CDI, RESTEasy, Hibernate)
-  * OpenShift
-  * JBoss Unified Push Server
+* JBoss EAP(Weld CDI, RESTEasy, Hibernate)
+* OpenShift
+* JBoss Unified Push Server
 
 * Hybrid iOS
 

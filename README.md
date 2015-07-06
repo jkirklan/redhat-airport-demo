@@ -1,12 +1,23 @@
 # README #
 
-This README would normally document whatever steps are necessary to get your application up and running.
-
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+This repository is for the RedHat Airport demo. Each component(iOS, Java, Angular) is currently separate. The deployment instructions are below.
+
+### Technologies ###
+
+* Red Hat:
+  - JBoss EAP(Weld CDI, RESTEasy, Hibernate)
+  - OpenShift
+  - JBoss Unified Push Server
+* Hybrid iOS
+* Native iOS components:
+  - Beacons
+  - Push notifications
+* Estimote Beacons
+* UI:
+  - JavaScript(Webview)
+  - AngularJS (Digital Signage)
 
 ### How do I get set up? ###
 

@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B17AA0A83D5088537398C8FC /* libPods-RedHat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 091CC97E8BF283958B68EE0A /* libPods-RedHat.a */; };
+		D711DE0E1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE0D1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m */; };
+		D711DE111B1CCECA00CA3E34 /* ARTMenuTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE101B1CCECA00CA3E34 /* ARTMenuTransitionManager.m */; };
+		D711DE141B1CCF0400CA3E34 /* ARTMenuPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE131B1CCF0400CA3E34 /* ARTMenuPresentationController.m */; };
+		D711DE171B1CCF5800CA3E34 /* ARTMenuDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = D711DE161B1CCF5800CA3E34 /* ARTMenuDisplayController.m */; };
+		D711DE191B1CE53200CA3E34 /* ARTMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D711DE181B1CE53200CA3E34 /* ARTMenu.storyboard */; };
+		D711DE1D1B1CEA1B00CA3E34 /* menu-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D711DE1B1B1CEA1B00CA3E34 /* menu-icon@2x.png */; };
+		D711DE1E1B1CEA1B00CA3E34 /* menu-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D711DE1C1B1CEA1B00CA3E34 /* menu-icon@3x.png */; };
+		D72431AC1B2A23F4000F42D0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72431AB1B2A23F4000F42D0 /* CoreLocation.framework */; };
+		D72431AF1B2A2A26000F42D0 /* ARTNativeBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D72431AE1B2A2A26000F42D0 /* ARTNativeBeaconManager.m */; };
+		D72970B91B1F57A200E798EE /* ARTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D72970B81B1F57A200E798EE /* ARTWebViewController.m */; };
+		D75478B41B321A6100F14A3F /* NSURL+Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = D75478B31B321A6100F14A3F /* NSURL+Ext.m */; };
+		D7A0F0FC1B28A68400B0269F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A0F0FB1B28A68400B0269F /* CoreBluetooth.framework */; };
+		D7C29E881B2F6818009608C2 /* ARTEstimoteBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C29E871B2F6818009608C2 /* ARTEstimoteBeaconManager.m */; };
+		D7C29E8B1B2F79AA009608C2 /* ARCNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C29E8A1B2F79AA009608C2 /* ARCNetworkManager.m */; };
+		D7C9482D1B1678C100C240C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C9482C1B1678C100C240C3 /* main.m */; };
+		D7C948301B1678C100C240C3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C9482F1B1678C100C240C3 /* AppDelegate.m */; };
+		D7C948331B1678C100C240C3 /* ARCRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C948321B1678C100C240C3 /* ARCRootViewController.m */; };
+		D7C948361B1678C100C240C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C948341B1678C100C240C3 /* Main.storyboard */; };
+		D7C948381B1678C100C240C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7C948371B1678C100C240C3 /* Images.xcassets */; };
+		D7C9483B1B1678C100C240C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7C948391B1678C100C240C3 /* LaunchScreen.xib */; };
+		D7C948471B1678C100C240C3 /* RedHatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C948461B1678C100C240C3 /* RedHatTests.m */; };
+		D7D091AA1B28AC6F0055344B /* ARTBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D091A91B28AC6F0055344B /* ARTBeaconManager.m */; };
+		D7D091AD1B28ACDB0055344B /* ARTBeaconRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D091AC1B28ACDB0055344B /* ARTBeaconRegister.m */; };
+		D7E324A31B20F68900C843DD /* ARTMenuDisplayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E324A21B20F68900C843DD /* ARTMenuDisplayTableViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D7C948411B1678C100C240C3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7C9481F1B1678C100C240C3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7C948261B1678C100C240C3;
+			remoteInfo = RedHat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		091CC97E8BF283958B68EE0A /* libPods-RedHat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RedHat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D711DE0C1B1CBAB400CA3E34 /* ARCMenuAccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMenuAccessViewController.h; sourceTree = "<group>"; };
+		D711DE0D1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCMenuAccessViewController.m; sourceTree = "<group>"; };
+		D711DE0F1B1CCECA00CA3E34 /* ARTMenuTransitionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuTransitionManager.h; sourceTree = "<group>"; };
+		D711DE101B1CCECA00CA3E34 /* ARTMenuTransitionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTMenuTransitionManager.m; sourceTree = "<group>"; };
+		D711DE121B1CCF0400CA3E34 /* ARTMenuPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuPresentationController.h; sourceTree = "<group>"; };
+		D711DE131B1CCF0400CA3E34 /* ARTMenuPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTMenuPresentationController.m; sourceTree = "<group>"; };
+		D711DE151B1CCF5800CA3E34 /* ARTMenuDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuDisplayController.h; sourceTree = "<group>"; };
+		D711DE161B1CCF5800CA3E34 /* ARTMenuDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTMenuDisplayController.m; sourceTree = "<group>"; };
+		D711DE181B1CE53200CA3E34 /* ARTMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ARTMenu.storyboard; sourceTree = "<group>"; };
+		D711DE1B1B1CEA1B00CA3E34 /* menu-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@2x.png"; sourceTree = "<group>"; };
+		D711DE1C1B1CEA1B00CA3E34 /* menu-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-icon@3x.png"; sourceTree = "<group>"; };
+		D72431AB1B2A23F4000F42D0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D72431AD1B2A2A26000F42D0 /* ARTNativeBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTNativeBeaconManager.h; sourceTree = "<group>"; };
+		D72431AE1B2A2A26000F42D0 /* ARTNativeBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTNativeBeaconManager.m; sourceTree = "<group>"; };
+		D72970B71B1F57A200E798EE /* ARTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTWebViewController.h; sourceTree = "<group>"; };
+		D72970B81B1F57A200E798EE /* ARTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTWebViewController.m; sourceTree = "<group>"; };
+		D75478B21B321A6100F14A3F /* NSURL+Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+Ext.h"; sourceTree = "<group>"; };
+		D75478B31B321A6100F14A3F /* NSURL+Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+Ext.m"; sourceTree = "<group>"; };
+		D7A0F0FB1B28A68400B0269F /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		D7C29E861B2F6818009608C2 /* ARTEstimoteBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTEstimoteBeaconManager.h; sourceTree = "<group>"; };
+		D7C29E871B2F6818009608C2 /* ARTEstimoteBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTEstimoteBeaconManager.m; sourceTree = "<group>"; };
+		D7C29E891B2F79AA009608C2 /* ARCNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCNetworkManager.h; sourceTree = "<group>"; };
+		D7C29E8A1B2F79AA009608C2 /* ARCNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARCNetworkManager.m; sourceTree = "<group>"; };
+		D7C948271B1678C100C240C3 /* RedHat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedHat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C9482B1B1678C100C240C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7C9482C1B1678C100C240C3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D7C9482E1B1678C100C240C3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D7C9482F1B1678C100C240C3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D7C948311B1678C100C240C3 /* ARCRootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCRootViewController.h; sourceTree = "<group>"; };
+		D7C948321B1678C100C240C3 /* ARCRootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARCRootViewController.m; sourceTree = "<group>"; };
+		D7C948351B1678C100C240C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D7C948371B1678C100C240C3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D7C9483A1B1678C100C240C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		D7C948401B1678C100C240C3 /* RedHatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedHatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7C948451B1678C100C240C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7C948461B1678C100C240C3 /* RedHatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedHatTests.m; sourceTree = "<group>"; };
+		D7D091A81B28AC6F0055344B /* ARTBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTBeaconManager.h; sourceTree = "<group>"; };
+		D7D091A91B28AC6F0055344B /* ARTBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTBeaconManager.m; sourceTree = "<group>"; };
+		D7D091AB1B28ACDB0055344B /* ARTBeaconRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTBeaconRegister.h; sourceTree = "<group>"; };
+		D7D091AC1B28ACDB0055344B /* ARTBeaconRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTBeaconRegister.m; sourceTree = "<group>"; };
+		D7E324A11B20F68900C843DD /* ARTMenuDisplayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARTMenuDisplayTableViewController.h; sourceTree = "<group>"; };
+		D7E324A21B20F68900C843DD /* ARTMenuDisplayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ARTMenuDisplayTableViewController.m; sourceTree = "<group>"; };
+		F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedHat.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedHat/Pods-RedHat.release.xcconfig"; sourceTree = "<group>"; };
+		FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedHat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedHat/Pods-RedHat.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D7C948241B1678C100C240C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D72431AC1B2A23F4000F42D0 /* CoreLocation.framework in Frameworks */,
+				D7A0F0FC1B28A68400B0269F /* CoreBluetooth.framework in Frameworks */,
+				B17AA0A83D5088537398C8FC /* libPods-RedHat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C9483D1B1678C100C240C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		73D62B0827220E77AC6911FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D72431AB1B2A23F4000F42D0 /* CoreLocation.framework */,
+				D7A0F0FB1B28A68400B0269F /* CoreBluetooth.framework */,
+				091CC97E8BF283958B68EE0A /* libPods-RedHat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D711DE0B1B1CB63800CA3E34 /* ARTMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D711DE1A1B1CEA1B00CA3E34 /* images */,
+				D711DE0C1B1CBAB400CA3E34 /* ARCMenuAccessViewController.h */,
+				D711DE0D1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m */,
+				D711DE0F1B1CCECA00CA3E34 /* ARTMenuTransitionManager.h */,
+				D711DE101B1CCECA00CA3E34 /* ARTMenuTransitionManager.m */,
+				D711DE121B1CCF0400CA3E34 /* ARTMenuPresentationController.h */,
+				D711DE131B1CCF0400CA3E34 /* ARTMenuPresentationController.m */,
+				D711DE151B1CCF5800CA3E34 /* ARTMenuDisplayController.h */,
+				D711DE161B1CCF5800CA3E34 /* ARTMenuDisplayController.m */,
+				D7E324A11B20F68900C843DD /* ARTMenuDisplayTableViewController.h */,
+				D7E324A21B20F68900C843DD /* ARTMenuDisplayTableViewController.m */,
+				D711DE181B1CE53200CA3E34 /* ARTMenu.storyboard */,
+			);
+			path = ARTMenu;
+			sourceTree = "<group>";
+		};
+		D711DE1A1B1CEA1B00CA3E34 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D711DE1B1B1CEA1B00CA3E34 /* menu-icon@2x.png */,
+				D711DE1C1B1CEA1B00CA3E34 /* menu-icon@3x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		D75478B11B321A3A00F14A3F /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D75478B21B321A6100F14A3F /* NSURL+Ext.h */,
+				D75478B31B321A6100F14A3F /* NSURL+Ext.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		D7C9481E1B1678C100C240C3 = {
+			isa = PBXGroup;
+			children = (
+				D7C948291B1678C100C240C3 /* RedHat */,
+				D7C948431B1678C100C240C3 /* RedHatTests */,
+				D7C948281B1678C100C240C3 /* Products */,
+				73D62B0827220E77AC6911FE /* Frameworks */,
+				E515A576DD0C9E78EE45940F /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		D7C948281B1678C100C240C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D7C948271B1678C100C240C3 /* RedHat.app */,
+				D7C948401B1678C100C240C3 /* RedHatTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D7C948291B1678C100C240C3 /* RedHat */ = {
+			isa = PBXGroup;
+			children = (
+				D75478B11B321A3A00F14A3F /* Categories */,
+				D7D091A71B28AC490055344B /* ARTBeaconManager */,
+				D7C9482E1B1678C100C240C3 /* AppDelegate.h */,
+				D7C9482F1B1678C100C240C3 /* AppDelegate.m */,
+				D711DE0B1B1CB63800CA3E34 /* ARTMenu */,
+				D7C948311B1678C100C240C3 /* ARCRootViewController.h */,
+				D7C948321B1678C100C240C3 /* ARCRootViewController.m */,
+				D72970B71B1F57A200E798EE /* ARTWebViewController.h */,
+				D72970B81B1F57A200E798EE /* ARTWebViewController.m */,
+				D7C29E891B2F79AA009608C2 /* ARCNetworkManager.h */,
+				D7C29E8A1B2F79AA009608C2 /* ARCNetworkManager.m */,
+				D7C948341B1678C100C240C3 /* Main.storyboard */,
+				D7C948371B1678C100C240C3 /* Images.xcassets */,
+				D7C948391B1678C100C240C3 /* LaunchScreen.xib */,
+				D7C9482A1B1678C100C240C3 /* Supporting Files */,
+			);
+			path = RedHat;
+			sourceTree = "<group>";
+		};
+		D7C9482A1B1678C100C240C3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7C9482B1B1678C100C240C3 /* Info.plist */,
+				D7C9482C1B1678C100C240C3 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7C948431B1678C100C240C3 /* RedHatTests */ = {
+			isa = PBXGroup;
+			children = (
+				D7C948461B1678C100C240C3 /* RedHatTests.m */,
+				D7C948441B1678C100C240C3 /* Supporting Files */,
+			);
+			path = RedHatTests;
+			sourceTree = "<group>";
+		};
+		D7C948441B1678C100C240C3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D7C948451B1678C100C240C3 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7D091A71B28AC490055344B /* ARTBeaconManager */ = {
+			isa = PBXGroup;
+			children = (
+				D72431AD1B2A2A26000F42D0 /* ARTNativeBeaconManager.h */,
+				D72431AE1B2A2A26000F42D0 /* ARTNativeBeaconManager.m */,
+				D7D091A81B28AC6F0055344B /* ARTBeaconManager.h */,
+				D7D091A91B28AC6F0055344B /* ARTBeaconManager.m */,
+				D7D091AB1B28ACDB0055344B /* ARTBeaconRegister.h */,
+				D7D091AC1B28ACDB0055344B /* ARTBeaconRegister.m */,
+				D7C29E861B2F6818009608C2 /* ARTEstimoteBeaconManager.h */,
+				D7C29E871B2F6818009608C2 /* ARTEstimoteBeaconManager.m */,
+			);
+			path = ARTBeaconManager;
+			sourceTree = "<group>";
+		};
+		E515A576DD0C9E78EE45940F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */,
+				F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D7C948261B1678C100C240C3 /* RedHat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7C9484A1B1678C100C240C3 /* Build configuration list for PBXNativeTarget "RedHat" */;
+			buildPhases = (
+				4BCC7418666FC1F6ECAB312D /* Check Pods Manifest.lock */,
+				D7C948231B1678C100C240C3 /* Sources */,
+				D7C948241B1678C100C240C3 /* Frameworks */,
+				D7C948251B1678C100C240C3 /* Resources */,
+				2033BD4CDAE3F8CD4D0B25E1 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RedHat;
+			productName = RedHat;
+			productReference = D7C948271B1678C100C240C3 /* RedHat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D7C9483F1B1678C100C240C3 /* RedHatTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7C9484D1B1678C100C240C3 /* Build configuration list for PBXNativeTarget "RedHatTests" */;
+			buildPhases = (
+				D7C9483C1B1678C100C240C3 /* Sources */,
+				D7C9483D1B1678C100C240C3 /* Frameworks */,
+				D7C9483E1B1678C100C240C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7C948421B1678C100C240C3 /* PBXTargetDependency */,
+			);
+			name = RedHatTests;
+			productName = RedHatTests;
+			productReference = D7C948401B1678C100C240C3 /* RedHatTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D7C9481F1B1678C100C240C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Architech;
+				TargetAttributes = {
+					D7C948261B1678C100C240C3 = {
+						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 225U8GB784;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					D7C9483F1B1678C100C240C3 = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = D7C948261B1678C100C240C3;
+					};
+				};
+			};
+			buildConfigurationList = D7C948221B1678C100C240C3 /* Build configuration list for PBXProject "RedHat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D7C9481E1B1678C100C240C3;
+			productRefGroup = D7C948281B1678C100C240C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7C948261B1678C100C240C3 /* RedHat */,
+				D7C9483F1B1678C100C240C3 /* RedHatTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D7C948251B1678C100C240C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C948361B1678C100C240C3 /* Main.storyboard in Resources */,
+				D711DE191B1CE53200CA3E34 /* ARTMenu.storyboard in Resources */,
+				D711DE1D1B1CEA1B00CA3E34 /* menu-icon@2x.png in Resources */,
+				D7C9483B1B1678C100C240C3 /* LaunchScreen.xib in Resources */,
+				D7C948381B1678C100C240C3 /* Images.xcassets in Resources */,
+				D711DE1E1B1CEA1B00CA3E34 /* menu-icon@3x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C9483E1B1678C100C240C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2033BD4CDAE3F8CD4D0B25E1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedHat/Pods-RedHat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BCC7418666FC1F6ECAB312D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D7C948231B1678C100C240C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D711DE141B1CCF0400CA3E34 /* ARTMenuPresentationController.m in Sources */,
+				D7D091AA1B28AC6F0055344B /* ARTBeaconManager.m in Sources */,
+				D711DE0E1B1CBAB400CA3E34 /* ARCMenuAccessViewController.m in Sources */,
+				D711DE171B1CCF5800CA3E34 /* ARTMenuDisplayController.m in Sources */,
+				D72431AF1B2A2A26000F42D0 /* ARTNativeBeaconManager.m in Sources */,
+				D7C29E8B1B2F79AA009608C2 /* ARCNetworkManager.m in Sources */,
+				D7C948331B1678C100C240C3 /* ARCRootViewController.m in Sources */,
+				D7D091AD1B28ACDB0055344B /* ARTBeaconRegister.m in Sources */,
+				D7C948301B1678C100C240C3 /* AppDelegate.m in Sources */,
+				D75478B41B321A6100F14A3F /* NSURL+Ext.m in Sources */,
+				D7C29E881B2F6818009608C2 /* ARTEstimoteBeaconManager.m in Sources */,
+				D72970B91B1F57A200E798EE /* ARTWebViewController.m in Sources */,
+				D7E324A31B20F68900C843DD /* ARTMenuDisplayTableViewController.m in Sources */,
+				D711DE111B1CCECA00CA3E34 /* ARTMenuTransitionManager.m in Sources */,
+				D7C9482D1B1678C100C240C3 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7C9483C1B1678C100C240C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7C948471B1678C100C240C3 /* RedHatTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D7C948421B1678C100C240C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7C948261B1678C100C240C3 /* RedHat */;
+			targetProxy = D7C948411B1678C100C240C3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D7C948341B1678C100C240C3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7C948351B1678C100C240C3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D7C948391B1678C100C240C3 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7C9483A1B1678C100C240C3 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D7C948481B1678C100C240C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D7C948491B1678C100C240C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D7C9484B1B1678C100C240C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC71E4DAF483CB14488EE4B5 /* Pods-RedHat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mike Post (9FV4W7HN5W)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mike Post (9FV4W7HN5W)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/EstimoteSDK/EstimoteSDK",
+				);
+				INFOPLIST_FILE = RedHat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "004924c4-2fc5-436a-901b-9a3ab9d08a5f";
+			};
+			name = Debug;
+		};
+		D7C9484C1B1678C100C240C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4D95B2E3366C9BA3FDA7DD5 /* Pods-RedHat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Architech Solutions Consulting Services Inc. (225U8GB784)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Architech Solutions Consulting Services Inc. (225U8GB784)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/EstimoteSDK/EstimoteSDK",
+				);
+				INFOPLIST_FILE = RedHat/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3df87c89-c42f-4093-a51c-1471e5bc3eba";
+			};
+			name = Release;
+		};
+		D7C9484E1B1678C100C240C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RedHatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedHat.app/RedHat";
+			};
+			name = Debug;
+		};
+		D7C9484F1B1678C100C240C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RedHatTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RedHat.app/RedHat";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D7C948221B1678C100C240C3 /* Build configuration list for PBXProject "RedHat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C948481B1678C100C240C3 /* Debug */,
+				D7C948491B1678C100C240C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7C9484A1B1678C100C240C3 /* Build configuration list for PBXNativeTarget "RedHat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C9484B1B1678C100C240C3 /* Debug */,
+				D7C9484C1B1678C100C240C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7C9484D1B1678C100C240C3 /* Build configuration list for PBXNativeTarget "RedHatTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7C9484E1B1678C100C240C3 /* Debug */,
+				D7C9484F1B1678C100C240C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D7C9481F1B1678C100C240C3 /* Project object */;
+}

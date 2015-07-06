@@ -76,7 +76,7 @@ Webview Directory:
 2. Pull Java Project from bitbucket/github
 3. Build the mobile app files and place the html/js files in src/main/webapp. Build the signage and place it in src/main/webapp/signage 
 4. Using the command line navigate to the root of the project (Where the pom.xml is)
-5. Run command `mvn clean install
+5. Run command `mvn clean install`
 6. Upon Success a [projectname].war file will be generated in the target folder
 
 **Using SFTP client (Filezilla):**
